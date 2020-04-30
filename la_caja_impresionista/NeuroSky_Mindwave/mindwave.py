@@ -22,9 +22,9 @@ On_Flag= int(0)
 Off_Flag= int(1)
 j = int(0)
 n= int(0)
-Temp = long(0)
-Avg_Raw = long(0)
-Temp_Avg = long(0)
+Temp = 0
+Avg_Raw = 0
+Temp_Avg = 0
 
 ser = serial.Serial('/dev/ttyUSB0', 57600, time.sleep(2)) # lo de las comillas simples tenes que poner el com que uses
 
