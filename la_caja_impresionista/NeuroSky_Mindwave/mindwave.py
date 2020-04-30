@@ -26,8 +26,8 @@ Temp = 0
 Avg_Raw = 0
 Temp_Avg = 0
 
-ser = serial.Serial('/dev/ttyUSB0', 57600, time.sleep(2)) # lo de las comillas simples tenes que poner el com que uses
-
+ser = serial.Serial('COM3', 57600) # lo de las comillas simples tenes que poner el com que uses
+time.sleep(2)
 def Read_One_Byte():           # One Byte Read Function
    ByteRead = int(0)
    while ser.available() == 0:
