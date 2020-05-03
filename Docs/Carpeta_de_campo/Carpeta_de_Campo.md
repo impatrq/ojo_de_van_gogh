@@ -174,3 +174,13 @@ Donde podemos pasar de rgb a hsv que nos permite saber las distintas tonalidades
 La pagina web se nos fue a la mierda. Nos suspendieorn la pagina porque aparentemnte superamos el limite de visitas al entrar a verla y nos dicen que si no pagamos en 7 dias nos la borran.
 
 Nos comunicamos con webhost a ver si hay alguna alternativa pero no nos contestan asi que no nos queda otra que pagar y mudarnos a hostinger
+
+## Semana 19/04 al 25/04
+
+Pagamos la migracion de nuestro pag a hostinger que nos salio 10 dolares. Tenemos que esperar 48 hs a que nos digan si salio todo bien y no perdimos la pagina.
+
+Recuperamos la pagina y esta todo en orden aunque se nos desconfiguro el dominion y tenemos que cambiarlo asi responde a ojodevangogh.tech . Eso si no podemos entrar al panel de wordpress por alguna razon.
+
+Nos comunicamos con hostinger y despues de unos largos idas y vueltas de email mudamos completamente la pagina ya no tenemos nada en webhost esta todo en hostinger y funca todo. Habilitamos la certificacion ssl asi que nuestro pagina es segura y ya tenemos acceso al panel de wordpress. 
+
+Tenemos un problema en el responsive desing que hace que desaparezcan los botones de la pag cuando usamos una version mobile y no sabemos que hacer
