@@ -19,9 +19,29 @@ Esto se hace pidiendo un String en el DeserializarJson , que en este caso es el 
 # Programas finales: 
 
 ## Bluetooth master con Json
-Este programa simula que se detecta el pestañeo a traves del  sensor cerebral , realiza la foto y convierte el documento Json en un char Array para ser mandado del Bluetooth master al Bluetooth slave.
+Este programa simula que se detecta el pestañeo a través del  sensor cerebral , realiza la foto y convierte el documento Json en un char Array para ser mandado del Bluetooth master al Bluetooth slave.
 [Programa para mandar el Json en un char Array por Bluetooth](https://github.com/matias1379/Ojo-de-van-gogh/tree/master/Sistema-de-vibracion/bt-master-json)
 
 ## Bluetooth slave con Json
-Este programa recibe la informacion como char Array y lo convierte en un string a traves de la funcion concat. Luego de eso realiza el proceso de deserializar y obtener el valor del documento colour, dando como resultado rojo. Dependiendo del color que llegue se hara una determinada vibracion.
+Este programa recibe la información como char Array y lo convierte en un string a través de la función concat. Luego de eso realiza el proceso de deserializar y obtener el valor del documento colour, dando como resultado rojo. 
+Se crearon los archivos Morse.cpp y Morse.h para crear una librería que dependiendo del color se realiza una vibración de acuerdo a la siguiente tabla; determinando que "1" equivale a una vibración de 1 segundo y un "0" equivale a un pulso , es decir, una vibración corta:
+
+| Codigo | Colores  |
+| :----: | :------: |
+|  0000  |  blanco  |
+|  0001  |   rojo   |
+|  0010  | marrón |
+|  0011  |   naranja   |
+|  0100  | amarillo  |
+|  0101  |  verde  |
+|  0110  |  cian  |
+|  0111  |  azul  |
+|  1000  |  violeta  |
+|  1001   |  rosa  |
+|  1010   | gris |
+|  1011   | - |
+|  1100   | - |
+|  1101   | - |
+|  1110   | - |
+|  1111   | negro  |
 [Programa que detecta el color y realiza una vibración](https://github.com/matias1379/Ojo-de-van-gogh/tree/master/Sistema-de-vibracion/bt-slave-json)
