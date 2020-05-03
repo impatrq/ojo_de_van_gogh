@@ -5,21 +5,21 @@
 |  0010  | marron |
 |  0011  |   naranja   |
 |  0100  | amarillo  |
-|  0101  |  dorado   |
-|  0110  | beige  |
-|  0111  |  violeta   |
-|  1000  |  rosa   |
-|  1001   |  purpura  |
-|  1010   | verde |
-|  1011   |   azul   |
-|  1100   | cyan  |
-|  1101   |   plata  |
-|  1110   | gris  |
+|  0101  |  verde  |
+|  0110  |  cyan  |
+|  0111  |  azul  |
+|  1000  |  violeta  |
+|  1001   |  rosa  |
+|  1010   | gris |
+|  1011   | - |
+|  1100   | - |
+|  1101   | - |
+|  1110   | - |
 |  1111   | negro  |
 
 
 
-```
+```python
 def rgb_to_hsv(r, g, b):
     r, g, b = r/255.0, g/255.0, b/255.0
     mx = max(r, g, b)
