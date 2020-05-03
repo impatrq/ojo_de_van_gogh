@@ -163,10 +163,14 @@ Montamos el host en 000webhost que nos ofrece 300 Mb de espacio y le instalamos 
 
 > Click  [aqui](ojodevangogh.tech) para entrar a nuestra pagina
 
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMTQ2MTg2NCwyMDI1NzU0MTI1LC00Mj
-M2NTg1NzcsNDk5MDU4OTE4LC0xMzg4NDg1NzMwLDE3NDg2OTQ0
-NTAsLTE5MTQyNzI1NDUsODE3OTgwMjc0LC0xMjYzMTQ3MjMxLD
-Y4MjQ2OTExNCwyMzU2OTkyNzYsLTIwNDk3MDAwNDgsLTY1NDE1
-MjkzNiwxMzkxNjI5MTQzLDEwMDA4MDE3NTJdfQ==
--->
+Encontramos un modulo de python que pasa de RGB a nombre de color y funciona pero tienen sus limitaciones. El tema esque no da resultado a todos los RGB sino a los que son faciles tales como  0,0,0 que da black pero si le metemos algo como 65,23,19 ya se pierde.
+
+Encontramos una alternativa basandono en las cosas que nos otorga el dios luis llamas 
+
+> [Luis llamas el dios de los colores](https://www.luisllamas.es/arduino-sensor-color-rgb-tcs34725/)
+
+Donde podemos pasar de rgb a hsv que nos permite saber las distintas tonalidades de un color ya que distingue de rojo oscuro y rojo claro y nos permite tomas los dos como rojo. Gracias a esto ya poseemos 12 colores identificables
+
+La pagina web se nos fue a la mierda. Nos suspendieorn la pagina porque aparentemnte superamos el limite de visitas al entrar a verla y nos dicen que si no pagamos en 7 dias nos la borran.
+
+Nos comunicamos con webhost a ver si hay alguna alternativa pero no nos contestan asi que no nos queda otra que pagar y mudarnos a hostinger
