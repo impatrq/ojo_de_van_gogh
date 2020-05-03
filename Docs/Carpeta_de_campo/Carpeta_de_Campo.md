@@ -184,3 +184,22 @@ Recuperamos la pagina y esta todo en orden aunque se nos desconfiguro el dominio
 Nos comunicamos con hostinger y despues de unos largos idas y vueltas de email mudamos completamente la pagina ya no tenemos nada en webhost esta todo en hostinger y funca todo. Habilitamos la certificacion ssl asi que nuestro pagina es segura y ya tenemos acceso al panel de wordpress. 
 
 Tenemos un problema en el responsive desing que hace que desaparezcan los botones de la pag cuando usamos una version mobile y no sabemos que hacer
+
+
+
+## Semana 25/04 al 3/5
+
+Vimos que no habia manera de solucionar el responsive design mas que pagar el upgrade del theme de wordpress a premium que son 40 dolares asi que pincho. 
+
+Empezamos la busqueda y encontramos uno llamos astrid que esta muy piola visualmente y tiene mucha opcion de personalizacion. Lastimosamente no podiamos cambiarle el fondo blanco asi que para que no queme tanto le colocamos letra Arial que es mas gruesa y llama la atencion.
+
+Le instalamos un plugin a la pagina para que aparezcan botones que vinculen la pag con ig linkedin llamado UltimateShare.
+
+Creamos una pagina de instagram para empezar a subir cosas y ya grabamos unos videos pro de como la rasspberry reconoce colores y como a traves de un color seleccionado funcionan los vibradores
+
+Para un mejor orden creamos un repositorio nuevo donde metimos todas las cosas de los pequeños repos a traves de git flow que permite ordenar todo en feature y que no se vaya toda a la mierda
+
+Para armar cosas facheras para redes sociales hicimos que la plaqueta tenga todos los micros y cosas con modelos 3D asi verlos con el visor 3D de KiCAD
+
+## Semana 03/05 al 11/05
+
