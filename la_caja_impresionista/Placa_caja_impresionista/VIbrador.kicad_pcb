@@ -43,7 +43,7 @@
   )
 
   (setup
-    (last_trace_width 0.6)
+    (last_trace_width 0.25)
     (user_trace_width 0.4)
     (user_trace_width 0.6)
     (trace_clearance 0.2)
@@ -467,6 +467,11 @@
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
+    )
+    (model C:/Users/matia/Downloads/ADA3708--3DModel-STEP-56544.STEP
+      (offset (xyz 9.5 -24.5 -2))
+      (scale (xyz 1 1 1))
+      (rotate (xyz -90 180 -90))
     )
   )
 
