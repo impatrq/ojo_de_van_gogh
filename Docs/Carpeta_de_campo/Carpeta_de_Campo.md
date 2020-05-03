@@ -163,10 +163,43 @@ Montamos el host en 000webhost que nos ofrece 300 Mb de espacio y le instalamos 
 
 > Click  [aqui](ojodevangogh.tech) para entrar a nuestra pagina
 
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMTQ2MTg2NCwyMDI1NzU0MTI1LC00Mj
-M2NTg1NzcsNDk5MDU4OTE4LC0xMzg4NDg1NzMwLDE3NDg2OTQ0
-NTAsLTE5MTQyNzI1NDUsODE3OTgwMjc0LC0xMjYzMTQ3MjMxLD
-Y4MjQ2OTExNCwyMzU2OTkyNzYsLTIwNDk3MDAwNDgsLTY1NDE1
-MjkzNiwxMzkxNjI5MTQzLDEwMDA4MDE3NTJdfQ==
--->
+Encontramos un modulo de python que pasa de RGB a nombre de color y funciona pero tienen sus limitaciones. El tema esque no da resultado a todos los RGB sino a los que son faciles tales como  0,0,0 que da black pero si le metemos algo como 65,23,19 ya se pierde.
+
+Encontramos una alternativa basandono en las cosas que nos otorga el dios luis llamas 
+
+> [Luis llamas el dios de los colores](https://www.luisllamas.es/arduino-sensor-color-rgb-tcs34725/)
+
+Donde podemos pasar de rgb a hsv que nos permite saber las distintas tonalidades de un color ya que distingue de rojo oscuro y rojo claro y nos permite tomas los dos como rojo. Gracias a esto ya poseemos 12 colores identificables
+
+La pagina web se nos fue a la mierda. Nos suspendieorn la pagina porque aparentemnte superamos el limite de visitas al entrar a verla y nos dicen que si no pagamos en 7 dias nos la borran.
+
+Nos comunicamos con webhost a ver si hay alguna alternativa pero no nos contestan asi que no nos queda otra que pagar y mudarnos a hostinger
+
+## Semana 19/04 al 25/04
+
+Pagamos la migracion de nuestro pag a hostinger que nos salio 10 dolares. Tenemos que esperar 48 hs a que nos digan si salio todo bien y no perdimos la pagina.
+
+Recuperamos la pagina y esta todo en orden aunque se nos desconfiguro el dominion y tenemos que cambiarlo asi responde a ojodevangogh.tech . Eso si no podemos entrar al panel de wordpress por alguna razon.
+
+Nos comunicamos con hostinger y despues de unos largos idas y vueltas de email mudamos completamente la pagina ya no tenemos nada en webhost esta todo en hostinger y funca todo. Habilitamos la certificacion ssl asi que nuestro pagina es segura y ya tenemos acceso al panel de wordpress. 
+
+Tenemos un problema en el responsive desing que hace que desaparezcan los botones de la pag cuando usamos una version mobile y no sabemos que hacer
+
+
+
+## Semana 25/04 al 3/5
+
+Vimos que no habia manera de solucionar el responsive design mas que pagar el upgrade del theme de wordpress a premium que son 40 dolares asi que pincho. 
+
+Empezamos la busqueda y encontramos uno llamos astrid que esta muy piola visualmente y tiene mucha opcion de personalizacion. Lastimosamente no podiamos cambiarle el fondo blanco asi que para que no queme tanto le colocamos letra Arial que es mas gruesa y llama la atencion.
+
+Le instalamos un plugin a la pagina para que aparezcan botones que vinculen la pag con ig linkedin llamado UltimateShare.
+
+Creamos una pagina de instagram para empezar a subir cosas y ya grabamos unos videos pro de como la rasspberry reconoce colores y como a traves de un color seleccionado funcionan los vibradores
+
+Para un mejor orden creamos un repositorio nuevo donde metimos todas las cosas de los pequeños repos a traves de git flow que permite ordenar todo en feature y que no se vaya toda a la mierda
+
+Para armar cosas facheras para redes sociales hicimos que la plaqueta tenga todos los micros y cosas con modelos 3D asi verlos con el visor 3D de KiCAD
+
+## Semana 03/05 al 11/05
+
