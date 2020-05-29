@@ -95,6 +95,48 @@ class detector_colores:
         else:
            return "negro"
 
+
+      def print_color_to_aud (self,hsv):
+         self.hsv = hsv
+         if name < 15:
+            os.system('mpg321 rojo.mp3 &')
+            
+         elif name < 45:
+            os.system('mpg321 naranja.mp3 &')
+            
+         elif name < 90:
+            os.system('mpg321 amarillo.mp3 &')
+            
+         elif name < 150:
+            os.system('mpg321 verde.mp3 &')
+            
+         elif name < 210:
+            os.system('mpg321 cyan.mp3 &')
+            
+         elif name < 270:
+            os.system('mpg321 azul.mp3 &')
+            
+         elif name < 300:
+            os.system('mpg321 violeta.mp3 &')
+            
+         elif name < 345:
+            os.system('mpg321 rosa.mp3 &')
+            
+         elif name < 360:
+            os.system('mpg321 rojo.mp3 &')
+            
+         elif name == 370:
+            os.system('mpg321 marron.mp3 &')
+            
+         elif name == 380:
+            os.system('mpg321 gris.mp3 &')
+            
+         elif name < 390:
+            os.system('mpg321 blanco.mp3 &')
+
+         else:
+            os.system('mpg321 negro.mp3 &')    
+
     
 
         
