@@ -146,11 +146,11 @@ Nos estamos contactando con varias empresas preguntando sobre plaquetas flexible
 
 Hemos recibido las respuestas de las empresas por plaquetas flexibles y nos ha parecido muy elevados los costos por lo cual optamos por usar un brazalete para celulares de un tamaño de 18cm x 10 cm y se ha realizado el esquemático del circuito donde estará la Raspberry con la cámara, el Arduino Nano, el Bluetooth, dos pilas, un regulador y los vibradores.
 
-Hemos calculado el consumo total del circuito para saber que tenemos que usar dos pilas de 3.7V ya que con una nos duraria poco tiempo, y por esto se ha investigado sobre Step down, ya que tiene mejor rendimiento que un regulador.
+Hemos calculado el consumo total del circuito para saber que tenemos que usar dos pilas de 3.7V ya que con una nos duraría poco tiempo, y por esto se ha investigado sobre Step down, ya que tiene mejor rendimiento que un regulador.
 
-También se ha realizado una librería para los colores en Arduino, y hemos encontrado el problema que si haces un archivo con la extensión:  ".c " salta un error y se soluciono esto cambiando la extension del archivo a ".cpp"
+También se ha realizado una librería para los colores en Arduino, y hemos encontrado el problema que si haces un archivo con la extensión:  ".c " salta un error y se soluciono esto cambiando la extensión del archivo a ".cpp"
 
-Se ha investigado sobre el mindwave y el funcionamiento de un programa y se ha conseguido que se detecte el parpadeo pero tambien se detecta el parpadeo no forzado y para eso estamos viendo como solucionarlo.
+Se ha investigado sobre el mindwave y el funcionamiento de un programa y se ha conseguido que se detecte el parpadeo pero también se detecta el parpadeo no forzado y para eso estamos viendo como solucionarlo.
 
 Se ha conseguido que la Raspberry nos entregue el color en RGB con Json
 
@@ -159,29 +159,29 @@ Se ha comprado un dominio y estamos haciendo la pagina web a traves de un localH
 
 Se ha terminado el PCB de la placa
 
-Montamos el host en 000webhost que nos ofrece 300 Mb de espacio y le instalamos wordpress. Tuvimos problemas con el dominio asi que contactamos a soporte tecnico de hostinger y nos solucionaron el problema.
+Montamos el host en 000webhost que nos ofrece 300 Mb de espacio y le instalamos wordpress. Tuvimos problemas con el dominio así que contactamos a soporte técnico de hostinger y nos solucionaron el problema.
 
 > Click  [aqui](ojodevangogh.tech) para entrar a nuestra pagina
 
-Encontramos un modulo de python que pasa de RGB a nombre de color y funciona pero tienen sus limitaciones. El tema esque no da resultado a todos los RGB sino a los que son faciles tales como  0,0,0 que da black pero si le metemos algo como 65,23,19 ya se pierde.
+Encontramos un modulo de python que pasa de RGB a nombre de color y funciona pero tienen sus limitaciones. El tema es que no da resultado a todos los RGB sino a los que son fáciles tales como  0,0,0 que da black pero si le metemos algo como 65,23,19 ya se pierde.
 
-Encontramos una alternativa basandono en las cosas que nos otorga el dios luis llamas 
+Encontramos una alternativa basandonos en las cosas que nos otorga el dios Luis llamas 
 
 > [Luis llamas el dios de los colores](https://www.luisllamas.es/arduino-sensor-color-rgb-tcs34725/)
 
 Donde podemos pasar de rgb a hsv que nos permite saber las distintas tonalidades de un color ya que distingue de rojo oscuro y rojo claro y nos permite tomas los dos como rojo. Gracias a esto ya poseemos 12 colores identificables
 
-La pagina web se nos fue a la mierda. Nos suspendieorn la pagina porque aparentemnte superamos el limite de visitas al entrar a verla y nos dicen que si no pagamos en 7 dias nos la borran.
+La pagina web se nos fue a la mierda. Nos suspendieron la pagina porque aparentemente superamos el limite de visitas al entrar a verla y nos dicen que si no pagamos en 7 días nos la borran.
 
-Nos comunicamos con webhost a ver si hay alguna alternativa pero no nos contestan asi que no nos queda otra que pagar y mudarnos a hostinger
+Nos comunicamos con webhost a ver si hay alguna alternativa pero no nos contestan así que no nos queda otra que pagar y mudarnos a hostinger
 
 ## Semana 19/04 al 25/04
 
-Pagamos la migracion de nuestro pag a hostinger que nos salio 10 dolares. Tenemos que esperar 48 hs a que nos digan si salio todo bien y no perdimos la pagina.
+Pagamos la migración de nuestro pag a hostinger que nos salió 10 dolares. Tenemos que esperar 48 hs a que nos digan si salió todo bien y no perdimos la pagina.
 
-Recuperamos la pagina y esta todo en orden aunque se nos desconfiguro el dominion y tenemos que cambiarlo asi responde a ojodevangogh.tech . Eso si no podemos entrar al panel de wordpress por alguna razon.
+Recuperamos la pagina y esta todo en orden aunque se nos desconfiguró el dominio y tenemos que cambiarlo así responde a ojodevangogh.tech . Eso si no podemos entrar al panel de wordpress por alguna razón.
 
-Nos comunicamos con hostinger y despues de unos largos idas y vueltas de email mudamos completamente la pagina ya no tenemos nada en webhost esta todo en hostinger y funca todo. Habilitamos la certificacion ssl asi que nuestro pagina es segura y ya tenemos acceso al panel de wordpress. 
+Nos comunicamos con hostinger y después de unos largos idas y vueltas de email mudamos completamente la pagina ya no tenemos nada en webhost esta todo en hostinger y funca todo. Habilitamos la certificación ssl así que nuestro pagina es segura y ya tenemos acceso al panel de wordpress. 
 
 Tenemos un problema en el responsive desing que hace que desaparezcan los botones de la pag cuando usamos una version mobile y no sabemos que hacer
 
@@ -189,17 +189,46 @@ Tenemos un problema en el responsive desing que hace que desaparezcan los botone
 
 ## Semana 25/04 al 3/5
 
-Vimos que no habia manera de solucionar el responsive design mas que pagar el upgrade del theme de wordpress a premium que son 40 dolares asi que pincho. 
+Vimos que no había manera de solucionar el responsive design mas que pagar el upgrade del theme de wordpress a premium que son 40 dolares así que pincho. 
 
-Empezamos la busqueda y encontramos uno llamos astrid que esta muy piola visualmente y tiene mucha opcion de personalizacion. Lastimosamente no podiamos cambiarle el fondo blanco asi que para que no queme tanto le colocamos letra Arial que es mas gruesa y llama la atencion.
+Empezamos la búsqueda y encontramos uno llamos astrid que esta muy piola visualmente y tiene mucha opción de personalizacion. Lastimosamente no podiamos cambiarle el fondo blanco asi que para que no queme tanto le colocamos letra Arial que es mas gruesa y llama la atención.
 
 Le instalamos un plugin a la pagina para que aparezcan botones que vinculen la pag con ig linkedin llamado UltimateShare.
 
-Creamos una pagina de instagram para empezar a subir cosas y ya grabamos unos videos pro de como la rasspberry reconoce colores y como a traves de un color seleccionado funcionan los vibradores
+Creamos una pagina de Instagram para empezar a subir cosas y ya grabamos unos videos pro de como la Raspberry reconoce colores y como a través de un color seleccionado funcionan los vibradores
 
-Para un mejor orden creamos un repositorio nuevo donde metimos todas las cosas de los pequeños repos a traves de git flow que permite ordenar todo en feature y que no se vaya toda a la mierda
+Para un mejor orden creamos un repositorio nuevo donde metimos todas las cosas de los pequeños repos a través de git flow que permite ordenar todo en feature y que no se vaya todo a la mierda
 
 Para armar cosas facheras para redes sociales hicimos que la plaqueta tenga todos los micros y cosas con modelos 3D asi verlos con el visor 3D de KiCAD
 
 ## Semana 03/05 al 11/05
 
+Se hizo una intro para el video en After Fx, se le puso musica de fondo y se subio a Ig y a la pagina web el primer video mostrando como se reconoce el color con la cámara de la Raspberry
+
+Tambien se definio el modelo para hacer la tapa del cargador de pila y se empezó a hacerla. 
+
+Se agregó un pluggin para que la pagina cargue mas rapido y se corrigio el logo para que no sea de fondo blanco y pueda verse. 
+
+## Semana 11/05 al 18/05
+
+Se empezo a intentar conectar la raspberry con el sensor cerebral y se configuro esta para que trabaje por Remote
+
+Agregamos con gtts para que se pueda escuchar el color y lo probamos con un parlante y anduvo. Para traducir el texto color a voz se creo una nueva funcion que envia archivo txt que los recibe el gtts y los reproduce en un parlante
+
+Para la PRIMER ENTREVISTA DE RADIO, se realizo una tarjeta publicitaria que se subio a Ig y como se escucho bajo, se edito el  audio grabado y se preparó para subirlo a IGTV y quedamos en que cuando la situacion del pais lo permita, nos volveremos a juntar para contar los nuevos avances.
+
+Se daño el disco de la computadora y perdimos lo que teníamos hecho de la tapa y no se habia subido a git.
+
+## Semana 18/05 al 25/05
+
+La raspberry no lee el payload del Mindway y estamos con ese problema que no sabemos como resolverlo
+
+Se hizo un Backup de la pagina web porque se nos vencía el mes de Hostinger pero debido a un error que tuvieron nos regalaron un mes y ya elegimos que para el mes proximo vamos a cambiar al host de Sitio Hispano que nos saldría $860 el año ya que no se puede pagar por mes
+
+Estuvimos pensando y se nos ocurrio que nuestra pagina tiene que tener para que los ciegos la puedan leer, entonces agregamos el Plugin Responsive Voice que permite a traves de un boton reproducir el contenido de cada pagina.
+
+Se edito y subio el IGTV de la nota de radio y tambien subimos el link de la pagina que hizo la radio FM106.5 sobre esta nota. Tambien subimos una historia de "Quienes somos" y la dejamos como destacada
+
+Se terminó la tapa y se empezó a realizar el encastre en la caja.
+
+Se empezó a investigar sobre como agregar para que se pueda leer un texto a traves de la camara, usando OCR que nos da Google Vision.
