@@ -54,7 +54,57 @@ class detector_colores:
         
         return hue   
 
-    
+    def print_color_name(self,hsv):
+        
+        self.hsv = hsv
+        if hsv < 15:
+            escJson("rojo")
+
+        elif hsv < 45:
+            escJson("naranja")
+            
+        elif hsv < 90:
+            escJson("amarillo")
+            
+        elif hsv < 150:
+            escJson("verde")
+            
+        elif hsv < 210:
+            escJson("cyan")
+            
+        elif hsv < 270:
+            escJson("azul")
+            
+        elif hsv < 300:
+            escJson("violeta")
+            
+        elif hsv < 345:
+            escJson("rosa")
+            
+        elif hsv < 360:
+            escJson("rojo")
+            
+        elif hsv == 370:
+            escJson("marron")
+            
+        elif hsv == 380:
+            escJson("gris")
+            
+        elif hsv < 390:
+            escJson("blanco")
+
+        else:
+            escJson("negro")
+
+    def escJson (self,hsv):
+        self.hsv = hsv
+        datos = {
+            'color' : f'{hsv}'
+        }
+
+        json_str = json.dumps(datos)
+
+        print(json_str)
 
 
         
