@@ -1,6 +1,6 @@
 import json
 
-def escJson (nombre_color):
+def escribir_Json (nombre_color):
         datos = {
             'color' : f'{nombre_color}'
         }
