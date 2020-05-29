@@ -7,6 +7,7 @@ import serial
 import json
 import detector_colores
 from google.cloud import vision
+from escribirJson import escJson
 
 #with picamera.PiCamera() as camera:
     #camera.resolution = (1024, 768)
@@ -35,37 +36,31 @@ r = int(color.color.red)
 g = int(color.color.green)
 b = int(color.color.blue)
 
-detector_de_colores = detector_colores.detector_colores(r,g,b)
+#creo el objeto detectar colores
+detector_de_colores = detector_colores.detector_colores()
+#Le digo al objeto detectar colores que active su funcion de pasar rgb a hsv
+hsv = detector_de_colores.rgb_to_hsv(r,g,b)
 
-detector_de_colores.rgb_to_hsv()
+#le digo al objeto detectar colores que active su funcion pasar de hsv a nombre de color
+nombre_color = detector_de_colores.print_color_name(hsv)
 
-name = rgb_to_hsv(r, g, b)
-
-hsv = str(0)
-
-
-        
-color = str(rgb_to_hsv(r, g, b))
-
-print("hue:", color)
-
-color2 = str(print_color_name (name))
-
-print(color2)
-
-print("-R:" , r, "-G:", g, "-B:", b)
-
-hsv = str(0)
+#invoco a la funcion escJson y le paso el nombre del color que va a tener el json
+escJson(nombre_color)
 
 
 
-datos = (wJson (hsv))
+
+
+
+
+
+""" datos = (wJson (hsv))
 data = {}
 data['color:'] = (datos)
 path = '/home/pi'
-file_name = "ej.json"
+file_name = "ej.json" """
 
-with open(os.path.join(path, file_name), 'w') as file:
-    json.dump(data, file)
+""" with open(os.path.join(path, file_name), 'w') as file:
+    json.dump(data, file) """
 
 

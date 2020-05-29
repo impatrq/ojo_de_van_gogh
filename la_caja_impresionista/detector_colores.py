@@ -10,19 +10,18 @@ class detector_colores:
     mn = int
     df = int
     v = int
-    hue = int
+    hue = float
     hsv = str
 
 
-    def __init__ (self, r, g, b):
-        self.r = r
-        self.g = g
-        self.b = b
+    def __init__ (self):
+        pass
+        
 
-    def rgb_to_hsv(self):
-        r = r/255.0
-        g = g/255.0
-        b = b/255.0
+    def rgb_to_hsv(self,r,g,b):
+        self.r = r/255.0
+        self.g = g/255.0
+        self.b = b/255.0
         mx = max(r, g, b)
         mn = min(r, g, b)
         df = mx-mn
@@ -58,54 +57,45 @@ class detector_colores:
         
         self.hsv = hsv
         if hsv < 15:
-            escJson("rojo")
+           return "rojo"
 
         elif hsv < 45:
-            escJson("naranja")
+           return "naranja"
             
         elif hsv < 90:
-            escJson("amarillo")
+           return "amarillo"
             
         elif hsv < 150:
-            escJson("verde")
+           return "verde"
             
         elif hsv < 210:
-            escJson("cyan")
+           return "cyan"
             
         elif hsv < 270:
-            escJson("azul")
+           return "azul"
             
         elif hsv < 300:
-            escJson("violeta")
+           return "violeta"
             
         elif hsv < 345:
-            escJson("rosa")
+           return "rosa"
             
         elif hsv < 360:
-            escJson("rojo")
+           return "rojo"
             
         elif hsv == 370:
-            escJson("marron")
+           return "marron"
             
         elif hsv == 380:
-            escJson("gris")
+           return "gris"
             
         elif hsv < 390:
-            escJson("blanco")
+           return "blanco"
 
         else:
-            escJson("negro")
+           return "negro"
 
-    def escJson (self,hsv):
-        self.hsv = hsv
-        datos = {
-            'color' : f'{hsv}'
-        }
-
-        json_str = json.dumps(datos)
-
-        print(json_str)
-
+    
 
         
 
