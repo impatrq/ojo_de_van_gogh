@@ -19,7 +19,7 @@ os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r'OjoDeVangogh-04b247a7603b.json'
 client = vision.ImageAnnotatorClient()
 
 file_name = 'banana.jpg'
-image_path = f'/home/pi/ojo_de_van_gogh/la_caja_impresionista/banana.jpg'
+image_path = f'/home/pi/banana.jpg'
 
 with io.open(image_path, 'rb') as image_file:
     content = image_file.read()
@@ -43,8 +43,6 @@ hsv = detector_de_colores.rgb_to_hsv(r,g,b)
 
 #le digo al objeto detectar colores que active su funcion pasar de hsv a nombre de color
 nombre_color = detector_de_colores.print_color_name(hsv)
-
-print(nombre_color)
 
 #invoco a la funcion escJson y le paso el nombre del color que va a tener el json
 escJson(nombre_color)

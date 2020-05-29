@@ -15,11 +15,11 @@ from escribirJson import escJson
     #time.sleep(2) #Tiempo de espera para disparar la foto
     #camera.capture('banana.jpg')
 
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r'Ojo-de-van-gogh-1d875cc39f9a'
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r'OjoDeVangogh-04b247a7603b.json'
 client = vision.ImageAnnotatorClient()
 
 file_name = 'banana.jpg'
-image_path = f'/home/pi/ojo_de_van_gogh/la_caja_impresionista/banana.jpg'
+image_path = f'/home/pi/banana.jpg'
 
 with io.open(image_path, 'rb') as image_file:
     content = image_file.read()
