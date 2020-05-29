@@ -44,8 +44,6 @@ hsv = detector_de_colores.rgb_to_hsv(r,g,b)
 #le digo al objeto detectar colores que active su funcion pasar de hsv a nombre de color
 nombre_color = detector_de_colores.print_color_name(hsv)
 
-print(nombre_color)
-
 #invoco a la funcion escJson y le paso el nombre del color que va a tener el json
 escJson(nombre_color)
 
