@@ -15,7 +15,7 @@ from escribirJson import escJson
     #time.sleep(2) #Tiempo de espera para disparar la foto
     #camera.capture('banana.jpg')
 
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r'OjoDeVangogh-04b247a7603b.json'
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r'Ojo-de-van-gogh-1d875cc39f9a'
 client = vision.ImageAnnotatorClient()
 
 file_name = 'banana.jpg'
