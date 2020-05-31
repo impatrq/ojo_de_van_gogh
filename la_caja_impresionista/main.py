@@ -18,11 +18,11 @@ while True:
     orden = arduino.read()
 
     if(orden == b'1'):
-        #with picamera.PiCamera() as camera:
-            #camera.resolution = (1024, 768)
-            #camera.start_preview()
-            #time.sleep(2) #Tiempo de espera para disparar la foto
-            #camera.capture('banana.jpg')
+        with picamera.PiCamera() as camera:
+            camera.resolution = (1024, 768)
+            camera.start_preview()
+            time.sleep(2) #Tiempo de espera para disparar la foto
+            camera.capture('banana.jpg')
 
         os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r'OjoDeVangogh-04b247a7603b.json'
         client = vision.ImageAnnotatorClient()
@@ -55,6 +55,7 @@ while True:
 
         Detector_de_colores.print_to_audio(hsv) # llamo al metodo que reproduce audio
     else:
+        print("esperando la orden")
         pass
 
 
