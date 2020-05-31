@@ -36,16 +36,16 @@ r = int(color.color.red)
 g = int(color.color.green)
 b = int(color.color.blue)
 
-#creo el objeto detectar colores
-detector_de_colores = detector_colores.detector_colores()
-#Le digo al objeto detectar colores que active su funcion de pasar rgb a hsv
-hsv = detector_de_colores.rgb_to_hsv(r,g,b)
+Detector_de_colores = detector_colores() # creo el objeto detector de color
 
-#le digo al objeto detectar colores que active su funcion pasar de hsv a nombre de color
-nombre_color = detector_de_colores.print_color_name(hsv)
+hsv = Detector_de_colores.rgb_to_hsv(r,g,b) # al detector le paso el r,g,b y me devuelve el dato en HSV
 
-#invoco a la funcion escJson y le paso el nombre del color que va a tener el json
-escJson(nombre_color)
+color_nombre = Detector_de_colores.print_color_name(hsv) # al detector le paso el hsv y me devuelve el nombre del color
+
+escribir_Json(color_nombre) # llamo al metodo escribir_json y le paso el color y me devuelve el json con el color cargado
+
+Detector_de_colores.print_to_audio(hsv) # llamo al metodo que reproduce audio
+
 
 
 
