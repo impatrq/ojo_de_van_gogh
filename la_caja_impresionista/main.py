@@ -2,50 +2,63 @@ import os
 import io
 import webcolors
 import time
-#import picamera
+import picamera
 import serial
 import json
-import detector_colores
-from google.cloud import vision
-from escribirJson import escJson
+import RPi.GPIO as GPIO
+from detector_colores import detector_colores
+from escribirJson import escribir_Json
+from google.cloud import vision    
 
-#with picamera.PiCamera() as camera:
-    #camera.resolution = (1024, 768)
-    #camera.start_preview()
-    #time.sleep(2) #Tiempo de espera para disparar la foto
-    #camera.capture('banana.jpg')
+arduino = serial.Serial('/dev/ttyACM0',9600)
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup(7, GPIO.OUT) #creo el pin del led
 
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r'OjoDeVangogh-04b247a7603b.json'
-client = vision.ImageAnnotatorClient()
+while True: 
+    orden = arduino.read()
 
-file_name = 'banana.jpg'
-image_path = f'/home/pi/banana.jpg'
+    if(orden == b'1'):
+        with picamera.PiCamera() as camera:
+            camera.resolution = (1024, 768)
+            camera.start_preview()
+            time.sleep(2) #Tiempo de espera para disparar la foto
+            camera.capture('banana.jpg')
 
-with io.open(image_path, 'rb') as image_file:
-    content = image_file.read()
+        os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r'OjoDeVangogh-04b247a7603b.json'
+        client = vision.ImageAnnotatorClient()
 
-image = vision.types.Image(content=content)
-response = client.image_properties(image=image).image_properties_annotation
-dominant_colors = response.dominant_colors
+        file_name = 'banana.jpg'
+        image_path = f'/home/pi/banana.jpg'
 
-for color in dominant_colors.colors:
+        with io.open(image_path, 'rb') as image_file:
+            content = image_file.read()
 
-    print('')
+        image = vision.types.Image(content=content)
+        response = client.image_properties(image=image).image_properties_annotation
+        dominant_colors = response.dominant_colors
 
-r = int(color.color.red)
-g = int(color.color.green)
-b = int(color.color.blue)
+        for color in dominant_colors.colors:
 
-#creo el objeto detectar colores
-detector_de_colores = detector_colores.detector_colores()
-#Le digo al objeto detectar colores que active su funcion de pasar rgb a hsv
-hsv = detector_de_colores.rgb_to_hsv(r,g,b)
+            print('')
 
-#le digo al objeto detectar colores que active su funcion pasar de hsv a nombre de color
-nombre_color = detector_de_colores.print_color_name(hsv)
+        r = int(color.color.red)
+        g = int(color.color.green)
+        b = int(color.color.blue)
 
-#invoco a la funcion escJson y le paso el nombre del color que va a tener el json
-escJson(nombre_color)
+        Detector_de_colores = detector_colores() # creo el objeto detector de color
+
+        hsv = Detector_de_colores.rgb_to_hsv(r,g,b) # al detector le paso el r,g,b y me devuelve el dato en HSV
+
+        color_nombre = Detector_de_colores.print_color_name(hsv) # al detector le paso el hsv y me devuelve el nombre del color
+
+        escribir_Json(color_nombre) # llamo al metodo escribir_json y le paso el color y me devuelve el json con el color cargado
+
+        Detector_de_colores.print_to_audio(hsv) # llamo al metodo que reproduce audio
+    else:
+        print("esperando la orden")
+        pass
+
+
 
 
 
