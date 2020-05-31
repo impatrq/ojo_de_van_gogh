@@ -2,12 +2,12 @@ import os
 import io
 import webcolors
 import time
-#import picamera
+import picamera
 import serial
 import json
-import detector_colores
-from google.cloud import vision
-from escribirJson import escJson
+from detector_colores import detector_colores
+from escribirJson import escribir_Json
+from google.cloud import vision    
 
 #with picamera.PiCamera() as camera:
     #camera.resolution = (1024, 768)
