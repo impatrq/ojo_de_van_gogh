@@ -213,22 +213,49 @@ Se agregó un pluggin para que la pagina cargue mas rapido y se corrigio el logo
 
 Se empezo a intentar conectar la raspberry con el sensor cerebral y se configuro esta para que trabaje por Remote
 
-Agregamos con gtts para que se pueda escuchar el color y lo probamos con un parlante y anduvo. Para traducir el texto color a voz se creo una nueva funcion que envia archivo txt que los recibe el gtts y los reproduce en un parlante
+Agregamos con gtts para que se pueda escuchar el color y lo probamos con un parlante y anduvo. Para traducir el texto color a voz se creo una nueva función que envía archivo txt que los recibe el gtts y los reproduce en un parlante
 
-Para la PRIMER ENTREVISTA DE RADIO, se realizo una tarjeta publicitaria que se subio a Ig y como se escucho bajo, se edito el  audio grabado y se preparó para subirlo a IGTV y quedamos en que cuando la situacion del pais lo permita, nos volveremos a juntar para contar los nuevos avances.
+Para la PRIMER ENTREVISTA DE RADIO, se realizo una tarjeta publicitaria que se subió a Ig y como se escucho bajo, se edito el  audio grabado y se preparó para subirlo a IGTV y quedamos en que cuando la situación del país lo permita, nos volveremos a juntar para contar los nuevos avances.
 
-Se daño el disco de la computadora y perdimos lo que teníamos hecho de la tapa y no se habia subido a git.
+Se daño el disco de la computadora y perdimos lo que teníamos hecho de la tapa y no se había subido a git.
 
 ## Semana 18/05 al 25/05
 
-La raspberry no lee el payload del Mindway y estamos con ese problema que no sabemos como resolverlo
+Se pudo conectar el sensor cerebral con la Raspberry pero no lee el payload del Mindway y estamos con ese problema que no sabemos como resolverlo
 
-Se hizo un Backup de la pagina web porque se nos vencía el mes de Hostinger pero debido a un error que tuvieron nos regalaron un mes y ya elegimos que para el mes proximo vamos a cambiar al host de Sitio Hispano que nos saldría $860 el año ya que no se puede pagar por mes
+Se hizo un Backup de la pagina web porque se nos vencía el mes de Hostinger pero debido a un error que tuvieron nos regalaron un mes y ya elegimos que para el mes próximo vamos a cambiar al host de Sitio Hispano que nos saldría $860 el año ya que no se puede pagar por mes
 
-Estuvimos pensando y se nos ocurrio que nuestra pagina tiene que tener para que los ciegos la puedan leer, entonces agregamos el Plugin Responsive Voice que permite a traves de un boton reproducir el contenido de cada pagina.
+Estuvimos pensando y se nos ocurrió que nuestra pagina tiene que tener para que los ciegos la puedan leer, entonces agregamos el Plugin Responsive Voice que permite a través de un botón reproducir el contenido de cada pagina.
 
-Se edito y subio el IGTV de la nota de radio y tambien subimos el link de la pagina que hizo la radio FM106.5 sobre esta nota. Tambien subimos una historia de "Quienes somos" y la dejamos como destacada
+Se edito y subió el IGTV de la nota de radio y también subimos el link de la pagina que hizo la radio FM106.5 sobre esta nota. 
 
 Se terminó la tapa y se empezó a realizar el encastre en la caja.
 
-Se empezó a investigar sobre como agregar para que se pueda leer un texto a traves de la camara, usando OCR que nos da Google Vision.
+Se crearon archivos txt para el gtts para optimizar los tiempos de respuesta cuando se reproducen los colores, ya que lee los archivos creados en vez de crearlos y después leerlo.
+
+## Semana 25/05 al 1/06
+
+Se logró la comunicación entre el Arduino y la Raspberry y creamos 2 librerías una para detectar colores y otra para crear un json. Esto se hizo para ordenar el código. A la librería de detectar_colores tambien se le incorporó los audios para reproducir el color. 
+
+Se investigó como hacer que cada vez que la Raspberry se enciende empiece a correr el script automaticamente sin ponerle el comando utilizando Crontab.
+[Script para automatizar inicio](https://github.com/impatrq/ojo_de_van_gogh/blob/develop/Docs/Carpeta_de_campo/Guias_md/Correr%20script%20cada%20vez%20que%20se%20prenda%20la%20Raspberry.md)
+
+Se ha logrado pasar las fotos a formato base64 para reducir tiempos de espera y se logro una optimizacion. Antes tardaba 24 segs y ahora tarda entre 16 y 20 seg, siendo un factor clave la luz ambiente, ya que si hay poca luz tarda mas. 
+
+Se ha investigado e implementado en la página web sobre plugins de accesibilidad, se han probado varios pero el que mas herramientas nos proporciona es UserWay, Este plugin tiene varias herramientas
+- Permite 3 niveles de lector de pantalla(medio, rapido y despacio).
+- Navegar por teclado (accesibilidad para ciego y poca motriz)
+- Cambiar los contrastes de fondo (gris, invertido, oscuro y claro)
+- Permite resaltar enlaces
+- Aumentar el tamaño y el espaciado del texto y tambien del cursor
+- Detener animaciones
+- Aumentar el cursor y tener una guia de lectura
+- Y por ultimo ofrece resetear todas las opciones
+
+Se ha avanzado con el modelado 3D de la caja que contiene el proyecto, modificando los espacios para las pilas ya que no iban a entrar con el que tenía y se avanzó con el encastre de la tapa con la caja agregando los agujeros en la misma. 
+
+## Semana del 1/06 al 8
+
+Se editó y musicalizó un segundo video para subir a las redes , el cual mostrara como al reconocer un color empezaría a reproducirse un sonido/vibración. 
+
+Se hicieron varias pruebas para empezar a reconocer texto y con el código que ofrece la api no lograbamos poder reproducir el texto, entonces hemos buscado otro código el cual nos permitió reproducir el texto que reconoció de la imagen que le cargamos a la Raspberry
