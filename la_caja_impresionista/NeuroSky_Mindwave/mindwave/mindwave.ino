@@ -3,6 +3,8 @@
 //    Interfacing   : HC-05 Bluetooth Module               //
 //    Output        : Eye Blink Control LED                //
 
+#include <Average.h>
+
 #define   BAUDRATE           57600
 #define   LED                5
 #define   Theshold_Eyeblink  110
@@ -19,6 +21,7 @@ long Temp,Avg_Raw,Temp_Avg;
  {
    Serial.begin(BAUDRATE);           // USB
    pinMode(LED, OUTPUT);
+
  }
 
  byte ReadOneByte()           // One Byte Read Function
@@ -75,7 +78,7 @@ long Temp,Avg_Raw,Temp_Avg;
        }
        Temp += Raw_data;
        j++;
-       Serial.println(Raw_data,DEC);
+      
      }
      else
      {
@@ -97,7 +100,7 @@ long Temp,Avg_Raw,Temp_Avg;
    if(checksum == generatedchecksum)        // Varify Checksum
    {
      Poorquality = payloadDataB[1];
-     Serial.println(Poorquality);
+     Serial.println("La calidad de señal es: "+ Poorquality);
      if (Poorquality==0 )
      {
        Eye_Enable = 1;
@@ -111,7 +114,11 @@ long Temp,Avg_Raw,Temp_Avg;
  
  void Onesec_Rawval_Fun ()
  {
+   
    Avg_Raw = Temp/512;
+
+   
+   Serial.println(Avg_Raw);
    if (On_Flag==0 && Off_Flag==1)
    {
      if (n<3)
