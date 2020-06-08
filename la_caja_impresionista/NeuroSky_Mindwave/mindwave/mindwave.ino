@@ -3,7 +3,7 @@
 //    Interfacing   : HC-05 Bluetooth Module               //
 //    Output        : Eye Blink Control LED                //
 
-#include <Average.h>
+
 
 #define   BAUDRATE           57600
 #define   LED                5

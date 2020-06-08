@@ -1,0 +1,5 @@
+{
+    "sketch": "mindwave.ino",
+    "port": "COM7",
+    "board": "arduino:avr:uno"
+}
