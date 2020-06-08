@@ -29,7 +29,33 @@ long Temp,Avg_Raw,Temp_Avg;
   Serial.println("***************************");
   Serial.println("Empezo a entrar info al serial porque conecto el mindwave");
   Serial.println("***************************");
-  Serial.println("Estos proximos 3 segundos son para calibrar el parpadeo")
+  Serial.println("Estos proximos 3 segundos son para calibrar el parpadeo");
+  Serial.println("***************************");
+  Serial.println("Durante estos segundos no parpadee asi obtenemos su valor de relajacion");
+  Serial.println("Durante estos segundos no parpadee asi obtenemos su valor de relajacion");
+  Serial.println("Durante estos segundos no parpadee asi obtenemos su valor de relajacion");
+  Serial.println("Durante estos segundos no parpadee asi obtenemos su valor de relajacion");
+  Serial.println("Durante estos segundos no parpadee asi obtenemos su valor de relajacion");
+  Serial.println("***************************");
+  for(int contador = 0, contador <5 , contador++){
+   if(ReadOneByte() == 170)        // AA 1 st Sync data
+   {
+     if(ReadOneByte() == 170)      // AA 2 st Sync data
+     {
+       Plength = ReadOneByte();
+       if(Plength == 4)   // Small Packet
+       {
+        Small_Packet();
+         
+       }
+       else if(Plength == 32)   // Big Packet
+       {
+        Big_Packet();
+        Serial.println("BigPacket");
+       }
+     }
+   }
+  }
 
 
 
