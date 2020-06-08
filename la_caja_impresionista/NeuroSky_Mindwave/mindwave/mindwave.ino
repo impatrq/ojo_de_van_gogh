@@ -37,6 +37,14 @@ void setup()
   Serial.println("Durante estos segundos no parpadee asi obtenemos su valor de relajacion");
   Serial.println("Durante estos segundos no parpadee asi obtenemos su valor de relajacion");
   Serial.println("***************************");
+
+  for (int i = 0; i < 5; i++)
+  {
+    Umbral_de_pestañeo = Calibrar_sensor() * 2;
+  }
+  
+  Serial.pritnl("El umbral de pestañeo es:" + Umbral_de_pestañeo);
+
 }
 
 byte ReadOneByte() // One Byte Read Function
@@ -228,7 +236,6 @@ long Calibrar_sensor()
 
             Calibracion_raw = Avg_Raw
 
-                Umbral_de_pestañeo = Calibracion_raw * 2
           }
         }
       }
@@ -258,5 +265,5 @@ long Calibrar_sensor()
       }
     }
   }
-  return Umbral_de_pestañeo
+  return Calibracion_raw;
 }
