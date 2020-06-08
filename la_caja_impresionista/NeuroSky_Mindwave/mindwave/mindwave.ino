@@ -101,39 +101,6 @@ void Small_Packet()
   }
 }
 
-void Small_Packet_calibracion()
-{
-  generatedchecksum = 0;
-  for (int i = 0; i < Plength; i++)
-  {
-    payloadDataS[i] = ReadOneByte(); //Read payload into memory
-    generatedchecksum += payloadDataS[i];
-  }
-  generatedchecksum = 255 - generatedchecksum;
-  checksum = ReadOneByte();
-  if (checksum == generatedchecksum) // Varify Checksum
-  {
-    if (j < 512)
-    {
-      Raw_data = ((payloadDataS[2] << 8) | payloadDataS[3]);
-      if (Raw_data & 0xF000)
-      {
-        Raw_data = (((~Raw_data) & 0xFFF) + 1);
-      }
-      else
-      {
-        Raw_data = (Raw_data & 0xFFF);
-      }
-      Temp += Raw_data;
-      j++;
-    }
-    else
-    {
-      Onesec_Rawval_Fun();
-    }
-  }
-}
-
 void Big_Packet()
 {
   generatedchecksum = 0;
@@ -222,7 +189,7 @@ void Eye_Blink()
   }
 }
 
-void Calibrar_sensor()
+long Calibrar_sensor()
 {
   if (ReadOneByte() == 170) // AA 1 st Sync data
   {
@@ -261,14 +228,35 @@ void Calibrar_sensor()
 
             Calibracion_raw = Avg_Raw
 
-            Umbral_de_pestañeo = Calibracion_raw * 2
-
+                Umbral_de_pestañeo = Calibracion_raw * 2
           }
         }
       }
       else if (Plength == 32) // Big Packet
       {
+        generatedchecksum = 0;
+        for (int i = 0; i < Plength; i++)
+        {
+          payloadDataB[i] = ReadOneByte(); //Read payload into memory
+          generatedchecksum += payloadDataB[i];
+        }
+        generatedchecksum = 255 - generatedchecksum;
+        checksum = ReadOneByte();
+        if (checksum == generatedchecksum) // Varify Checksum
+        {
+          Poorquality = payloadDataB[1];
+          Serial.println("La calidad de señal es: " + Poorquality);
+          if (Poorquality == 0)
+          {
+            Eye_Enable = 1;
+          }
+          else
+          {
+            Eye_Enable = 0;
+          }
+        }
       }
     }
   }
+  return Umbral_de_pestañeo
 }
