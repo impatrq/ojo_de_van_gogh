@@ -19,8 +19,28 @@ long Temp,Avg_Raw,Temp_Avg;
 
  void setup()
  {
-   Serial.begin(BAUDRATE);           // USB
-   pinMode(LED, OUTPUT);
+  Serial.begin(BAUDRATE);           // USB
+  pinMode(LED, OUTPUT);
+  while(Serial.read() = " ")
+  {
+    Serial.println("No esta entrando informacion al arduino");
+  }
+
+  Serial.println("***************************");
+  Serial.println("Empezo a entrar info al serial porque conecto el mindwave");
+  Serial.println("***************************");
+  Serial.println("Estos proximos 3 segundos son para calibrar el parpadeo")
+
+
+
+
+
+
+
+
+   
+
+
 
  }
 
