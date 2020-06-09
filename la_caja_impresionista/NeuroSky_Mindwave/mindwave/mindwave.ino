@@ -25,35 +25,6 @@ void setup()
   Serial.begin(BAUDRATE); // USB
   pinMode(LED, OUTPUT);
   
-  
-  char repetidor = 0;
-  while (repetidor == 0)
-  {
-    String cadena_largo= " ";
-    cadena_largo = Serial.read();
-    if(cadena_largo.length() != null)
-    {
-      Serial.println("No esta entrando informacion al arduino");
-      Serial.println("El largo de txt es:" + cadena_largo.length());
-    }
-    else
-    {
-      Serial.println("Esta entrando informacion");
-    }
-    
-  }
-
-  Serial.println("***************************");
-  Serial.println("Empezo a entrar info al serial porque conecto el mindwave");
-  Serial.println("***************************");
-  Serial.println("Estos proximos 3 segundos son para calibrar el parpadeo");
-  Serial.println("***************************");
-  Serial.println("Durante estos segundos no parpadee asi obtenemos su valor de relajacion");
-  Serial.println("Durante estos segundos no parpadee asi obtenemos su valor de relajacion");
-  Serial.println("Durante estos segundos no parpadee asi obtenemos su valor de relajacion");
-  Serial.println("Durante estos segundos no parpadee asi obtenemos su valor de relajacion");
-  Serial.println("Durante estos segundos no parpadee asi obtenemos su valor de relajacion");
-  Serial.println("***************************");
 
   for (int i = 0; i < 5; i++)
   {
@@ -89,6 +60,9 @@ void loop() // Main Function
         Serial.println("BigPacket");
       }
     }
+  }
+  else {
+    Serial.println("No esta entrando info");
   }
 }
 
@@ -222,6 +196,12 @@ long Calibrar_sensor()
       Plength = ReadOneByte();
       if (Plength == 4) // Small Packet
       {
+        for (char i = 0; i < 5; i++)
+        {
+          Serial.println("En este momento se conecto el sensor cerebral");
+          Serial.println("Recuerde no parpadear en estos 5 segundos asi se toma los datos de relajacion");
+        }
+        
         generatedchecksum = 0;
         for (int i = 0; i < Plength; i++)
         {
@@ -280,6 +260,10 @@ long Calibrar_sensor()
         }
       }
     }
+    return Calibracion_raw;
   }
-  return Calibracion_raw;
+  else {
+    Serial.println("No esta entrando info asdasdsadas");    
+  }
+  
 }
