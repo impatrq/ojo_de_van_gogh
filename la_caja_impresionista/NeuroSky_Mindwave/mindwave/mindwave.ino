@@ -15,15 +15,32 @@ unsigned int Raw_data, Poorquality, Plength, Eye_Enable = 0, On_Flag = 0, Off_Fl
 unsigned int j, n = 0;
 long Temp, Avg_Raw, Temp_Avg;
 long Calibracion_raw;
-long Umbral_de_pestañeo;
+long Umbral_de_parpadeo;
+
+
+
 
 void setup()
 {
   Serial.begin(BAUDRATE); // USB
   pinMode(LED, OUTPUT);
-  while (Serial.read() = " ")
+  
+  
+  char repetidor = 0;
+  while (repetidor == 0)
   {
-    Serial.println("No esta entrando informacion al arduino");
+    String cadena_largo= " ";
+    cadena_largo = Serial.read();
+    if(cadena_largo.length() != null)
+    {
+      Serial.println("No esta entrando informacion al arduino");
+      Serial.println("El largo de txt es:" + cadena_largo.length());
+    }
+    else
+    {
+      Serial.println("Esta entrando informacion");
+    }
+    
   }
 
   Serial.println("***************************");
@@ -40,18 +57,17 @@ void setup()
 
   for (int i = 0; i < 5; i++)
   {
-    Umbral_de_pestañeo = Calibrar_sensor() * 2;
+    Umbral_de_parpadeo = Calibrar_sensor() * 2;
   }
   
-  Serial.pritnl("El umbral de pestañeo es:" + Umbral_de_pestañeo);
+  Serial.println("El umbral de pestañeo es:" + Umbral_de_parpadeo);
 
 }
 
 byte ReadOneByte() // One Byte Read Function
 {
   int ByteRead;
-  while (!Serial.available())
-    ;
+  while (!Serial.available());
   ByteRead = Serial.read();
   return ByteRead;
 }
@@ -234,7 +250,7 @@ long Calibrar_sensor()
           {
             Avg_Raw = Temp / 512;
 
-            Calibracion_raw = Avg_Raw
+            Calibracion_raw = Avg_Raw;
 
           }
         }
