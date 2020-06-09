@@ -51,7 +51,7 @@ Con esta configuración no funciono ya que la password estaba mal puesta. Viendo
 Ya de esta forma pudimos conectar el Arduino con el HC-05 pero con el example que nos da el fabricante solo podemos medir nivel de atención y relajación. Tenemos que investigar como medir nivel de pestañeo. Sin embargo hicimos una prueba donde se prenden leds de acuerdo a que tan concentrado esta el usuario
 
 
-Establecimos el entorno de trabajo en Google Visión IA que es usar la Nube de Google para, a través de un sistema de redes neuronales, obtener un análisis de lo que se ve en una foto. Para esto tuvimos que crear un proyecto en Google Cloud Services y habilitar la api de Google Vision AI. Una vez habilitado esto nos dan un archivo JSON que tiene nuestra API Key y la insertamos en la Raspberry usando 
+Establecimos el entorno de trabajo en Google Visión IA que es usar la Nube de Google para, a través de un sistema de redes neuronales, obtener un análisis de lo que se ve en una foto. Para esto tuvimos que crear un proyecto en Google Cloud Services y habilitar la api de Google Visión AI. Una vez habilitado esto nos dan un archivo JSON que tiene nuestra API Key y la insertamos en la Raspberry usando 
 
 
 ```Raspbian Terminal
@@ -137,7 +137,7 @@ Los repos quedan de la siguiente manera:
 
 Ahora nos manejamos con ramas donde la versión final y estable del repo va a Máster y luego cada feature se desarrolla en una rama paralela. Luego de hacerle el testing a la misma y ver que no hayan conflicto se hace un merge (se fusiona la rama con el máster y se cierra la rama)
 
-Con respecto al mindwave decidimos poner en pausa el código del micro porque nos estábamos perdiendo con el tema del payload. Encontramos varios repos en github con los códigos en python donde al ejecutarlos te otorgan los datos. El plan es conectar por BT el mindwave a la compu y correr el script. Una vez que el mismo este listo 
+Con respecto al mindwave decidimos poner en pausa el código del micro porque nos estábamos perdiendo con el tema del payload. Encontramos varios repos en github con los códigos en Python donde al ejecutarlos te otorgan los datos. El plan es conectar por BT el mindwave a la compu y correr el script. Una vez que el mismo este listo 
 
 Nos estamos contactando con varias empresas preguntando sobre plaquetas flexibles para el sistema de vibración aunque también se esta evaluando la opción de utilizar los brazaletes porta celulares para correr. Se ha realizado el PCB del sistema ya que una empresa nos contacto y nos lo pidió para saber el tamaño y complejidad.
 [PCB-Vibrador](https://github.com/matias1379/ArduinoVibrador/blob/PCB/CodigosEjemplos/vibrador/PCB-Vibrador.pdf)
@@ -154,18 +154,18 @@ Se ha investigado sobre el mindwave y el funcionamiento de un programa y se ha c
 
 Se ha conseguido que la Raspberry nos entregue el color en RGB con Json
 
-Se ha comprado un dominio y estamos haciendo la pagina web a traves de un localHost (Xampp) y usando WordPress. Se ha elegido el tema de la pagina que es BlackootLite.
+Se ha comprado un dominio y estamos haciendo la pagina web a través de un localHost (Xampp) y usando WordPress. Se ha elegido el tema de la pagina que es BlackootLite.
 ## Semana  12/04 al 19/04
 
 Se ha terminado el PCB de la placa
 
 Montamos el host en 000webhost que nos ofrece 300 Mb de espacio y le instalamos wordpress. Tuvimos problemas con el dominio así que contactamos a soporte técnico de hostinger y nos solucionaron el problema.
 
-> Click  [aqui](ojodevangogh.tech) para entrar a nuestra pagina
+> Clic  [aqui](ojodevangogh.tech) para entrar a nuestra pagina
 
-Encontramos un modulo de python que pasa de RGB a nombre de color y funciona pero tienen sus limitaciones. El tema es que no da resultado a todos los RGB sino a los que son fáciles tales como  0,0,0 que da black pero si le metemos algo como 65,23,19 ya se pierde.
+Encontramos un modulo de Python que pasa de RGB a nombre de color y funciona pero tienen sus limitaciones. El tema es que no da resultado a todos los RGB sino a los que son fáciles tales como  0,0,0 que da black pero si le metemos algo como 65,23,19 ya se pierde.
 
-Encontramos una alternativa basandonos en las cosas que nos otorga el dios Luis llamas 
+Encontramos una alternativa basándonos en las cosas que nos otorga el dios Luis llamas 
 
 > [Luis llamas el dios de los colores](https://www.luisllamas.es/arduino-sensor-color-rgb-tcs34725/)
 
@@ -177,13 +177,13 @@ Nos comunicamos con webhost a ver si hay alguna alternativa pero no nos contesta
 
 ## Semana 19/04 al 25/04
 
-Pagamos la migración de nuestro pag a hostinger que nos salió 10 dolares. Tenemos que esperar 48 hs a que nos digan si salió todo bien y no perdimos la pagina.
+Pagamos la migración de nuestro página a hostinger que nos salió 10 dolares. Tenemos que esperar 48 hs a que nos digan si salió todo bien y no perdimos la pagina.
 
 Recuperamos la pagina y esta todo en orden aunque se nos desconfiguró el dominio y tenemos que cambiarlo así responde a ojodevangogh.tech . Eso si no podemos entrar al panel de wordpress por alguna razón.
 
 Nos comunicamos con hostinger y después de unos largos idas y vueltas de email mudamos completamente la pagina ya no tenemos nada en webhost esta todo en hostinger y funca todo. Habilitamos la certificación ssl así que nuestro pagina es segura y ya tenemos acceso al panel de wordpress. 
 
-Tenemos un problema en el responsive desing que hace que desaparezcan los botones de la pag cuando usamos una version mobile y no sabemos que hacer
+Tenemos un problema en el responsive desing que hace que desaparezcan los botones de la página cuando usamos una versión mobile y no sabemos que hacer
 
 
 
@@ -191,27 +191,27 @@ Tenemos un problema en el responsive desing que hace que desaparezcan los botone
 
 Vimos que no había manera de solucionar el responsive design mas que pagar el upgrade del theme de wordpress a premium que son 40 dolares así que pincho. 
 
-Empezamos la búsqueda y encontramos uno llamos astrid que esta muy piola visualmente y tiene mucha opción de personalizacion. Lastimosamente no podiamos cambiarle el fondo blanco asi que para que no queme tanto le colocamos letra Arial que es mas gruesa y llama la atención.
+Empezamos la búsqueda y encontramos uno llamos astrid que esta muy piola visualmente y tiene mucha opción de personalización. Lastimosamente no podíamos cambiarle el fondo blanco así que para que no queme tanto le colocamos letra Arial que es mas gruesa y llama la atención.
 
-Le instalamos un plugin a la pagina para que aparezcan botones que vinculen la pag con ig linkedin llamado UltimateShare.
+Le instalamos un plugin a la pagina para que aparezcan botones que vinculen la página con ig linkedin llamado UltimateShare.
 
 Creamos una pagina de Instagram para empezar a subir cosas y ya grabamos unos videos pro de como la Raspberry reconoce colores y como a través de un color seleccionado funcionan los vibradores
 
 Para un mejor orden creamos un repositorio nuevo donde metimos todas las cosas de los pequeños repos a través de git flow que permite ordenar todo en feature y que no se vaya todo a la mierda
 
-Para armar cosas facheras para redes sociales hicimos que la plaqueta tenga todos los micros y cosas con modelos 3D asi verlos con el visor 3D de KiCAD
+Para armar cosas facheras para redes sociales hicimos que la plaqueta tenga todos los micros y cosas con modelos 3D así verlos con el visor 3D de KiCAD
 
 ## Semana 03/05 al 11/05
 
-Se hizo una intro para el video en After Fx, se le puso musica de fondo y se subio a Ig y a la pagina web el primer video mostrando como se reconoce el color con la cámara de la Raspberry
+Se hizo una intro para el video en After Fx, se le puso música de fondo y se subió a Ig y a la pagina web el primer video mostrando como se reconoce el color con la cámara de la Raspberry
 
-Tambien se definio el modelo para hacer la tapa del cargador de pila y se empezó a hacerla. 
+También se definió el modelo para hacer la tapa del cargador de pila y se empezó a hacerla. 
 
-Se agregó un pluggin para que la pagina cargue mas rapido y se corrigio el logo para que no sea de fondo blanco y pueda verse. 
+Se agregó un plugin para que la pagina cargue mas rápido y se corrigió el logo para que no sea de fondo blanco y pueda verse. 
 
 ## Semana 11/05 al 18/05
 
-Se empezo a intentar conectar la raspberry con el sensor cerebral y se configuro esta para que trabaje por Remote
+Se empezó a intentar conectar la Raspberry con el sensor cerebral y se configuro esta para que trabaje por Remote
 
 Agregamos con gtts para que se pueda escuchar el color y lo probamos con un parlante y anduvo. Para traducir el texto color a voz se creo una nueva función que envía archivo txt que los recibe el gtts y los reproduce en un parlante
 
@@ -235,27 +235,50 @@ Se crearon archivos txt para el gtts para optimizar los tiempos de respuesta cua
 
 ## Semana 25/05 al 1/06
 
-Se logró la comunicación entre el Arduino y la Raspberry y creamos 2 librerías una para detectar colores y otra para crear un json. Esto se hizo para ordenar el código. A la librería de detectar_colores tambien se le incorporó los audios para reproducir el color. 
+Se logró la comunicación entre el Arduino y la Raspberry y creamos 2 librerías una para detectar colores y otra para crear un json. Esto se hizo para ordenar el código. A la librería de detectar_colores también se le incorporó los audios para reproducir el color. 
 
-Se investigó como hacer que cada vez que la Raspberry se enciende empiece a correr el script automaticamente sin ponerle el comando utilizando Crontab.
+Se investigó como hacer que cada vez que la Raspberry se enciende empiece a correr el script automáticamente sin ponerle el comando utilizando Crontab.
 [Script para automatizar inicio](https://github.com/impatrq/ojo_de_van_gogh/blob/develop/Docs/Carpeta_de_campo/Guias_md/Correr%20script%20cada%20vez%20que%20se%20prenda%20la%20Raspberry.md)
 
-Se ha logrado pasar las fotos a formato base64 para reducir tiempos de espera y se logro una optimizacion. Antes tardaba 24 segs y ahora tarda entre 16 y 20 seg, siendo un factor clave la luz ambiente, ya que si hay poca luz tarda mas. 
+Se ha logrado pasar las fotos a formato base64 para reducir tiempos de espera y se logro una optimización. Antes tardaba 24 segs y ahora tarda entre 16 y 20 seg, siendo un factor clave la luz ambiente, ya que si hay poca luz tarda mas. 
 
 Se ha investigado e implementado en la página web sobre plugins de accesibilidad, se han probado varios pero el que mas herramientas nos proporciona es UserWay, Este plugin tiene varias herramientas
-- Permite 3 niveles de lector de pantalla(medio, rapido y despacio).
+- Permite 3 niveles de lector de pantalla(medio, rápido y despacio).
 - Navegar por teclado (accesibilidad para ciego y poca motriz)
 - Cambiar los contrastes de fondo (gris, invertido, oscuro y claro)
 - Permite resaltar enlaces
-- Aumentar el tamaño y el espaciado del texto y tambien del cursor
+- Aumentar el tamaño y el espaciado del texto y también del cursor
 - Detener animaciones
-- Aumentar el cursor y tener una guia de lectura
+- Aumentar el cursor y tener una guía de lectura
 - Y por ultimo ofrece resetear todas las opciones
 
 Se ha avanzado con el modelado 3D de la caja que contiene el proyecto, modificando los espacios para las pilas ya que no iban a entrar con el que tenía y se avanzó con el encastre de la tapa con la caja agregando los agujeros en la misma. 
 
-## Semana del 1/06 al 8
+## Semana del 1/06 al 8/06
 
-Se editó y musicalizó un segundo video para subir a las redes , el cual mostrara como al reconocer un color empezaría a reproducirse un sonido/vibración. 
+Se editó y musicalizó un segundo video para subir a las redes , el cual mostrara como al reconocer un color empezaría a reproducirse un sonido/vibración.
 
-Se hicieron varias pruebas para empezar a reconocer texto y con el código que ofrece la api no lograbamos poder reproducir el texto, entonces hemos buscado otro código el cual nos permitió reproducir el texto que reconoció de la imagen que le cargamos a la Raspberry
+Se subió a ig historias de quienes somos y una breve descripción del proyecto, dejando estas mismas como destacadas y se aumento 16 seguidores .
+
+Se hicieron varias pruebas para empezar a reconocer texto y con el código que ofrece la api no lográbamos poder reproducir el texto, entonces hemos buscado otro código el cual nos permitió reproducir el texto que reconoció de la imagen que le cargamos a la Raspberry
+
+Se han buscado diferentes librerías para hacer una lectura de OCR mas rápida pero no se encontró, y viendo videos y características, hemos decidido pasar de la Raspberry Pi Zero w a la Raspberry Pi 3 y hemos tenido las siguientes mejoras:
+- Reconocimiento de colores en  5 segs
+- Reconocimiento de texto entre 7 y 11 segs
+- Reconocimiento de objetos en 10 segs
+
+Se hizo un código para reconocer objetos obteniendo el objeto con mayor seguridad. Se ha agregado para que el objeto sea traducido ya que la librería da el resultado en ingles. Hemos aprovechado esto para darla una herramienta mas al proyecto y permitir que cuando una persona quiera leer texto que no sea español, sea traducido y sea reproducido por el auricular. 
+
+Se ha instalado el plugin Yoast que sirve para saber que características faltan para mejorar el SEO de la pagina (optimización de los buscadores). Luego se ha procedido a cambiar la página de inicio agregando información y cambiando títulos de acuerdo a la palabra clave ingresada "ciego ven colores". 
+
+Debido a que la actividad cerebral de cada persona es distinta y no se puede tomar una medida precisa para usar cuando se parpadea, debido a esto hemos empezado a investigar sobre desviación estándar.
+Para ver el grafico de la desviación estándar se investigo sobre la librería pandas pero después vimos que no era necesario y teníamos problemas con el ajuste de escala. 
+Se hizo un graficador de las ondas cerebrales a través de Arduino usando Matplotlib y hemos visto que la desviación estándar con 2 parpadeos no es tan estable ya que varia entre 50 y 60 pero cuando la persona parpadea 3 veces es mucho mas estable dando unos valores de 80. 
+
+Se termino con el diseño 3D de la caja y tapa agregando un encastre para que entre a presión, quedando lista para su impresión. 
+
+## Semana del 8/06 al 15/06
+
+Se crearon librerías para tener el código mas prolijo.
+- Librería de reconocimiento de texto tanto en español como en otro idioma, ya que tiene la opción de que cuando se reconozca que es otro idioma sea traducido 
+- Librería de reconocimiento de objetos, dando el contenido en español. 
