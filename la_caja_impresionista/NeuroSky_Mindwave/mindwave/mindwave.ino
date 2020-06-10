@@ -22,6 +22,8 @@ void setup()
   Serial.begin(BAUDRATE); // USB
   pinMode(LED, OUTPUT);
 
+  Esperar_al_mindwave();
+
   Umbral_de_parpadeo = Calibrar_sensor() * 2;
 
   Serial.println("El umbral de pestañeo es:" + Umbral_de_parpadeo);
@@ -274,12 +276,12 @@ void Esperar_al_mindwave()
         Plength = ReadOneByte();
         if (Plength == 4) // Small Packet
         {
-          Small_Packet();
+          Serial.println("La informacion esta lista para usar");
+          info = true ;
         }
         else if (Plength == 32) // Big Packet
         {
-          Big_Packet();
-          Serial.println("BigPacket");
+          Serial.println("Entro info pero no esta usable");
         }
       }
     }
