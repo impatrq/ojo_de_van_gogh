@@ -17,28 +17,21 @@ long Temp, Avg_Raw, Temp_Avg;
 long Calibracion_raw;
 long Umbral_de_parpadeo;
 
-
-
-
 void setup()
 {
   Serial.begin(BAUDRATE); // USB
   pinMode(LED, OUTPUT);
-  
 
-  for (int i = 0; i < 5; i++)
-  {
-    Umbral_de_parpadeo = Calibrar_sensor() * 2;
-  }
-  
+  Umbral_de_parpadeo = Calibrar_sensor() * 2;
+
   Serial.println("El umbral de pestañeo es:" + Umbral_de_parpadeo);
-
 }
 
 byte ReadOneByte() // One Byte Read Function
 {
   int ByteRead;
-  while (!Serial.available());
+  while (!Serial.available())
+    ;
   ByteRead = Serial.read();
   return ByteRead;
 }
@@ -61,7 +54,8 @@ void loop() // Main Function
       }
     }
   }
-  else {
+  else
+  {
     Serial.println("No esta entrando info");
   }
 }
@@ -201,7 +195,7 @@ long Calibrar_sensor()
           Serial.println("En este momento se conecto el sensor cerebral");
           Serial.println("Recuerde no parpadear en estos 5 segundos asi se toma los datos de relajacion");
         }
-        
+
         generatedchecksum = 0;
         for (int i = 0; i < Plength; i++)
         {
@@ -231,7 +225,6 @@ long Calibrar_sensor()
             Avg_Raw = Temp / 512;
 
             Calibracion_raw = Avg_Raw;
-
           }
         }
       }
@@ -262,8 +255,37 @@ long Calibrar_sensor()
     }
     return Calibracion_raw;
   }
-  else {
-    Serial.println("No esta entrando info asdasdsadas");    
+  else
+  {
+    Serial.println("No esta entrando info asdasdsadas");
   }
-  
+}
+
+void Esperar_al_mindwave()
+{
+
+  bool info = false;
+  while (info = !true)
+  {
+    if (ReadOneByte() == 170) // AA 1 st Sync data
+    {
+      if (ReadOneByte() == 170) // AA 2 st Sync data
+      {
+        Plength = ReadOneByte();
+        if (Plength == 4) // Small Packet
+        {
+          Small_Packet();
+        }
+        else if (Plength == 32) // Big Packet
+        {
+          Big_Packet();
+          Serial.println("BigPacket");
+        }
+      }
+    }
+    else
+    {
+      Serial.println("No esta entrando info");
+    }
+  }
 }
