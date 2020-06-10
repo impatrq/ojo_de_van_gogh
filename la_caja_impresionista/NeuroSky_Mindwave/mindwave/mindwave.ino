@@ -192,11 +192,7 @@ long Calibrar_sensor()
       Plength = ReadOneByte();
       if (Plength == 4) // Small Packet
       {
-        for (char i = 0; i < 5; i++)
-        {
-          Serial.println("En este momento se conecto el sensor cerebral");
-          Serial.println("Recuerde no parpadear en estos 5 segundos asi se toma los datos de relajacion");
-        }
+        
 
         generatedchecksum = 0;
         for (int i = 0; i < Plength; i++)
