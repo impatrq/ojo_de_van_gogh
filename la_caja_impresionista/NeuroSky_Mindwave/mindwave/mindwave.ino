@@ -191,9 +191,7 @@ long Calibrar_sensor()
     {
       Plength = ReadOneByte();
       if (Plength == 4) // Small Packet
-      {
-        
-
+      {        
         generatedchecksum = 0;
         for (int i = 0; i < Plength; i++)
         {
@@ -223,6 +221,8 @@ long Calibrar_sensor()
             Avg_Raw = Temp / 512;
 
             Calibracion_raw = Avg_Raw;
+
+            return Calibracion_raw;
           }
         }
       }
@@ -251,7 +251,7 @@ long Calibrar_sensor()
         }
       }
     }
-    return Calibracion_raw;
+    
   }
   else
   {
