@@ -16,30 +16,26 @@ unsigned int j, n = 0;
 long Temp, Avg_Raw, Temp_Avg;
 long Calibracion_raw;
 long Umbral_de_parpadeo;
+int intento = 0;
 
 void setup()
 {
   Serial.begin(BAUDRATE); // USB
   pinMode(LED, OUTPUT);
-
+  for (int h = 0; h < 10; h++)
+  {
+    Serial.println("Empezo el void setup");
+  }
   Esperar_al_mindwave();
 
   Umbral_de_parpadeo = Calibrar_sensor() * 2;
-
-  Serial.println("El umbral de pestañeo es:" + Umbral_de_parpadeo);
-}
-
-byte ReadOneByte() // One Byte Read Function
-{
-  int ByteRead;
-  while (!Serial.available())
-    ;
-  ByteRead = Serial.read();
-  return ByteRead;
 }
 
 void loop() // Main Function
 {
+
+  Serial.println("El umbral de pestañeo es:" + Umbral_de_parpadeo);
+
   if (ReadOneByte() == 170) // AA 1 st Sync data
   {
     if (ReadOneByte() == 170) // AA 2 st Sync data
@@ -56,12 +52,14 @@ void loop() // Main Function
       }
     }
   }
-  else
-  {
-    Serial.println("No esta entrando info");
-  }
 }
 
+byte ReadOneByte() // One Byte Read Function
+{
+  int ByteRead;
+  ByteRead = Serial.read();
+  return ByteRead;
+}
 void Small_Packet()
 {
   generatedchecksum = 0;
@@ -191,7 +189,7 @@ long Calibrar_sensor()
     {
       Plength = ReadOneByte();
       if (Plength == 4) // Small Packet
-      {        
+      {
         generatedchecksum = 0;
         for (int i = 0; i < Plength; i++)
         {
@@ -251,39 +249,47 @@ long Calibrar_sensor()
         }
       }
     }
-    
-  }
-  else
-  {
-    Serial.println("No esta entrando info asdasdsadas");
   }
 }
 
 void Esperar_al_mindwave()
 {
 
-  bool info = false;
-  while (info = !true)
+  bool info_no_entro = true;
+  while (info_no_entro == true)
   {
-    if (ReadOneByte() == 170) // AA 1 st Sync data
+    
+    Serial.println(Serial.available());
+    if (Serial.available() > 0)
     {
-      if (ReadOneByte() == 170) // AA 2 st Sync data
+      if (ReadOneByte() == 170) // AA 1 st Sync data
       {
-        Plength = ReadOneByte();
-        if (Plength == 4) // Small Packet
+        if (ReadOneByte() == 170) // AA 2 st Sync data
         {
-          Serial.println("La informacion esta lista para usar");
-          info = true ;
-        }
-        else if (Plength == 32) // Big Packet
-        {
-          Serial.println("Entro info pero no esta usable");
+          Plength = ReadOneByte();
+          if (Plength == 4) // Small Packet
+          {
+            Serial.println("La informacion esta lista para usar");
+            info_no_entro = false;
+          }
+          else if (Plength == 32) // Big Packet
+          {
+            Serial.println("Entro info pero no esta usable");
+          }
         }
       }
     }
     else
     {
+      if (Serial.available() == 0){
       Serial.println("No esta entrando info");
+      Serial.println("volver a intentar");
+      }
+      delay(1000);
+      // delay(500);
+      // Serial.println("intento numero: " + intento);
+
+      // intento++;
     }
   }
 }
