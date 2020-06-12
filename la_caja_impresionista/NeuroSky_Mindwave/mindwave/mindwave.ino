@@ -260,36 +260,44 @@ void Esperar_al_mindwave()
   {
     
     Serial.println(Serial.available());
-    if (Serial.available() > 0)
-    {
-      if (ReadOneByte() == 170) // AA 1 st Sync data
-      {
-        if (ReadOneByte() == 170) // AA 2 st Sync data
-        {
-          Plength = ReadOneByte();
-          if (Plength == 4) // Small Packet
-          {
-            Serial.println("La informacion esta lista para usar");
-            info_no_entro = false;
-          }
-          else if (Plength == 32) // Big Packet
-          {
-            Serial.println("Entro info pero no esta usable");
-          }
-        }
-      }
-    }
-    else
-    {
+    // if (Serial.available() > 0)
+    // {
+    //   if (ReadOneByte() == 170) // AA 1 st Sync data
+    //   {
+    //     if (ReadOneByte() == 170) // AA 2 st Sync data
+    //     {
+    //       Plength = ReadOneByte();
+    //       if (Plength == 4) // Small Packet
+    //       {
+    //         Serial.println("La informacion esta lista para usar");
+    //         info_no_entro = false;
+    //       }
+    //       else if (Plength == 32) // Big Packet
+    //       {
+    //         Serial.println("Entro info pero no esta usable");
+    //       }
+    //     }
+    //   }
+    // }
+    // else
+    // {
       if (Serial.available() == 0){
       Serial.println("No esta entrando info");
       Serial.println("volver a intentar");
-      }
       delay(1000);
+      }
+      else{
+
+        Serial.println("Empezo a entrar informacion");
+        Serial.printl("En breve empieza la calibracion");
+        delay(2500); // este delay esta puesto para darle al mindwave un tiempo a estabilizarse
+        info_no_entro = false;
+      }
+      
       // delay(500);
       // Serial.println("intento numero: " + intento);
 
       // intento++;
-    }
+    
   }
 }
