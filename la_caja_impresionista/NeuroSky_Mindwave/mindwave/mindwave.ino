@@ -28,13 +28,20 @@ void setup()
   }
   Esperar_al_mindwave();
 
-  Umbral_de_parpadeo = Calibrar_sensor() * 2;
+
+  Serial.println("Empezo a calibrar");
+
+  Umbral_de_parpadeo = Calibrar_sensor() ;
+  Umbral_de_parpadeo = Umbral_de_parpadeo * 2;
+  
+
 }
 
 void loop() // Main Function
 {
 
-  Serial.println("El umbral de pestañeo es:" + Umbral_de_parpadeo);
+  Serial.println("El umbral de pestañeo es:");
+  Serial.println(Umbral_de_parpadeo);
 
   if (ReadOneByte() == 170) // AA 1 st Sync data
   {
@@ -57,6 +64,7 @@ void loop() // Main Function
 byte ReadOneByte() // One Byte Read Function
 {
   int ByteRead;
+  while (!Serial.available());
   ByteRead = Serial.read();
   return ByteRead;
 }
@@ -182,83 +190,89 @@ void Eye_Blink()
 }
 
 long Calibrar_sensor()
-{
-  if (ReadOneByte() == 170) // AA 1 st Sync data
-  {
-    if (ReadOneByte() == 170) // AA 2 st Sync data
+{ 
+  Serial.println("Calibrando");
+  Serial.println("Calibrando");
+  Serial.println("Calibrando");
+  Serial.println("Calibrando");
+  while (Calibracion_raw < 100 ){
+    if (ReadOneByte() == 170) // AA 1 st Sync data
     {
-      Plength = ReadOneByte();
-      if (Plength == 4) // Small Packet
+      if (ReadOneByte() == 170) // AA 2 st Sync data
       {
-        generatedchecksum = 0;
-        for (int i = 0; i < Plength; i++)
+        Plength = ReadOneByte();
+        if (Plength == 4) // Small Packet
         {
-          payloadDataS[i] = ReadOneByte(); //Read payload into memory
-          generatedchecksum += payloadDataS[i];
-        }
-        generatedchecksum = 255 - generatedchecksum;
-        checksum = ReadOneByte();
-        if (checksum == generatedchecksum) // Varify Checksum
-        {
-          if (j < 512)
+          generatedchecksum = 0;
+          for (int i = 0; i < Plength; i++)
           {
-            Raw_data = ((payloadDataS[2] << 8) | payloadDataS[3]);
-            if (Raw_data & 0xF000)
+            payloadDataS[i] = ReadOneByte(); //Read payload into memory
+            generatedchecksum += payloadDataS[i];
+          }
+          generatedchecksum = 255 - generatedchecksum;
+          checksum = ReadOneByte();
+          if (checksum == generatedchecksum) // Varify Checksum
+          {
+            if (j < 512)
             {
-              Raw_data = (((~Raw_data) & 0xFFF) + 1);
+              Raw_data = ((payloadDataS[2] << 8) | payloadDataS[3]);
+              if (Raw_data & 0xF000)
+              {
+                Raw_data = (((~Raw_data) & 0xFFF) + 1);
+              }
+              else
+              {
+                Raw_data = (Raw_data & 0xFFF);
+              }
+              Temp += Raw_data;
+              j++;
             }
             else
             {
-              Raw_data = (Raw_data & 0xFFF);
+              Avg_Raw = Temp / 512;
+
+              Calibracion_raw = Avg_Raw;
+              Serial.println("La calibracion_rAW es: " + Calibracion_raw);
+
+              return Calibracion_raw;
             }
-            Temp += Raw_data;
-            j++;
-          }
-          else
-          {
-            Avg_Raw = Temp / 512;
-
-            Calibracion_raw = Avg_Raw;
-
-            return Calibracion_raw;
           }
         }
-      }
-      else if (Plength == 32) // Big Packet
-      {
-        generatedchecksum = 0;
-        for (int i = 0; i < Plength; i++)
+        else if (Plength == 32) // Big Packet
         {
-          payloadDataB[i] = ReadOneByte(); //Read payload into memory
-          generatedchecksum += payloadDataB[i];
-        }
-        generatedchecksum = 255 - generatedchecksum;
-        checksum = ReadOneByte();
-        if (checksum == generatedchecksum) // Varify Checksum
-        {
-          Poorquality = payloadDataB[1];
-          Serial.println("La calidad de señal es: " + Poorquality);
-          if (Poorquality == 0)
+          generatedchecksum = 0;
+          for (int i = 0; i < Plength; i++)
           {
-            Eye_Enable = 1;
+            payloadDataB[i] = ReadOneByte(); //Read payload into memory
+            generatedchecksum += payloadDataB[i];
           }
-          else
+          generatedchecksum = 255 - generatedchecksum;
+          checksum = ReadOneByte();
+          if (checksum == generatedchecksum) // Varify Checksum
           {
-            Eye_Enable = 0;
+            Poorquality = payloadDataB[1];
+            Serial.println("La calidad de señal es: " + Poorquality);
+            if (Poorquality == 0)
+            {
+              Eye_Enable = 1;
+            }
+            else
+            {
+              Eye_Enable = 0;
+            }
           }
         }
       }
     }
   }
+  
 }
 
 void Esperar_al_mindwave()
 {
-
   bool info_no_entro = true;
   while (info_no_entro == true)
   {
-    
     Serial.println(Serial.available());
     // if (Serial.available() > 0)
     // {
@@ -286,10 +300,10 @@ void Esperar_al_mindwave()
       Serial.println("volver a intentar");
       delay(1000);
       }
-      else{
-
+      else
+      {
         Serial.println("Empezo a entrar informacion");
-        Serial.printl("En breve empieza la calibracion");
+        Serial.println("En breve empieza la calibracion");
         delay(2500); // este delay esta puesto para darle al mindwave un tiempo a estabilizarse
         info_no_entro = false;
       }
