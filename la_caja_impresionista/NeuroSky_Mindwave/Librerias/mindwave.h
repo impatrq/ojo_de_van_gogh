@@ -34,4 +34,5 @@ class Mindwave
         long Calibracion_raw;
         long Umbral_de_parpadeo;
         int intento;
-}
+};
+#endif

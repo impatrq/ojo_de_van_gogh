@@ -1,3 +1,8 @@
-#include "Mindwave.h"
+#include "mindwave.h"
 
-void Mindwave :: Mindwave ()
+//  TO DO 
+// APRENDER A CONFIGURAR C++ CON VISUAL
+
+void Mindwave :: Mindwave()
+
+
