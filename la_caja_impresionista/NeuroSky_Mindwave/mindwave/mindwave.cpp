@@ -1,10 +1,7 @@
 #include "Arduino.h"
 #include "mindwave.h"
 
-#define BAUDRATE 57600
-#define LED 5
-#define Theshold_Eyeblink 110
-#define EEG_AVG 70
+
 
 Mindwave::Mindwave(BAUDRATE, LED, Theshold_Eyeblink, EEG_AVG)
 {
@@ -35,7 +32,7 @@ void Mindwave::Eye_Blink()
          }
          else
          {
-            if (Avg_Raw > 350)
+            if (Avg_Raw > Umbral_de_parpadeo)
             {
                On_Flag == 0;
                Off_Flag == 1;
@@ -143,7 +140,7 @@ void Mindwave::Big_Packet()
    }
 }
 
-long Mindwave::Calibrar_sensor()
+vo Mindwave::Calibrar_sensor()
 { 
   Serial.println("Calibrando");
   Serial.println("Calibrando");
@@ -188,7 +185,7 @@ long Mindwave::Calibrar_sensor()
               Calibracion_raw = Avg_Raw;
               Serial.println("La calibracion_rAW es: " + Calibracion_raw);
 
-              return Calibracion_raw;
+              Umbral_de_parpadeo = Calibracion_raw * 2;
             }
           }
         }
