@@ -140,13 +140,13 @@ void Mindwave::Big_Packet()
    }
 }
 
-vo Mindwave::Calibrar_sensor()
+void Mindwave::Calibrar_sensor()
 { 
   Serial.println("Calibrando");
   Serial.println("Calibrando");
   Serial.println("Calibrando");
   Serial.println("Calibrando");
-  while (Calibracion_raw < 100 ){
+  while (Calibracion_raw <= 100 ){
     if (ReadOneByte() == 170) // AA 1 st Sync data
     {
       if (ReadOneByte() == 170) // AA 2 st Sync data
