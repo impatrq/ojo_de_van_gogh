@@ -9,6 +9,8 @@
 #define Theshold_Eyeblink 110
 #define EEG_AVG 70
 
+int Plength;
+
 Mindwave mindwave(
     BAUDRATE,
     LED,
@@ -37,7 +39,7 @@ void loop() // Main Function
   {
     if (mindwave.ReadOneByte() == 170) // AA 2 st Sync data
     {
-      Plength = ReadOneByte();
+      Plength = mindwave.ReadOneByte();
       if (Plength == 4) // Small Packet
       {
         mindwave.Small_Packet();

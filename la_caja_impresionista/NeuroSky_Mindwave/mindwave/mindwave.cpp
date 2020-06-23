@@ -3,12 +3,12 @@
 
 
 
-Mindwave::Mindwave(BAUDRATE, LED, Theshold_Eyeblink, EEG_AVG)
+Mindwave::Mindwave(int _BAUDRATE,char _LED, char _Theshold_Eyeblink,char  _EEG_AVG)
 {
-   this.BAUDRATE = BAUDRATE;
-   this.LED = LED;
-   this.Theshold_Eyeblink = Theshold_Eyeblink;
-   this.EEG_AVG = EEG_AVG;
+   BAUDRATE = _BAUDRATE;
+   LED = _LED;
+   Thesold_Eyeblink = _Theshold_Eyeblink;
+   EEG_AVG = _EEG_AVG;
 }
 
 byte Mindwave::ReadOneByte() // One Byte Read Function
@@ -25,7 +25,7 @@ void Mindwave::Eye_Blink()
    {
       if (On_Flag == 1 && Off_Flag == 0)
       {
-         if ((Avg_Raw > Theshold_Eyeblink) && (Avg_Raw < 350))
+         if ((Avg_Raw > Thesold_Eyeblink) && (Avg_Raw < 350))
          {
             digitalWrite(LED, HIGH);
             Serial.println("1");
@@ -140,7 +140,7 @@ void Mindwave::Big_Packet()
    }
 }
 
-void Mindwave::Calibrar_sensor()
+void Mindwave::Calibrar_Sensor()
 { 
   Serial.println("Calibrando");
   Serial.println("Calibrando");
