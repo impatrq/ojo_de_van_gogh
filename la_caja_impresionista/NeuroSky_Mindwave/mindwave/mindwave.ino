@@ -13,8 +13,7 @@ Mindwave mindwave(
     BAUDRATE,
     LED,
     Theshold_Eyeblink,
-    EEG_AVG
-);
+    EEG_AVG);
 
 void setup()
 {
