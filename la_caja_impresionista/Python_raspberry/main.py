@@ -65,8 +65,6 @@ while True:
 
 
 
-
-
 """ datos = (wJson (hsv))
 data = {}
 data['color:'] = (datos)
