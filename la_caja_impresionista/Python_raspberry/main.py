@@ -27,7 +27,7 @@ GPIO.setup(7, GPIO.OUT)  # creo el pin del led
 while True:
     orden = arduino.read()
 
-    if(orden == b@Opciones_usuario.detectar_color):
+    if(orden == b'@Opciones_usuario.detectar_color'):
         with picamera.PiCamera() as camera:
             camera.resolution = (1024, 768)
             camera.start_preview()
@@ -70,13 +70,13 @@ while True:
         # llamo al metodo que reproduce audio
         Detector_de_colores.print_to_audio(hsv)
     
-    elif(orden == b@Opciones_usuario.detectar_color_y_matices):
+    elif(orden == b'@Opciones_usuario.detectar_color_y_matices'):
         pass
 
-    elif(orden == b@Opciones_usuario.leer_texto):
+    elif(orden == b'@Opciones_usuario.leer_texto'):
         pass
 
-    elif(orden == b@Opciones_usuario.detectar_objetos):
+    elif(orden == b'@Opciones_usuario.detectar_objetos'):
         pass
 
 """ datos = (wJson (hsv))
