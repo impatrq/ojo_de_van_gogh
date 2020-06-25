@@ -10,6 +10,8 @@ from detector_colores import detector_colores
 from escribirJson import escribir_Json
 from google.cloud import vision
 from enum import Enum
+from gtts import gTTS
+from textblob import TextBlob
 
 
 class Opciones_usuario(Enum):
