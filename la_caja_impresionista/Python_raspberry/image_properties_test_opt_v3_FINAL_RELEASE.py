@@ -25,22 +25,6 @@ def get_base64_encoded_image(image_path):
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r'OjoDeVangogh-04b247a7603b.json'
 client = vision.ImageAnnotatorClient()
 
-                                    
-                                   #JPEG Common Recognition
-
-#region 
-
-#file_name = 'banana2.jpg'
-#image_path = f'/home/pi/color_audio/banana2.jpg'
-
-#with io.open(image_path, 'rb') as image_file:
-    #content = image_file.read()
-
-#endregion
-
-                                    #BASE64 Faster Recognition
-
-#region
 
 IMAGE_NAME = '/home/pi/color_audio/banana2.jpg'
 
@@ -69,16 +53,13 @@ content = json.loads(json_data)
 
 client = vision.ImageAnnotatorClient()
 image_path ='/home/pi/color_audio/banana2.jpg'
+
 with open(image_path, 'rb') as image:
     content = image.read()
     response = client.annotate_image({'image': {'content': content}, 'features': [{'type': vision.enums.Feature.Type.IMAGE_PROPERTIES}],}).image_properties_annotation
     dominant_colors = response.dominant_colors
 
-#image = vision.types.Image(content=content)
-#response = client.image_properties(image=image).image_properties_annotation
-#dominant_colors = response.dominant_colors
 
-#endregion
 for color in dominant_colors.colors:
   print('')
 

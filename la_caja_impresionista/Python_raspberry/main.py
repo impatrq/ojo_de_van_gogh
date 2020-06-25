@@ -48,14 +48,7 @@ while True:
             image=image).image_properties_annotation
         dominant_colors = response.dominant_colors
 
-        for color in dominant_colors.colors:
-
-            print('')
-
-        r = int(color.color.red)
-        g = int(color.color.green)
-        b = int(color.color.blue)
-
+        
         Detector_de_colores = detector_colores()  # creo el objeto detector de color
 
         # al detector le paso el r,g,b y me devuelve el dato en HSV
@@ -79,11 +72,4 @@ while True:
     elif(orden == b'@Opciones_usuario.detectar_objetos'):
         pass
 
-""" datos = (wJson (hsv))
-data = {}
-data['color:'] = (datos)
-path = '/home/pi'
-file_name = "ej.json" """
 
-""" with open(os.path.join(path, file_name), 'w') as file:
-    json.dump(data, file) """
