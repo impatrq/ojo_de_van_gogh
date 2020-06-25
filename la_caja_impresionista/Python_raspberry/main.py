@@ -23,21 +23,22 @@ arduino = serial.Serial('/dev/ttyACM0', 9600)
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(7, GPIO.OUT)  # creo el pin del led
 
+with picamera.PiCamera() as camera:
+    camera.resolution = (1024, 768)
+    camera.start_preview()
+    time.sleep(2)  # Tiempo de espera para disparar la foto
+    camera.capture('photo.jpg')
+
 
 while True:
     orden = arduino.read()
 
     if(orden == b'@Opciones_usuario.detectar_color'):
-        with picamera.PiCamera() as camera:
-            camera.resolution = (1024, 768)
-            camera.start_preview()
-            time.sleep(2)  # Tiempo de espera para disparar la foto
-            camera.capture('banana.jpg')
 
         os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r'OjoDeVangogh-04b247a7603b.json'
         client = vision.ImageAnnotatorClient()
 
-        file_name = 'banana.jpg'
+        file_name = 'photo.jpg'
         image_path = f'/home/pi/banana.jpg'
 
         with io.open(image_path, 'rb') as image_file:
@@ -46,30 +47,94 @@ while True:
         image = vision.types.Image(content=content)
         response = client.image_properties(
             image=image).image_properties_annotation
-        dominant_colors = response.dominant_colors
+        dominant_colors = response.dominant_colors.colors
+        df = pd.DataFrame(columns=['r', 'g', 'b', 'pixel_fraction', 'score'])
 
-        
-        Detector_de_colores = detector_colores()  # creo el objeto detector de color
+        for color in dominant_colors:
+            df = df.append(
+                dict(
+                    r=int(color.color.red),
+                    g=int(color.color.green),
+                    b=int(color.color.blue),
+                    score=color.score,
+                    pixel_fraction=color.pixel_fraction
+                ),
+                ignore_index=True)  # se crea un diccionario con los valores de los colores
+            # se toma los dos valores que ocupen mas espacio en la pantalla
+            df = df.sort_values(['pixel_fraction'], ascending=False).head(2)
+            # se toma los dos valores que hay confianza que la IA detecto el color
+            df = df.sort_values(['score'], ascending=False).head(2)
 
-        # al detector le paso el r,g,b y me devuelve el dato en HSV
-        hsv = Detector_de_colores.rgb_to_hsv(r, g, b)
+        # Se calcula si la confianza entre el primero y el segundo son parecidas
+        dif = df['score'][0] - df['score'][1]
 
-        # al detector le paso el hsv y me devuelve el nombre del color
-        color_nombre = Detector_de_colores.print_color_name(hsv)
+        # Si los niveles de confianza son proximos se dice los dos colores
+        if (dif < 0.10):
+            cont = 0
+            for cont in [0, 1]:
+                r = (df['r'][cont])
+                g = (df['g'][cont])
+                b = (df['b'][cont])
+                print(r, g, b)
+        # Si los niveles de confianza son distantes se dice solo el mas confianble
+        else:
+            print(df['r'][0])
+            print(df['g'][0])
+            print(df['b'][0])
 
-        # llamo al metodo escribir_json y le paso el color y me devuelve el json con el color cargado
-        escribir_Json(color_nombre)
-
-        # llamo al metodo que reproduce audio
-        Detector_de_colores.print_to_audio(hsv)
-    
     elif(orden == b'@Opciones_usuario.detectar_color_y_matices'):
-        pass
+
+        os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r'OjoDeVangogh-04b247a7603b.json'
+        client = vision.ImageAnnotatorClient()
+
+        file_name = 'photo.jpg'
+        image_path = f'/home/pi/banana.jpg'
+
+        with io.open(image_path, 'rb') as image_file:
+            content = image_file.read()
+
+        image = vision.types.Image(content=content)
+        response = client.image_properties(
+            image=image).image_properties_annotation
+        dominant_colors = response.dominant_colors.colors
+        df = pd.DataFrame(columns=['r', 'g', 'b', 'pixel_fraction', 'score'])
+
+        for color in dominant_colors:
+            df = df.append(
+                dict(
+                    r=int(color.color.red),
+                    g=int(color.color.green),
+                    b=int(color.color.blue),
+                    score=color.score,
+                    pixel_fraction=color.pixel_fraction
+                ),
+                ignore_index=True)  # se crea un diccionario con los valores de los colores
+
+            # se toma los dos valores que ocupen mas espacio en la pantalla
+            df = df.sort_values(['pixel_fraction'], ascending=False).head(2)
+
+            # se toma los dos valores que hay confianza que la IA detecto el color
+            df = df.sort_values(['score'], ascending=False).head(2)
+
+        # Se calcula si la confianza entre el primero y el segundo son parecidas
+        dif = df['score'][0] - df['score'][1]
+
+        # Si los niveles de confianza son proximos se dice los dos colores
+        if (dif < 0.10):
+            cont = 0
+            for cont in [0, 1]:
+                r = (df['r'][cont])
+                g = (df['g'][cont])
+                b = (df['b'][cont])
+                print(r, g, b)
+
+        # Si los niveles de confianza son distantes se dice solo el mas confianble
+        else:
+            print(df['r'][0])
+            print(df['g'][0])
+            print(df['b'][0])
 
     elif(orden == b'@Opciones_usuario.leer_texto'):
-        pass
 
     elif(orden == b'@Opciones_usuario.detectar_objetos'):
         pass
-
-
