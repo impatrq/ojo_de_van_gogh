@@ -8,4 +8,3 @@ client = vision.ImageAnnotatorClient()
 
 file_name = 'control_remoto.png'
 image_path = f'C:/Users/pc1/Documents/Python/{file_name}'
-
