@@ -138,8 +138,12 @@ while True:
 
     elif(orden == b'@Opciones_usuario.leer_texto'):
 
+        file_name = 'read2.jpg'
+        image_path = f'/home/pi/txtdetect/{file_name}'
+
         os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r"OjoDeVangogh-04b247a7603b.json"
         client = vision.ImageAnnotatorClient()
+
         def takephoto():
             camera = picamera.PiCamera()
             camera.capture('read.jpg')
@@ -173,20 +177,20 @@ while True:
             traduction = TextBlob(texto)
             idioma = str(traduction.detect_language())
             if idioma != 'es':
-                traducido = traduction.translate(to = 'es')
+                traducido = traduction.translate(to='es')
                 return traducido
 
         tr = str(traduccion(texto))
 
         with open('bread.txt', 'w') as f:
-                f.write(tr)
+            f.write(tr)
 
         with open('bread.txt') as f:
-                lines = f.read()
+            lines = f.read()
 
-                output = gTTS(text = lines, lang = 'es', slow = False)
+            output = gTTS(text=lines, lang='es', slow=False)
 
-                output.save('texto.mp3')
+            output.save('texto.mp3')
 
         os.system('mpg321 texto.mp3 &')
 
