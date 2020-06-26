@@ -282,3 +282,35 @@ Se termino con el diseño 3D de la caja y tapa agregando un encastre para que en
 Se crearon librerías para tener el código mas prolijo.
 - Librería de reconocimiento de texto tanto en español como en otro idioma, ya que tiene la opción de que cuando se reconozca que es otro idioma sea traducido 
 - Librería de reconocimiento de objetos, dando el contenido en español. 
+
+Se agrego para que se pueda reconocer la ubicacion de dichos objjetos detectados y limitando a que te diga solo los que la api detecta con una buena precision (score). 
+
+Se ha mejorado la pagina "El proyecto", basandonos en las caracteristicas de mejorar la legibilidad y algunas cuestiones de SEO. 
+
+## Semana del 15/06 al 22/06
+
+Se grabo un video mostrando el reconocimiento de colores, objetos y leyendo un texto. Luego se agregaron efectos especiales
+
+Se hizo una publicacion para IG por la entrevista que tuvimos el viernes, y se edito el video , musicalizo y se subio a IGTV . Nos hemos contactado con ASAC y estamos esperando la respuesta. 
+
+Mudamos la pagina a un nuevo host (SitioHispano)que nos salio 860 $ el año
+
+Se ha detectado cuando entra informacion del mindwave para tomar el valor promedio de la persona en los primeros segundos.
+
+Se adapto para que se reconozcan los 2 colores que mas ocupan en la foto y luego ordenarlo para que primero este el que mejor se reconocio (score mas alto). 
+
+Se actualizo la libreria de objetos, agregandole la ubicacion del mismo
+
+## Semana del 22/06 al 29/06
+
+Se hizo una libreria para el codigo de mindwave para que quede mas ordenado.
+
+Se incluyo en la libreria de rgb para que se pueda reconocer 2 colores si la diferencia de score es menor a 0.10 
+
+En la pagina web, agregamos en una pagina de prueba los slider en la paginas de noticias para que sea mas comodo y lindo.
+
+Se hizo el anuncio para la radio 99.3 FM que sale el viernes y se ha publicado con la edicion de musicalizacion el tercer video mostrando el reconocimiento de colores, texto y objetos
+
+Se nos ocurrio para mejorar la calidad del reconocimiento de colores, crear una tabla de excel y copiar los 140 colores que nos da la pagina de wikipedia con sus rgb y sus nombres. Luego exportamos esa tabla a pandas y hemos agregado 2 condiciones para los colores negro y blanco.
+
+
