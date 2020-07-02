@@ -62,7 +62,7 @@ if(df.empty == True):
             B=color_prueba[2],
         ), ignore_index=True
     )
-
+    dataframe.to_csv('Tabla_colores.csv',index=False)
     print(dataframe)
 
 
