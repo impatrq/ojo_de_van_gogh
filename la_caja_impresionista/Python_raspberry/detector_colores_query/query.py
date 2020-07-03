@@ -4,8 +4,27 @@ import array
 
 dataframe = pd.read_csv('Tabla_colores.csv')
 
+print(dataframe)
+color_prueba = [0, 0, 0]
 
-color_prueba = [600, 900, 888]
+def busqueda_binaria(lista, comienzo, final, objetivo):
+
+    print("entre")
+
+
+
+    print(lista)
+    if comienzo > final:
+        return False
+
+    medio = (comienzo + final) // 2
+
+    if lista[medio] == objetivo:
+        return True
+    elif lista[medio] < objetivo:
+        return busqueda_binaria(lista, medio + 1, final, objetivo)
+    else:
+        return busqueda_binaria(lista, comienzo, medio - 1, objetivo)
 
 if color_prueba[0] == 0:
     color_prueba[0] += 0.1
@@ -31,14 +50,26 @@ else:
 
 
 dataframe = dataframe[['Principal_color', 'CSS_name', 'R', 'G', 'B']]
+c = 0
+lista = []
+
+while c < 140:
+    lista.append(dataframe['R'][c])
+    c+=1
+    
 
 
-df = dataframe.query(
-    'R/@color_prueba[0] <=1.34 and R/@color_prueba[0] >=0.73 ')
-df = dataframe.query(
-    'G/@color_prueba[1] <=1.34 and G/@color_prueba[1] >=0.73 ')
-df = dataframe.query(
-    'B/@color_prueba[2] <=1.34 and B/@color_prueba[2] >=0.73 ')
+
+
+
+
+Resultado_busqueda_binaria = busqueda_binaria(lista,0 , len(dataframe[['R']]),color_prueba[0]) 
+
+df = dataframe.where(Resultado_busqueda_binaria,inplace = True)
+# df = dataframe.query(
+#     'G/@color_prueba[1] <=1.34 and G/@color_prueba[1] >=0.73 ')
+# df = dataframe.query(
+#     'B/@color_prueba[2] <=1.34 and B/@color_prueba[2] >=0.73 ')
 
 
 if(df.empty == True):
