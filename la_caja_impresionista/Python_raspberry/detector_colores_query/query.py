@@ -7,7 +7,7 @@ dataframe = pd.read_csv('Tabla_colores.csv')
 # Esta variable va a ir guardando los nuevos valores
 dataframe_actualizado = pd.read_csv('Tabla_colores.csv') 
 
-color_prueba = [102,157,174]
+color_prueba = [163.0,106.0,23.0]
 
 def busqueda_binaria(dataframe, comienzo, final, objetivo):
 
