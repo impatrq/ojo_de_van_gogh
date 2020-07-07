@@ -2,10 +2,31 @@ import pandas as pd
 import numpy as np
 import array
 
+# Con esta vamos filtrando la tabla 
 dataframe = pd.read_csv('Tabla_colores.csv')
+# Esta variable va a ir guardando los nuevos valores
+dataframe_actualizado = pd.read_csv('Tabla_colores.csv') 
+
+color_prueba = [163.0,106.0,23.0]
+
+def busqueda_binaria(dataframe, comienzo, final, objetivo):
+
+    print("entre")
 
 
-color_prueba = [600, 900, 888]
+
+
+    if comienzo > final:
+        return "hola"
+    medio = (comienzo + final) // 2
+
+    if dataframe['R'][medio] <= objetivo * 1.5 and dataframe['R'][medio] >= objetivo * 0.65:
+        print("objetivo")
+        return objetivo
+    elif dataframe['R'][medio] < objetivo:
+        return busqueda_binaria(dataframe, medio + 1, final, objetivo)
+    else:
+        return busqueda_binaria(dataframe, comienzo, medio - 1, objetivo)
 
 if color_prueba[0] == 0:
     color_prueba[0] += 0.1
@@ -32,38 +53,38 @@ else:
 
 dataframe = dataframe[['Principal_color', 'CSS_name', 'R', 'G', 'B']]
 
-
-df = dataframe.query(
-    'R/@color_prueba[0] <=1.34 and R/@color_prueba[0] >=0.73 ')
-df = dataframe.query(
-    'G/@color_prueba[1] <=1.34 and G/@color_prueba[1] >=0.73 ')
-df = dataframe.query(
-    'B/@color_prueba[2] <=1.34 and B/@color_prueba[2] >=0.73 ')
+    
 
 
-if(df.empty == True):
+
+
+
+
+Resultado_busqueda_binaria = busqueda_binaria(dataframe,0 , len(dataframe[['R']]),color_prueba[0]) 
+
+dataframe.query('R == @Resultado_busqueda_binaria',inplace=True)
+dataframe.query(
+     'G/@color_prueba[1] <=1.5 and G/@color_prueba[1] >=0.65 ',inplace= True)
+dataframe.query(
+     'B/@color_prueba[2] <=1.5 and B/@color_prueba[2] >=0.65 ', inplace= True)
+
+
+if(dataframe.empty == True):
     print("no se encontro una opcion en la base de datos")
     df = pd.DataFrame(columns=['Principal_color', 'CSS_name', 'R', 'G', 'B'])
-    dataframe = dataframe.append(
+    df= df.append(
         dict(
             Principal_color="Clasificar",
             CSS_name="Clasificar",
-            R=color_prueba[0],
-            G=color_prueba[1],
-            B=color_prueba[2],
+            R=int(color_prueba[0]),
+            G=int(color_prueba[1]),
+            B=int(color_prueba[2]),
         ), ignore_index=True
     )
-    dataframe = dataframe.append(
-        dict(
-            Principal_color="Clasificar",
-            CSS_name="Clasificar",
-            R=color_prueba[0],
-            G=color_prueba[1],
-            B=color_prueba[2],
-        ), ignore_index=True
-    )
-
-    print(dataframe)
+    dataframe_actualizado=dataframe_actualizado.append(df, ignore_index=True)
+    dataframe_actualizado.to_csv('Tabla_colores.csv',index=False)
+    print (dataframe_actualizado)
+    
 
 
-print(df)
+print(dataframe)
