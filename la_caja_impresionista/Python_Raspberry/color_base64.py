@@ -32,9 +32,7 @@ raw_data = {
 }
 
 
-json_data = json.dumps(raw_data, indent=2)
 
-content = json.loads(json_data)
 
 client = vision.ImageAnnotatorClient()
 image_path = f'C:/Users/pc1/Documents/Python/fotos/text.png'
