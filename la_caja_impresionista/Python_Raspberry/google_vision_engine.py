@@ -1,16 +1,15 @@
 import os
 import io
-from google.cloud import vision
 import pandas as pd
-import base64
-import json
+from google.cloud import vision
+from gtts import gTTS
+from textblob import TextBlob
 
 
 class GoogleVisionEngine:
 
-    def __init__(self, image_path, type):
+    def __init__(self, image_path):
         self.image_path = image_path
-        self.type = type
 
     def pedir_color(self, dataframe_colores):
 
@@ -109,6 +108,48 @@ class GoogleVisionEngine:
                     df_new_color, ignore_index=True)
                 dataframe_actualizado.to_csv('Tabla_colores.csv', index=False)
 
+
+    def leer_texto(self,):
+      client = vision.ImageAnnotatorClient()
+      with open(self.image_path, 'rb') as image:
+         content = image.read()
+         # construct an image instance
+         # annotate Image Response
+         response = client.annotate_image({'image': {'content': content}, 'features': [{'type': vision.enums.Feature.Type.TEXT_DETECTION}],})
+         # returns TextAnnotation
+         texts = response.text_annotations
+
+      df_leer_texto = pd.DataFrame(columns=['locale', 'description'])
+
+      for text in texts:
+         df_leer_texto = df_leer_texto.append(
+            dict(
+                  locale=text.locale,
+                  description=text.description
+            ),
+            ignore_index=True
+         )
+
+      texto = (df_leer_texto['description'][0])
+      traduction = TextBlob(texto)
+      idioma = str(traduction.detect_language())
+      if idioma != 'es':
+         traducido = str(traduction.translate(to = 'es'))
+            
+      with open('bread.txt', 'w') as f:
+         f.write(traducido)
+
+      with open('bread.txt') as f:
+         lines = f.read()
+
+         output = gTTS(text = lines, lang = 'es', slow = False)
+
+         output.save('texto.mp3')
+
+      os.system('mpg321 texto.mp3 &')
+         
+
+
     def rgb_to_name_hsv(self, R, G, B):
         pass
 
@@ -126,3 +167,5 @@ class GoogleVisionEngine:
             return self.busqueda_binaria(dataframe, medio + 1, final, objetivo)
         else:
             return self.busqueda_binaria(dataframe, comienzo, medio - 1, objetivo)
+
+   
