@@ -52,7 +52,9 @@ class GoogleVisionEngine:
          print (df['g'][0])
          print (df['b'][0])
    
-   def rgb_to_name_query(self,R,G,B):
+   def rgb_to_name_query(self,dataframe,R,G,B):
+
+      dataframe = dataframe
       R = R
 
       if R == 0:
@@ -75,39 +77,35 @@ class GoogleVisionEngine:
          print("color: blanco")
 
       else:
-         pass
+         dataframe = dataframe[['Principal_color', 'CSS_name', 'R', 'G', 'B']]
+
+         Resultado_busqueda_binaria = self.busqueda_binaria(dataframe,0 , len(dataframe[['R']]),R) 
+
+         dataframe.query('R == @Resultado_busqueda_binaria',inplace=True)
+         dataframe.query(
+            'G/@color_prueba[1] <=1.5 and G/@color_prueba[1] >=0.65 ',inplace= True)
+         dataframe.query(
+            'B/@color_prueba[2] <=1.5 and B/@color_prueba[2] >=0.65 ', inplace= True)
+
+         if(dataframe.empty == True):
+            print("no se encontro una opcion en la base de datos")
+            df = pd.DataFrame(columns=['Principal_color', 'CSS_name', 'R', 'G', 'B'])
+            df= df.append(
+               dict(
+                     Principal_color="Clasificar",
+                     CSS_name="Clasificar",
+                     R=int(color_prueba[0]),
+                     G=int(color_prueba[1]),
+                     B=int(color_prueba[2]),
+               ), ignore_index=True
+            )
+            dataframe_actualizado=dataframe_actualizado.append(df, ignore_index=True)
+            dataframe_actualizado.to_csv('Tabla_colores.csv',index=False)
+            print (dataframe_actualizado)
+            
 
 
-      dataframe = dataframe[['Principal_color', 'CSS_name', 'R', 'G', 'B']]
-
-      Resultado_busqueda_binaria = busqueda_binaria(dataframe,0 , len(dataframe[['R']]),color_prueba[0]) 
-
-      dataframe.query('R == @Resultado_busqueda_binaria',inplace=True)
-      dataframe.query(
-         'G/@color_prueba[1] <=1.5 and G/@color_prueba[1] >=0.65 ',inplace= True)
-      dataframe.query(
-         'B/@color_prueba[2] <=1.5 and B/@color_prueba[2] >=0.65 ', inplace= True)
-
-
-      if(dataframe.empty == True):
-         print("no se encontro una opcion en la base de datos")
-         df = pd.DataFrame(columns=['Principal_color', 'CSS_name', 'R', 'G', 'B'])
-         df= df.append(
-            dict(
-                  Principal_color="Clasificar",
-                  CSS_name="Clasificar",
-                  R=int(color_prueba[0]),
-                  G=int(color_prueba[1]),
-                  B=int(color_prueba[2]),
-            ), ignore_index=True
-         )
-         dataframe_actualizado=dataframe_actualizado.append(df, ignore_index=True)
-         dataframe_actualizado.to_csv('Tabla_colores.csv',index=False)
-         print (dataframe_actualizado)
-         
-
-
-      print(dataframe)
+         print(dataframe)
 
    def rgb_to_name_hsv(self,R,G,B):
       pass
