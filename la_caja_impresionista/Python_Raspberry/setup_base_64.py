@@ -6,9 +6,9 @@ import base64
 import json
 
 
-class GoogleVisionApi:
+class GoogleVisionEngine:
 
-   def __init__(self,image_path,type):
+   def __init__(self,image_path,type:str):
       self.image_path = image_path
       self.type = type
       self.hola = ""
