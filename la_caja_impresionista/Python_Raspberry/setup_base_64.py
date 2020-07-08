@@ -27,16 +27,20 @@ class GoogleVisionEngine:
          }
       ]
       }
+
    def get_base64_encoded_image(self,):
       with open(self.image_path, "rb") as img_file:
          return base64.b64encode(img_file.read()).decode('utf-8')
 
-   def pedir_color(self, ):
+   def pedir_color(self, dataframe_colores):
       client = vision.ImageAnnotatorClient()
+      self.dataframe_colores = dataframe_colores
       with open(self.image_path, 'rb') as image:
          content = image.read()
          response = client.annotate_image({'image': {'content': content}, 'features': [{'type': vision.enums.Feature.Type.IMAGE_PROPERTIES}],}).image_properties_annotation
          dominant_colors = response.dominant_colors.colors
+
+
   
 
    
