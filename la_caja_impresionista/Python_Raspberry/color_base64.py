@@ -39,10 +39,7 @@ content = json.loads(json_data)
 client = vision.ImageAnnotatorClient()
 image_path = f'C:/Users/pc1/Documents/Python/fotos/text.png'
 
-with open(image_path, 'rb') as image:
-    content = image.read()
-    response = client.annotate_image({'image': {'content': content}, 'features': [{'type': vision.enums.Feature.Type.IMAGE_PROPERTIES}],}).image_properties_annotation
-    dominant_colors = response.dominant_colors.colors
+
 
 df = pd.DataFrame(columns=['r','g','b', 'pixel_fraction', 'score'])
 
