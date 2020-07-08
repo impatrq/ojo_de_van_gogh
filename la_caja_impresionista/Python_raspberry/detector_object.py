@@ -49,7 +49,6 @@ class detector_object:
                 promedio_y = (obj.bounding_poly.normalized_vertices[0].y + obj.bounding_poly.normalized_vertices[2].y)/2
 
                 objeto = (df['name'][cont])
-
                 if promedio_x < 0.33 and promedio_y < 0.33:
                     print(objeto + " está en la parte superior izquierda")
                     location = str(" está en la parte superior izquierda")
@@ -85,7 +84,6 @@ class detector_object:
                 elif promedio_x <= 1 and promedio_y < 0.66:
                     print(objeto + " está en la parte inferior derecha")
                     location = str(" está en la parte inferior derecha")
-
                 cont = cont + 1
                 timing = str(objeto + location)
                 print(len(timing))

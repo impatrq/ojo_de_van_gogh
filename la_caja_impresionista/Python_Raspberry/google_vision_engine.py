@@ -10,6 +10,59 @@ class GoogleVisionEngine:
 
     def __init__(self, image_path):
         self.image_path = image_path
+    
+    def reconocer_objeto(self, ):
+      client = vision.ImageAnnotatorClient()
+
+      with open(self.image_path, 'rb') as image:
+         content = image.read()
+         response = client.annotate_image({'image': {'content': content}, 'features': [{'type': vision.enums.Feature.Type.OBJECT_LOCALIZATION}],})
+         localized_object_annotations = response.localized_object_annotations
+
+      df_reconocer_objeto = pd.DataFrame(columns=['name', 'score', 'bounding'])
+
+      for obj in localized_object_annotations:
+         df_reconocer_objeto = df_reconocer_objeto.append(
+            dict(
+                  name=obj.name,
+                  score=obj.score,
+                  bounding=obj.bounding_poly
+            ),
+            ignore_index=True)
+         df_reconocer_objeto = df_reconocer_objeto.query('score >= 0.65')
+
+         if (obj.score >= 0.65):
+
+            promedio_x = (obj.bounding_poly.normalized_vertices[0].x + obj.bounding_poly.normalized_vertices[1].x)/2
+            promedio_y = (obj.bounding_poly.normalized_vertices[0].y + obj.bounding_poly.normalized_vertices[2].y)/2
+
+            if promedio_x < 0.33 and promedio_y < 0.33:
+                  print("El objeto está en la parte superior izquierda")
+
+            elif promedio_x < 0.66 and promedio_y < 0.33:
+                  print("El objeto está en la parte superior centro")
+
+            elif promedio_x <=1 and promedio_y < 0.33:
+                  print("El objeto está en la parte superior derecha")
+
+            elif promedio_x < 0.33 and promedio_y < 0.66:
+                  print("El objeto está en la centro izquierda")
+
+            elif promedio_x < 0.66 and promedio_y < 0.66:
+                  print("El objeto está en el centro")
+
+            elif promedio_x <= 1 and promedio_y < 0.66:
+                  print("El objeto está en el centro derecha")
+
+            elif promedio_x < 0.33 and promedio_y <= 1:
+                  print("El objeto está en la parte inferior izquierda")
+
+            elif promedio_x < 0.66 and promedio_y < 0.66:
+                  print("El objeto está en la parte inferior centro")
+
+            elif promedio_x <= 1 and promedio_y < 0.66:
+                  print("El objeto está en la parte inferior derecha")
+
 
     def pedir_color(self, dataframe_colores):
 
