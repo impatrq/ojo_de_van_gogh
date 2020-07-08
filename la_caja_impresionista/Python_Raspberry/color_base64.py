@@ -13,26 +13,6 @@ os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r'C:/Users/pc1/Documents/Python/O
 
 IMAGE_NAME = f'C:/Users/pc1/Documents/Python/fotos/text.png'
 
-base64_string3 = get_base64_encoded_image(IMAGE_NAME)
-
-raw_data = {
-  "requests":[
-    {
-      "image":{
-        "content": base64_string3
-      },
-      "features": [
-        {
-          "type":"IMAGE_PROPERTIES",
-          "maxResults":1
-        }
-      ]
-    }
-  ]
-}
-
-
-
 
 client = vision.ImageAnnotatorClient()
 image_path = f'C:/Users/pc1/Documents/Python/fotos/text.png'

@@ -8,11 +8,10 @@ import json
 
 class GoogleVisionEngine:
 
-   def __init__(self,image_path,type:str):
+   def __init__(self,image_path ,type ):
       self.image_path = image_path
       self.type = type
-      self.hola = ""
-      raw_data = {
+      self.raw_data = {
       "requests":[
          {
             "image":{
@@ -20,7 +19,7 @@ class GoogleVisionEngine:
             },
             "features": [
             {
-               "type": f"{self.image_path}",
+               "type": f"{self.type}",
                "maxResults":1
             }
             ]
