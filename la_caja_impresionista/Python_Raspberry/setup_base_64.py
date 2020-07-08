@@ -11,21 +11,7 @@ class GoogleVisionEngine:
    def __init__(self,image_path ,type ):
       self.image_path = image_path
       self.type = type
-      self.raw_data = {
-      "requests":[
-         {
-            "image":{
-            "content": self.get_base64_encoded_image()
-            },
-            "features": [
-            {
-               "type": f"{self.type}",
-               "maxResults":1
-            }
-            ]
-         }
-      ]
-      }
+      
 
    def get_base64_encoded_image(self,):
       with open(self.image_path, "rb") as img_file:
