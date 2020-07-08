@@ -11,6 +11,7 @@ class SetupGoogleVision:
    def __init__(self,image_path,type):
       self.image_path = image_path
       self.type = type
+      self.hola = ""
       raw_data = {
       "requests":[
          {
@@ -26,8 +27,16 @@ class SetupGoogleVision:
          }
       ]
       }
-   def get_base64_encoded_image(self):
+   def get_base64_encoded_image(self,):
       with open(self.image_path, "rb") as img_file:
          return base64.b64encode(img_file.read()).decode('utf-8')
+
+   def pedir_color(self, ):
+      client = vision.ImageAnnotatorClient()
+      with open(self.image_path, 'rb') as image:
+         content = image.read()
+         response = client.annotate_image({'image': {'content': content}, 'features': [{'type': vision.enums.Feature.Type.IMAGE_PROPERTIES}],}).image_properties_annotation
+         dominant_colors = response.dominant_colors.colors
+  
 
    
