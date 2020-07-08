@@ -13,9 +13,7 @@ class GoogleVisionEngine:
       self.type = type
       
 
-   def get_base64_encoded_image(self,):
-      with open(self.image_path, "rb") as img_file:
-         return base64.b64encode(img_file.read()).decode('utf-8')
+   
 
    def pedir_color(self, dataframe_colores):
       client = vision.ImageAnnotatorClient()
