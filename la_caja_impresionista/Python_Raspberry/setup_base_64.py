@@ -19,7 +19,7 @@ class SetupGoogleVision:
             },
             "features": [
             {
-               "type": self.image_path,
+               "type": f"{self.image_path}",
                "maxResults":1
             }
             ]
