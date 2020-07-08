@@ -6,6 +6,17 @@ from gtts import gTTS
 from textblob import TextBlob
 
 
+#########################################
+#agregar que si el query no anda use hsv#
+#TO DO Agregar audio a reconocer objetos#
+#########################################
+
+
+
+
+
+
+
 class GoogleVisionEngine:
 
     def __init__(self, image_path):
@@ -105,6 +116,7 @@ class GoogleVisionEngine:
             r = (df_pixel_fraction['r'][0])
             g = (df_pixel_fraction['g'][0])
             b = (df_pixel_fraction['b'][0])
+
             self.rgb_to_name_query(dataframe_colores, r, g, b)
 
     def rgb_to_name_query(self, dataframe_colores, R, G, B):
