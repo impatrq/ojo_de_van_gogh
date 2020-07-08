@@ -6,7 +6,7 @@ import base64
 import json
 
 
-class SetupGoogleVision:
+class GoogleVisionApi:
 
    def __init__(self,image_path,type):
       self.image_path = image_path
