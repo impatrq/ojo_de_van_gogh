@@ -7,7 +7,7 @@ dataframe = pd.read_csv('Tabla_colores.csv')
 # Esta variable va a ir guardando los nuevos valores
 dataframe_actualizado = pd.read_csv('Tabla_colores.csv')
 
-color_prueba = [2, 2, 2]
+color_prueba = [100, 100, 100]
 
 
 def busqueda_binaria(dataframe, comienzo, final, objetivo):
@@ -78,8 +78,17 @@ if(dataframe.empty == True):
     dataframe_actualizado = dataframe_actualizado.append(df, ignore_index=True)
     dataframe_actualizado = dataframe_actualizado.sort_values(
         ['R'], ascending=True)
+
+    # reseteo la lista pero me crea una columna llamda index
+    dataframe_actualizado = dataframe_actualizado.reset_index()
+    # borro columna index
+    dataframe_actualizado = dataframe_actualizado.drop(
+        ['index'], axis=1)
+
+    for cont in range(len(dataframe_actualizado)):
+        dataframe_actualizado.loc[cont, 'ID'] = cont
+
     dataframe_actualizado.to_csv('Tabla_colores.csv', index=False)
     print(dataframe_actualizado)
 
-
-print(dataframe)
+print(dataframe_actualizado)
