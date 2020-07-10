@@ -261,20 +261,25 @@ class GoogleVisionEngine:
 
         os.system('mpg321 texto.mp3 &')# Llamamos a la funcion del sistema de reproducir el audio 
 
+    #Metodo para reconocer el color por hsv
+    #cuando falla el query
     def rgb_to_name_hsv(self, R, G, B):
         pass
 
+    #Busqueda binaria para el query
     def busqueda_binaria(self, dataframe, comienzo, final, objetivo):
-
+        
+        # Este if permite que la recursividad no se vaya al infinito 
         if comienzo > final:
             return False
-        medio = (comienzo + final) // 2
+        
+        medio = (comienzo + final) // 2 #Nos fijamos el medio de la tabla
 
         if dataframe['R'][medio] <= objetivo * 1.5 and dataframe['R'][medio] >= objetivo * 0.65:
-            print("objetivo")
+            print("objetivo") #El valor fue encontrado 
             return objetivo
 
         elif dataframe['R'][medio] < objetivo:
-            return self.busqueda_binaria(dataframe, medio + 1, final, objetivo)
+            return self.busqueda_binaria(dataframe, medio + 1, final, objetivo)# Llammos a recursividad para seguir revisando la tabla mas abajo
         else:
-            return self.busqueda_binaria(dataframe, comienzo, medio - 1, objetivo)
+            return self.busqueda_binaria(dataframe, comienzo, medio - 1, objetivo)# Llammos a recursividad para seguir revisando la tabla mas arriba
