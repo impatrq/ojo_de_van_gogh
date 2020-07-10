@@ -12,68 +12,66 @@ from textblob import TextBlob
 #########################################
 
 
-
-
-
-
-
 class GoogleVisionEngine:
 
     def __init__(self, image_path):
         self.image_path = image_path
-    
+
     def reconocer_objeto(self, ):
-      client = vision.ImageAnnotatorClient()
+        client = vision.ImageAnnotatorClient()
 
-      with open(self.image_path, 'rb') as image:
-         content = image.read()
-         response = client.annotate_image({'image': {'content': content}, 'features': [{'type': vision.enums.Feature.Type.OBJECT_LOCALIZATION}],})
-         localized_object_annotations = response.localized_object_annotations
+        with open(self.image_path, 'rb') as image:
+            content = image.read()
+            response = client.annotate_image({'image': {'content': content}, 'features': [
+                                             {'type': vision.enums.Feature.Type.OBJECT_LOCALIZATION}], })
+            localized_object_annotations = response.localized_object_annotations
 
-      df_reconocer_objeto = pd.DataFrame(columns=['name', 'score', 'bounding'])
+        df_reconocer_objeto = pd.DataFrame(
+            columns=['name', 'score', 'bounding'])
 
-      for obj in localized_object_annotations:
-         df_reconocer_objeto = df_reconocer_objeto.append(
-            dict(
-                  name=obj.name,
-                  score=obj.score,
-                  bounding=obj.bounding_poly
-            ),
-            ignore_index=True)
-         df_reconocer_objeto = df_reconocer_objeto.query('score >= 0.65')
+        for obj in localized_object_annotations:
+            df_reconocer_objeto = df_reconocer_objeto.append(
+                dict(
+                    name=obj.name,
+                    score=obj.score,
+                    bounding=obj.bounding_poly
+                ),
+                ignore_index=True)
+            df_reconocer_objeto = df_reconocer_objeto.query('score >= 0.65')
 
-         if (obj.score >= 0.65):
+            if (obj.score >= 0.65):
 
-            promedio_x = (obj.bounding_poly.normalized_vertices[0].x + obj.bounding_poly.normalized_vertices[1].x)/2
-            promedio_y = (obj.bounding_poly.normalized_vertices[0].y + obj.bounding_poly.normalized_vertices[2].y)/2
+                promedio_x = (
+                    obj.bounding_poly.normalized_vertices[0].x + obj.bounding_poly.normalized_vertices[1].x)/2
+                promedio_y = (
+                    obj.bounding_poly.normalized_vertices[0].y + obj.bounding_poly.normalized_vertices[2].y)/2
 
-            if promedio_x < 0.33 and promedio_y < 0.33:
-                  print("El objeto está en la parte superior izquierda")
+                if promedio_x < 0.33 and promedio_y < 0.33:
+                    print("El objeto está en la parte superior izquierda")
 
-            elif promedio_x < 0.66 and promedio_y < 0.33:
-                  print("El objeto está en la parte superior centro")
+                elif promedio_x < 0.66 and promedio_y < 0.33:
+                    print("El objeto está en la parte superior centro")
 
-            elif promedio_x <=1 and promedio_y < 0.33:
-                  print("El objeto está en la parte superior derecha")
+                elif promedio_x <= 1 and promedio_y < 0.33:
+                    print("El objeto está en la parte superior derecha")
 
-            elif promedio_x < 0.33 and promedio_y < 0.66:
-                  print("El objeto está en la centro izquierda")
+                elif promedio_x < 0.33 and promedio_y < 0.66:
+                    print("El objeto está en la centro izquierda")
 
-            elif promedio_x < 0.66 and promedio_y < 0.66:
-                  print("El objeto está en el centro")
+                elif promedio_x < 0.66 and promedio_y < 0.66:
+                    print("El objeto está en el centro")
 
-            elif promedio_x <= 1 and promedio_y < 0.66:
-                  print("El objeto está en el centro derecha")
+                elif promedio_x <= 1 and promedio_y < 0.66:
+                    print("El objeto está en el centro derecha")
 
-            elif promedio_x < 0.33 and promedio_y <= 1:
-                  print("El objeto está en la parte inferior izquierda")
+                elif promedio_x < 0.33 and promedio_y <= 1:
+                    print("El objeto está en la parte inferior izquierda")
 
-            elif promedio_x < 0.66 and promedio_y < 0.66:
-                  print("El objeto está en la parte inferior centro")
+                elif promedio_x < 0.66 and promedio_y < 0.66:
+                    print("El objeto está en la parte inferior centro")
 
-            elif promedio_x <= 1 and promedio_y < 0.66:
-                  print("El objeto está en la parte inferior derecha")
-
+                elif promedio_x <= 1 and promedio_y < 0.66:
+                    print("El objeto está en la parte inferior derecha")
 
     def pedir_color(self, dataframe_colores):
 
@@ -171,49 +169,49 @@ class GoogleVisionEngine:
                 )
                 dataframe_actualizado = dataframe_actualizado.append(
                     df_new_color, ignore_index=True)
+                dataframe_actualizado = dataframe_actualizado.sort_values(
+                    ['R'], ascending=True)
                 dataframe_actualizado.to_csv('Tabla_colores.csv', index=False)
 
-
     def leer_texto(self,):
-      client = vision.ImageAnnotatorClient()
-      with open(self.image_path, 'rb') as image:
-         content = image.read()
-         # construct an image instance
-         # annotate Image Response
-         response = client.annotate_image({'image': {'content': content}, 'features': [{'type': vision.enums.Feature.Type.TEXT_DETECTION}],})
-         # returns TextAnnotation
-         texts = response.text_annotations
+        client = vision.ImageAnnotatorClient()
+        with open(self.image_path, 'rb') as image:
+            content = image.read()
+            # construct an image instance
+            # annotate Image Response
+            response = client.annotate_image({'image': {'content': content}, 'features': [
+                                             {'type': vision.enums.Feature.Type.TEXT_DETECTION}], })
+            # returns TextAnnotation
+            texts = response.text_annotations
 
-      df_leer_texto = pd.DataFrame(columns=['locale', 'description'])
+        df_leer_texto = pd.DataFrame(columns=['locale', 'description'])
 
-      for text in texts:
-         df_leer_texto = df_leer_texto.append(
-            dict(
-                  locale=text.locale,
-                  description=text.description
-            ),
-            ignore_index=True
-         )
+        for text in texts:
+            df_leer_texto = df_leer_texto.append(
+                dict(
+                    locale=text.locale,
+                    description=text.description
+                ),
+                ignore_index=True
+            )
 
-      texto = (df_leer_texto['description'][0])
-      traduction = TextBlob(texto)
-      idioma = str(traduction.detect_language())
-      if idioma != 'es':
-         traducido = str(traduction.translate(to = 'es'))
-            
-      with open('bread.txt', 'w') as f:
-         f.write(traducido)
+        texto = (df_leer_texto['description'][0])
+        traduction = TextBlob(texto)
+        idioma = str(traduction.detect_language())
+        if idioma != 'es':
+            traducido = str(traduction.translate(to='es'))
 
-      with open('bread.txt') as f:
-         lines = f.read()
+        with open('bread.txt', 'w') as f:
+            f.write(traducido)
 
-         output = gTTS(text = lines, lang = 'es', slow = False)
+        with open('bread.txt') as f:
+            lines = f.read()
 
-         output.save('texto.mp3')
+            output = gTTS(text=lines, lang='es', slow=False)
 
-      os.system('mpg321 texto.mp3 &')
-         
+            output.save('texto.mp3')
 
+        os.system('mpg321 texto.mp3 &')
 
     def rgb_to_name_hsv(self, R, G, B):
         pass
@@ -232,5 +230,3 @@ class GoogleVisionEngine:
             return self.busqueda_binaria(dataframe, medio + 1, final, objetivo)
         else:
             return self.busqueda_binaria(dataframe, comienzo, medio - 1, objetivo)
-
-   
