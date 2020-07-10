@@ -217,7 +217,7 @@ class GoogleVisionEngine:
                 dataframe_actualizado.to_csv('Tabla_colores.csv', index=False)
 
     def leer_texto(self,):
-        client = vision.ImageAnnotatorClient()
+        client = vision.ImageAnnotatorClient() #Creamos el cliente
         with open(self.image_path, 'rb') as image:
             content = image.read()
             # construct an image instance
@@ -226,9 +226,11 @@ class GoogleVisionEngine:
                                              {'type': vision.enums.Feature.Type.TEXT_DETECTION}], })
             # returns TextAnnotation
             texts = response.text_annotations
-
+        
+        # Creamos el dataframe con el texto y el idioma 
         df_leer_texto = pd.DataFrame(columns=['locale', 'description'])
 
+        # Por cada texto detectaco lo unimos al dataframe 
         for text in texts:
             df_leer_texto = df_leer_texto.append(
                 dict(
@@ -238,23 +240,26 @@ class GoogleVisionEngine:
                 ignore_index=True
             )
 
+        #a la variable texto le metemos el contenido del texto 
         texto = (df_leer_texto['description'][0])
-        traduction = TextBlob(texto)
-        idioma = str(traduction.detect_language())
+        texto_binario = TextBlob(texto) # Pasamos el texto a binario
+        idioma = str(texto_binario.detect_language()) # Detectamos el idioma
         if idioma != 'es':
-            traducido = str(traduction.translate(to='es'))
+            traducido = str(texto_binario.translate(to='es')) # Si el idioma no es español lo traducimos
 
         with open('bread.txt', 'w') as f:
-            f.write(traducido)
+            f.write(traducido) #Creamos un txt con el texto
 
         with open('bread.txt') as f:
-            lines = f.read()
+            lines = f.read() #Leemos el contenido del texto que escribimos antes
 
-            output = gTTS(text=lines, lang='es', slow=False)
+            # Configuramos el Asisnte de Voz de Google
+            # le decimos el texto el idioma y que vaya a velocidad normal
+            output = gTTS(text=lines, lang='es', slow=False) 
 
-            output.save('texto.mp3')
+            output.save('texto.mp3') # Guardamos el audio que creo el asistente de voz de google
 
-        os.system('mpg321 texto.mp3 &')
+        os.system('mpg321 texto.mp3 &')# Llamamos a la funcion del sistema de reproducir el audio 
 
     def rgb_to_name_hsv(self, R, G, B):
         pass
