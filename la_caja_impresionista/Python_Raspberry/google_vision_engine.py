@@ -171,22 +171,31 @@ class GoogleVisionEngine:
         #Si no procedemos a el query
         else:
             dataframe_colores = dataframe_colores[[
-                'Principal_color', 'CSS_name', 'R', 'G', 'B']]
+                'Principal_color', 'CSS_name', 'R', 'G', 'B']] #Sacamos el valor de Hexagesimal 
 
+            #Llamamos al metodo de busqueda binaria para buscar si un color en 
+            #la tabla de R asi pedir ese valor
             Resultado_busqueda_binaria = self.busqueda_binaria(
                 dataframe_colores, 0, len(dataframe_colores[['R']]), R)
+            
 
             dataframe_colores.query(
-                'R == @Resultado_busqueda_binaria', inplace=True)
+                'R == @Resultado_busqueda_binaria', inplace=True) # Query para ver Los colores con R parecido
             dataframe_colores.query(
-                'G/@G <=1.5 and G/@G >=0.65 ', inplace=True)
+                'G/@G <=1.5 and G/@G >=0.65 ', inplace=True)# Query para ver Los colores con G parecido
             dataframe_colores.query(
-                'B/@B <=1.5 and B/@B >=0.65 ', inplace=True)
+                'B/@B <=1.5 and B/@B >=0.65 ', inplace=True)# Query para ver Los colores con B parecido
 
+            #Si los query dan vacio porque no se encontro el color
             if(dataframe_colores.empty == True):
                 print("no se encontro una opcion en la base de datos")
+
+                #Creamos una fila para el nuevo color que no sabemos el nombre
                 df_new_color = pd.DataFrame(
                     columns=['Principal_color', 'CSS_name', 'R', 'G', 'B'])
+                
+                #A la nueva fila le guardamos los valores del color nuevo
+                # Dejamos un mensaje que hay que clasificar el nombre
                 df_new_color = df_new_color.append(
                     dict(
                         Principal_color="Clasificar",
@@ -196,10 +205,15 @@ class GoogleVisionEngine:
                         B=int(B),
                     ), ignore_index=True
                 )
+
+                #Al nuevo dataframe le agregamos el nuevo color
                 dataframe_actualizado = dataframe_actualizado.append(
                     df_new_color, ignore_index=True)
+                #Ordenamos el nuevo color segun su valor en R porque 
+                #lo requiere la busqeuda binaria
                 dataframe_actualizado = dataframe_actualizado.sort_values(
                     ['R'], ascending=True)
+                #Exportamos la nueva tabla para qe reeemplace la vieja
                 dataframe_actualizado.to_csv('Tabla_colores.csv', index=False)
 
     def leer_texto(self,):
