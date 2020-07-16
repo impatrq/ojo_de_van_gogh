@@ -313,4 +313,31 @@ Se hizo el anuncio para la radio 99.3 FM que sale el viernes y se ha publicado c
 
 Se nos ocurrio para mejorar la calidad del reconocimiento de colores, crear una tabla de excel y copiar los 140 colores que nos da la pagina de wikipedia con sus rgb y sus nombres. Luego exportamos esa tabla a pandas y hemos agregado 2 condiciones para los colores negro y blanco.
 
+## Semana del 29/06 al 06/07
 
+Se subio el igtv de la entrevista de la radio y tambien se ha subido a youtube y a la pagina web.
+
+Se agrego dos condiciones de blanco y negro para descartar mas rapido y si no se cumplen que recorran el codigo a traves de  busqueda binaria en Rojo, haciendo que el codigo sea mas rapido.
+
+Hemos puesto que si no se encuentra algun color en la tabla, se agregue ese valor a la misma .Luego sera revisado por alguno de los integrantes, clasificandolo y quedando la tabla ya actualizada.
+
+Tambien hemos probado algunas fotos y clasificando los colores que no se han reconocido.
+
+## Semana del 06/07 al 14/07
+
+Se incluyo en la pagina web un mensaje de bienvenida y tambien un nuevo simbolo cuando las paginas estan cargandose.
+
+Se ha contactado nuevamente con ASAC y MasScience y nos prometieron publicar pronto un articulo nuestro en su pagina. Se ha mandado mails tanto a medios nacionales como radios.
+
+Se normalizaron todos los codigos haciendo que todos queden con la misma estructura de pedir el dato a obtener: color, texto u objeto.
+
+Se ha creado una clase de busqueda binaria y ordenado el main. Se creo una nueva clase llamada Google Vision Engine .
+En esta clase se han creados los metodos de 
+- Pedir color
+- Elegir ese color(query)
+- Leer texto y reproducirlo
+- Reconocer objetos y su ubicacion
+
+Nos hemos dado cuenta de varias variables y partes de codigo que no se usaban y las hemos borrado.
+
+Hemos agregado para que cada valor nuevo en la tabla se reoorganice de menor a mayor y se actualicen los id 
