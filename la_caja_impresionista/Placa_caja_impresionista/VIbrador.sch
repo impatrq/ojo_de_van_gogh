@@ -24,25 +24,6 @@ F 3 "" H 4750 4100 50  0001 C CNN
 	1    4750 4100
 	0    1    1    0   
 $EndComp
-$Comp
-L VIbrador-rescue:Pila3,7V-Modulos-VIbrador-rescue U1
-U 1 1 5E6ECDF3
-P 4750 2400
-F 0 "U1" H 4800 2615 50  0000 C CNN
-F 1 "Pila3,7V" H 4800 2200 50  0000 C CNN
-F 2 "VibradorPCB:Pila de Litio" H 4750 2400 50  0001 C CNN
-F 3 "" H 4750 2400 50  0001 C CNN
-	1    4750 2400
-	-1   0    0    1   
-$EndComp
-Wire Wire Line
-	4450 2350 4350 2350
-Text GLabel 4500 4800 3    50   Input ~ 0
-TX
-Text GLabel 4600 4800 3    50   Input ~ 0
-RX
-Text GLabel 4350 5950 3    50   Input ~ 0
-D9
 Wire Wire Line
 	4450 5850 4350 5850
 Wire Wire Line
@@ -57,18 +38,6 @@ Text GLabel 4800 4800 3    50   Input ~ 0
 OUT+
 Text GLabel 4700 4800 3    50   Input ~ 0
 OUT-
-Text GLabel 3950 5000 2    50   Input ~ 0
-TX
-Text GLabel 3950 5100 2    50   Input ~ 0
-RX
-Text GLabel 2000 2850 0    50   Input ~ 0
-D9
-Wire Wire Line
-	2000 2850 2100 2850
-Wire Wire Line
-	2100 2850 2100 2800
-Wire Wire Line
-	2100 2800 2350 2800
 Wire Wire Line
 	4500 4450 4500 4550
 Wire Wire Line
@@ -120,8 +89,6 @@ F 3 "" H 4700 5800 50  0001 C CNN
 	1    4700 5800
 	-1   0    0    1   
 $EndComp
-Text GLabel 5200 6000 3    50   Input ~ 0
-D9
 Wire Wire Line
 	5300 5900 5200 5900
 Wire Wire Line
@@ -172,114 +139,8 @@ Wire Wire Line
 Connection ~ 2950 3500
 Wire Wire Line
 	2750 1350 2750 1500
-$Comp
-L VIbrador-rescue:Pila3,7V-Modulos-VIbrador-rescue U7
-U 1 1 5E94B3CF
-P 5750 2400
-F 0 "U7" H 5800 2615 50  0000 C CNN
-F 1 "Pila3,7V-Modulos-VIbrador-rescue" H 5800 2200 50  0000 C CNN
-F 2 "VibradorPCB:Pila de Litio" H 5750 2400 50  0001 C CNN
-F 3 "" H 5750 2400 50  0001 C CNN
-	1    5750 2400
-	-1   0    0    1   
-$EndComp
-Wire Wire Line
-	5050 2350 4950 2350
-Wire Wire Line
-	5450 2350 5350 2350
-Wire Wire Line
-	5350 2350 5350 2450
-Wire Wire Line
-	5350 2450 5050 2450
-Wire Wire Line
-	5050 2450 5050 2350
-$Comp
-L VIbrador-rescue:StepDown U2
-U 1 1 5E9524F1
-P 5250 2800
-F 0 "U2" H 5275 3075 50  0000 C CNN
-F 1 "StepDown" H 5275 2984 50  0000 C CNN
-F 2 "VibradorPCB:StepDown" H 5250 2800 50  0001 C CNN
-F 3 "" H 5250 2800 50  0001 C CNN
-	1    5250 2800
-	1    0    0    -1  
-$EndComp
-Text GLabel 4800 2850 0    50   Input ~ 0
-IN+
-Text GLabel 6250 2350 2    50   Input ~ 0
-IN+
-Text GLabel 4200 2350 0    50   Input ~ 0
-IN-
-Text GLabel 4800 3050 0    50   Input ~ 0
-IN-
-Wire Wire Line
-	4800 2850 4850 2850
-Wire Wire Line
-	4850 2850 4850 2750
-Wire Wire Line
-	4850 2750 5050 2750
-Wire Wire Line
-	4800 3050 4850 3050
-Wire Wire Line
-	4850 3050 4850 3150
-Wire Wire Line
-	4850 3150 5050 3150
-Wire Wire Line
-	4350 2350 4350 2450
-Wire Wire Line
-	4350 2450 4200 2450
-Wire Wire Line
-	4200 2450 4200 2350
-Wire Wire Line
-	5950 2350 6050 2350
-Wire Wire Line
-	6050 2350 6050 2450
-Wire Wire Line
-	6050 2450 6250 2450
-Wire Wire Line
-	6250 2450 6250 2350
-Text GLabel 5800 2850 2    50   Input ~ 0
-OUT+
-Text GLabel 5800 3050 2    50   Input ~ 0
-OUT-
-Wire Wire Line
-	5800 2850 5650 2850
-Wire Wire Line
-	5650 2850 5650 2750
-Wire Wire Line
-	5650 2750 5450 2750
-Wire Wire Line
-	5450 3150 5650 3150
-Wire Wire Line
-	5650 3150 5650 3050
-Wire Wire Line
-	5650 3050 5800 3050
-Text GLabel 2350 2100 0    50   Input ~ 0
-Tx_rasp
-Text GLabel 2350 2200 0    50   Input ~ 0
-Rx_rasp
-Text GLabel 3850 4650 2    50   Input ~ 0
-Tx_rasp
-Text GLabel 3850 4750 2    50   Input ~ 0
-Rx_rasp
-Wire Wire Line
-	3850 4650 3750 4650
-Wire Wire Line
-	3750 4650 3750 4600
-Wire Wire Line
-	3750 4600 3400 4600
-Wire Wire Line
-	3400 4600 3400 4650
 Wire Wire Line
 	3400 4650 3200 4650
-Wire Wire Line
-	3850 4750 3750 4750
-Wire Wire Line
-	3750 4750 3750 4700
-Wire Wire Line
-	3750 4700 3400 4700
-Wire Wire Line
-	3400 4700 3400 4750
 Wire Wire Line
 	3400 4750 3200 4750
 Text GLabel 3700 4350 2    50   Input ~ 0
@@ -310,26 +171,32 @@ Text GLabel 2950 3800 2    50   Input ~ 0
 OUT-
 Text GLabel 2750 1350 2    50   Input ~ 0
 OUT+
-Text GLabel 6750 3350 2    50   Input ~ 0
-OUT-
-Text GLabel 6800 3500 2    50   Input ~ 0
-IN-
-Wire Wire Line
-	6800 3500 6700 3500
-Wire Wire Line
-	6700 3500 6700 3350
-Wire Wire Line
-	6700 3350 6750 3350
-Wire Wire Line
-	3400 5000 3400 5050
 Wire Wire Line
 	3400 5050 3200 5050
 Wire Wire Line
-	3400 5000 3950 5000
-Wire Wire Line
-	3400 5100 3400 5150
-Wire Wire Line
 	3400 5150 3200 5150
+Text GLabel 4350 5950 3    50   Input ~ 0
+GPIO11
+Text GLabel 5200 6000 3    50   Input ~ 0
+GPIO11
+Text GLabel 1850 5450 0    50   Input ~ 0
+GPIO11
 Wire Wire Line
-	3400 5100 3950 5100
+	2500 5450 2300 5450
+Wire Wire Line
+	2300 5450 2300 5500
+Wire Wire Line
+	2300 5500 1950 5500
+Wire Wire Line
+	1950 5500 1950 5450
+Wire Wire Line
+	1950 5450 1850 5450
+Text GLabel 4600 4800 3    50   Input ~ 0
+TX
+Text GLabel 2350 1900 0    50   Input ~ 0
+TX
+Text GLabel 2350 2000 0    50   Input ~ 0
+RX
+Text GLabel 4500 4800 3    50   Input ~ 0
+RX
 $EndSCHEMATC

@@ -130,34 +130,4 @@ X GND 9 -300 -450 200 L 50 50 1 1 I
 ENDDRAW
 ENDDEF
 #
-# VIbrador-rescue_Pila3,7V-Modulos-VIbrador-rescue
-#
-DEF VIbrador-rescue_Pila3,7V-Modulos-VIbrador-rescue U 0 40 Y Y 1 F N
-F0 "U" 200 0 50 H V C CNN
-F1 "VIbrador-rescue_Pila3,7V-Modulos-VIbrador-rescue" 0 0 50 H V C CNN
-F2 "" 0 0 50 H I C CNN
-F3 "" 0 0 50 H I C CNN
-DRAW
-S -200 50 300 -100 0 1 0 N
-X + 1 -200 -50 100 L 50 50 1 1 I
-X - 2 300 -50 100 R 50 50 1 1 O
-ENDDRAW
-ENDDEF
-#
-# VIbrador-rescue_StepDown
-#
-DEF VIbrador-rescue_StepDown U 0 40 Y Y 1 F N
-F0 "U" 0 0 50 H V C CNN
-F1 "VIbrador-rescue_StepDown" 0 -200 50 H V C CNN
-F2 "" 0 0 50 H I C CNN
-F3 "" 0 0 50 H I C CNN
-DRAW
-S -250 100 250 -400 0 1 0 N
-X IN+ 1 -200 50 200 L 50 50 1 1 I
-X OUT+ 2 200 50 200 R 50 50 1 1 I
-X IN- 3 -200 -350 200 L 50 50 1 1 I
-X OUT- 4 200 -350 200 R 50 50 1 1 I
-ENDDRAW
-ENDDEF
-#
 #End Library
