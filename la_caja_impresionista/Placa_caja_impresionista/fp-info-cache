@@ -1,4 +1,4 @@
-7966361579563
+9561312936968
 VibradorPCB
 HC-05
 
@@ -22,6 +22,13 @@ StepDown
 4
 VibradorPCB
 Switch_4_posiciones
+
+
+0
+12
+12
+VibradorPCB
+Ultrasonico
 
 
 0
