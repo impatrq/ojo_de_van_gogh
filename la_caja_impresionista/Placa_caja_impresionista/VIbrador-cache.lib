@@ -1,6 +1,23 @@
 EESchema-LIBRARY Version 2.4
 #encoding utf-8
 #
+# Resistors_R
+#
+DEF Resistors_R R 0 0 N Y 1 F N
+F0 "R" 80 0 50 V V C CNN
+F1 "Resistors_R" 0 0 50 V V C CNN
+F2 "" -70 0 50 V I C CNN
+F3 "" 0 0 50 H I C CNN
+$FPLIST
+ R_*
+$ENDFPLIST
+DRAW
+S -40 -100 40 100 0 1 10 N
+X ~ 1 0 150 50 D 50 50 1 1 P
+X ~ 2 0 -150 50 U 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
 # VIbrador-rescue_Arduino_Nano_v3.x-MCU_Module
 #
 DEF VIbrador-rescue_Arduino_Nano_v3.x-MCU_Module A 0 40 Y Y 1 F N
@@ -130,4 +147,47 @@ X GND 9 -300 -450 200 L 50 50 1 1 I
 ENDDRAW
 ENDDEF
 #
+<<<<<<< Updated upstream
+=======
+# VIbrador-rescue_Switch-4-posiciones
+#
+DEF VIbrador-rescue_Switch-4-posiciones U 0 40 Y Y 1 F N
+F0 "U" 50 -300 50 H V C CNN
+F1 "VIbrador-rescue_Switch-4-posiciones" -50 100 50 H V C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+DRAW
+S -500 200 400 -700 0 1 0 N
+X ~ 1 -500 0 100 L 50 50 1 1 I
+X ~ 10 400 -400 100 R 50 50 1 1 I
+X ~ 11 -500 -500 100 L 50 50 1 1 I
+X ~ 12 400 -500 100 R 50 50 1 1 I
+X ~ 2 400 0 100 R 50 50 1 1 I
+X ~ 3 -500 -100 100 L 50 50 1 1 I
+X ~ 4 400 -100 100 R 50 50 1 1 I
+X ~ 5 -500 -200 100 L 50 50 1 1 I
+X ~ 6 400 -200 100 R 50 50 1 1 I
+X ~ 7 -500 -300 100 L 50 50 1 1 I
+X ~ 8 400 -300 100 R 50 50 1 1 I
+X ~ 9 -500 -400 100 L 50 50 1 1 I
+ENDDRAW
+ENDDEF
+#
+# VIbrador-rescue_Ultrasonico
+#
+DEF VIbrador-rescue_Ultrasonico U 0 40 Y Y 1 F N
+F0 "U" 250 100 50 H V C CNN
+F1 "VIbrador-rescue_Ultrasonico" -50 100 50 H V C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+DRAW
+S -300 50 300 -250 0 1 0 N
+X VCC 1 -150 -250 100 D 50 50 1 1 I
+X TRIG 2 -50 -250 100 D 50 50 1 1 I
+X ECHO 3 50 -250 100 D 50 50 1 1 I
+X GND 4 150 -250 100 D 50 50 1 1 I
+ENDDRAW
+ENDDEF
+#
+>>>>>>> Stashed changes
 #End Library

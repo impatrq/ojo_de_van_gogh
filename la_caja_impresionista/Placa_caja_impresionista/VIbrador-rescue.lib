@@ -218,6 +218,7 @@ X OUT- 4 200 -350 200 R 50 50 1 1 I
 ENDDRAW
 ENDDEF
 #
+<<<<<<< Updated upstream
 # Switch_4_posiciones
 #
 DEF Switch_4_posiciones U 0 40 Y Y 1 F N
@@ -239,6 +240,45 @@ X ~ 6 450 -450 100 R 50 50 1 1 I
 X ~ 7 -350 -600 100 L 50 50 1 1 I
 X ~ 8 450 -600 100 R 50 50 1 1 I
 X ~ 9 -350 -750 100 L 50 50 1 1 I
+=======
+# Switch-4-posiciones
+#
+DEF Switch-4-posiciones U 0 40 Y Y 1 F N
+F0 "U" 50 -300 50 H V C CNN
+F1 "Switch-4-posiciones" -50 100 50 H V C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+DRAW
+S -500 200 400 -700 0 1 0 N
+X ~ 1 -500 0 100 L 50 50 1 1 I
+X ~ 10 400 -400 100 R 50 50 1 1 I
+X ~ 11 -500 -500 100 L 50 50 1 1 I
+X ~ 12 400 -500 100 R 50 50 1 1 I
+X ~ 2 400 0 100 R 50 50 1 1 I
+X ~ 3 -500 -100 100 L 50 50 1 1 I
+X ~ 4 400 -100 100 R 50 50 1 1 I
+X ~ 5 -500 -200 100 L 50 50 1 1 I
+X ~ 6 400 -200 100 R 50 50 1 1 I
+X ~ 7 -500 -300 100 L 50 50 1 1 I
+X ~ 8 400 -300 100 R 50 50 1 1 I
+X ~ 9 -500 -400 100 L 50 50 1 1 I
+ENDDRAW
+ENDDEF
+#
+# Ultrasonico
+#
+DEF Ultrasonico U 0 40 Y Y 1 F N
+F0 "U" 250 100 50 H V C CNN
+F1 "Ultrasonico" -50 100 50 H V C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+DRAW
+S -300 50 300 -250 0 1 0 N
+X VCC 1 -150 -250 100 D 50 50 1 1 I
+X TRIG 2 -50 -250 100 D 50 50 1 1 I
+X ECHO 3 50 -250 100 D 50 50 1 1 I
+X GND 4 150 -250 100 D 50 50 1 1 I
+>>>>>>> Stashed changes
 ENDDRAW
 ENDDEF
 #
