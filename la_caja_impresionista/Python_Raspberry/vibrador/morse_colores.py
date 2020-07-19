@@ -32,73 +32,73 @@ class morse_colores:
     # Se definen las vibraciones de los distintos colores,
     # segun tabla de referencia
     def blanco(self):
-        punto()
-        punto()
-        punto()
-        punto()
+        self.punto()
+        self.punto()
+        self.punto()
+        self.punto()
 
     def rojo(self):
-        punto()
-        punto()
-        punto()
-        linea()
+        self.punto()
+        self.punto()
+        self.punto()
+        self.linea()
 
     def marron(self):
-        punto()
-        punto()
-        linea()
-        punto()
+        self.punto()
+        self.punto()
+        self.linea()
+        self.punto()
 
     def naranja(self):
-        punto()
-        punto()
-        linea()
-        linea()
+        self.punto()
+        self.punto()
+        self.linea()
+        self.linea()
 
     def amarillo(self):
-        punto()
-        linea()
-        punto()
-        punto()
+        self.punto()
+        self.linea()
+        self.punto()
+        self.punto()
 
     def verde(self):
-        punto()
-        linea()
-        punto()
-        linea()
+        self.punto()
+        self.linea()
+        self.punto()
+        self.linea()
 
     def cyan(self):
-        punto()
-        linea()
-        linea()
-        punto()
+        self.punto()
+        self.linea()
+        self.linea()
+        self.punto()
 
     def azul(self):
-        punto()
-        linea()
-        linea()
-        linea()
+        self.punto()
+        self.linea()
+        self.linea()
+        self.linea()
 
     def violeta(self):
-        linea()
-        punto()
-        punto()
-        punto()
+        self.linea()
+        self.punto()
+        self.punto()
+        self.punto()
 
     def rosa(self):
-        linea()
-        punto()
-        punto()
-        linea()
+        self.linea()
+        self.punto()
+        self.punto()
+        self.linea()
 
     def gris(self):
-        linea()
-        punto()
-        linea()
-        punto()
+        self.linea()
+        self.punto()
+        self.linea()
+        self.punto()
 
     def negro(self):
-        linea()
-        linea()
-        linea()
-        linea()
+        self.linea()
+        self.linea()
+        self.linea()
+        self.linea()
