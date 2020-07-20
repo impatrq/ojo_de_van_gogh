@@ -88,6 +88,51 @@ X D6 9 -500 0 100 R 50 50 1 1 B
 ENDDRAW
 ENDDEF
 #
+# Arduino_Nano_v3.x-MCU_Module-VIbrador-rescue
+#
+DEF Arduino_Nano_v3.x-MCU_Module-VIbrador-rescue A 0 40 Y Y 1 F N
+F0 "A" -200 1025 50 H V R CNN
+F1 "Arduino_Nano_v3.x-MCU_Module-VIbrador-rescue" -200 950 50 H V R CNN
+F2 "Module:Arduino_Nano" 150 -950 50 H I L CNN
+F3 "" 0 -1000 50 H I C CNN
+$FPLIST
+ Arduino*Nano*
+$ENDFPLIST
+DRAW
+S -400 900 400 -900 0 1 10 f
+X D1/TX 1 -500 500 100 R 50 50 1 1 B
+X D7 10 -500 -100 100 R 50 50 1 1 B
+X D8 11 -500 -200 100 R 50 50 1 1 B
+X D9 12 -500 -300 100 R 50 50 1 1 B
+X D10 13 -500 -400 100 R 50 50 1 1 B
+X D11 14 -500 -500 100 R 50 50 1 1 B
+X D12 15 -500 -600 100 R 50 50 1 1 B
+X D13 16 -500 -700 100 R 50 50 1 1 B
+X 3V3 17 100 1000 100 D 50 50 1 1 w
+X AREF 18 500 200 100 L 50 50 1 1 I
+X A0 19 500 0 100 L 50 50 1 1 B
+X D0/RX 2 -500 600 100 R 50 50 1 1 B
+X A1 20 500 -100 100 L 50 50 1 1 B
+X A2 21 500 -200 100 L 50 50 1 1 B
+X A3 22 500 -300 100 L 50 50 1 1 B
+X A4 23 500 -400 100 L 50 50 1 1 B
+X A5 24 500 -500 100 L 50 50 1 1 B
+X A6 25 500 -600 100 L 50 50 1 1 B
+X A7 26 500 -700 100 L 50 50 1 1 B
+X +5V 27 200 1000 100 D 50 50 1 1 w
+X RESET 28 500 600 100 L 50 50 1 1 I
+X GND 29 100 -1000 100 U 50 50 1 1 W
+X RESET 3 500 500 100 L 50 50 1 1 I
+X VIN 30 -100 1000 100 D 50 50 1 1 W
+X GND 4 0 -1000 100 U 50 50 1 1 W
+X D2 5 -500 400 100 R 50 50 1 1 B
+X D3 6 -500 300 100 R 50 50 1 1 B
+X D4 7 -500 200 100 R 50 50 1 1 B
+X D5 8 -500 100 100 R 50 50 1 1 B
+X D6 9 -500 0 100 R 50 50 1 1 B
+ENDDRAW
+ENDDEF
+#
 # Buzzer-Modulos-VIbrador-rescue
 #
 DEF Buzzer-Modulos-VIbrador-rescue U 0 40 Y Y 1 F N
@@ -186,6 +231,23 @@ X - 2 300 -50 100 R 50 50 1 1 O
 ENDDRAW
 ENDDEF
 #
+# R-Resistors
+#
+DEF R-Resistors R 0 0 N Y 1 F N
+F0 "R" 80 0 50 V V C CNN
+F1 "R-Resistors" 0 0 50 V V C CNN
+F2 "" -70 0 50 V I C CNN
+F3 "" 0 0 50 H I C CNN
+$FPLIST
+ R_*
+$ENDFPLIST
+DRAW
+S -40 -100 40 100 0 1 10 N
+X ~ 1 0 150 50 D 50 50 1 1 P
+X ~ 2 0 -150 50 U 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
 # Sensor_distancia
 #
 DEF Sensor_distancia U 0 40 Y Y 1 F N
@@ -218,34 +280,11 @@ X OUT- 4 200 -350 200 R 50 50 1 1 I
 ENDDRAW
 ENDDEF
 #
-<<<<<<< Updated upstream
-# Switch_4_posiciones
+# Switch-4-posiciones-VIbrador-rescue
 #
-DEF Switch_4_posiciones U 0 40 Y Y 1 F N
-F0 "U" 0 -100 50 H V C CNN
-F1 "Switch_4_posiciones" 50 -200 50 H V C CNN
-F2 "" 0 0 50 H I C CNN
-F3 "" 0 0 50 H I C CNN
-DRAW
-S -400 0 500 -1000 0 1 0 N
-X ~ 1 -350 -100 100 L 50 50 1 1 I
-X ~ 10 450 -750 100 R 50 50 1 1 I
-X ~ 11 -350 -900 100 L 50 50 1 1 I
-X ~ 12 450 -900 100 R 50 50 1 1 I
-X ~ 2 450 -100 100 R 50 50 1 1 I
-X ~ 3 -350 -300 100 L 50 50 1 1 I
-X ~ 4 450 -300 100 R 50 50 1 1 I
-X ~ 5 -350 -450 100 L 50 50 1 1 I
-X ~ 6 450 -450 100 R 50 50 1 1 I
-X ~ 7 -350 -600 100 L 50 50 1 1 I
-X ~ 8 450 -600 100 R 50 50 1 1 I
-X ~ 9 -350 -750 100 L 50 50 1 1 I
-=======
-# Switch-4-posiciones
-#
-DEF Switch-4-posiciones U 0 40 Y Y 1 F N
+DEF Switch-4-posiciones-VIbrador-rescue U 0 40 Y Y 1 F N
 F0 "U" 50 -300 50 H V C CNN
-F1 "Switch-4-posiciones" -50 100 50 H V C CNN
+F1 "Switch-4-posiciones-VIbrador-rescue" -50 100 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 DRAW
@@ -265,11 +304,11 @@ X ~ 9 -500 -400 100 L 50 50 1 1 I
 ENDDRAW
 ENDDEF
 #
-# Ultrasonico
+# Ultrasonico-VIbrador-rescue
 #
-DEF Ultrasonico U 0 40 Y Y 1 F N
+DEF Ultrasonico-VIbrador-rescue U 0 40 Y Y 1 F N
 F0 "U" 250 100 50 H V C CNN
-F1 "Ultrasonico" -50 100 50 H V C CNN
+F1 "Ultrasonico-VIbrador-rescue" -50 100 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 DRAW
@@ -278,7 +317,6 @@ X VCC 1 -150 -250 100 D 50 50 1 1 I
 X TRIG 2 -50 -250 100 D 50 50 1 1 I
 X ECHO 3 50 -250 100 D 50 50 1 1 I
 X GND 4 150 -250 100 D 50 50 1 1 I
->>>>>>> Stashed changes
 ENDDRAW
 ENDDEF
 #
