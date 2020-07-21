@@ -17,17 +17,17 @@ class texto_to_audio:
 
         # Se crea un archivo txt que tiene la variable texto
         with open('texto_a_traducir.txt', 'w') as f:
-                    f.write(self.texto)
+            f.write(self.texto)
 
-                # Se lee el archivo creado
-                with open('texto_a_traducir.txt') as f:
-                    lines = f.read()
+        # Se lee el archivo creado
+        with open('texto_a_traducir.txt') as f:
+            lines = f.read()
 
-                    # se convierte ese archivo a audio
-                    output = gTTS(text = lines, lang = 'es', slow = False)
+            # se convierte ese archivo a audio
+            output = gTTS(text=lines, lang='es', slow=False)
 
-                    # Se guarda el audio como mp3
-                    output.save('texto.mp3')
+            # Se guarda el audio como mp3
+            output.save('texto.mp3')
 
-                # Se reproduce el audio
-                os.system('mpg321 texto.mp3 &')
+        # Se reproduce el audio
+        os.system('texto.mp3 &')
