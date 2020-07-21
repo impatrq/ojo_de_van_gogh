@@ -26,8 +26,6 @@ F 3 "" H 5750 4100 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	5350 6050 5250 6050
-Text GLabel 5450 5400 1    50   Input Italic 0
-OUT-
 Wire Wire Line
 	5250 5850 5350 5850
 Text GLabel 5800 4800 3    50   Input ~ 0
@@ -389,7 +387,7 @@ Text GLabel 1800 5850 0    50   Input ~ 0
 GPIO6
 Text GLabel 1800 6050 0    50   Input ~ 0
 SWITCH-4P
-Text GLabel 1800 5950 0    50   Input ~ 0
+Text GLabel 3800 4650 2    50   Input ~ 0
 SWITCH-10P
 Wire Wire Line
 	2500 5750 2300 5750
@@ -530,4 +528,14 @@ Wire Wire Line
 	2300 4900 1800 4900
 Text GLabel 7250 1500 1    50   Input ~ 0
 SWITCH-4P
+Text GLabel 5450 5400 1    50   Input ~ 0
+OUT-
+Wire Wire Line
+	3800 4650 3750 4650
+Wire Wire Line
+	3750 4650 3750 4700
+Wire Wire Line
+	3750 4700 3400 4700
+Wire Wire Line
+	3400 4700 3400 4650
 $EndSCHEMATC
