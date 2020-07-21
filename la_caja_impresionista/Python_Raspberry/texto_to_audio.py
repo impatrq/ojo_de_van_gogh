@@ -1,6 +1,7 @@
 import os
 import io
 from gtts import gTTS
+from textblob import TextBlob
 
 # Se crea el metodo y se declara la variable
 
@@ -14,6 +15,12 @@ class texto_to_audio:
     # Se crea la funcion que pasa de texto a audio
     def audio(self, texto):
         self.texto = texto
+
+        # Se corrobora que idioma es, si el idioma es distinto a español se traduce, sino sigue
+        traduction = TextBlob(self.texto)
+        idioma = str(traduction.detect_language())
+        if idioma != 'es':
+            self.texto = str(traduction.translate(to='es'))
 
         # Se crea un archivo txt que tiene la variable texto
         with open('texto_a_traducir.txt', 'w') as f:
