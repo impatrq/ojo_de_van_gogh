@@ -1,11 +1,11 @@
 EESchema-LIBRARY Version 2.4
 #encoding utf-8
 #
-# VIbrador-rescue_Arduino_Nano_v3.x-MCU_Module
+# VIbrador-rescue_Arduino_Nano_v3.x-MCU_Module-VIbrador-rescue
 #
-DEF VIbrador-rescue_Arduino_Nano_v3.x-MCU_Module A 0 40 Y Y 1 F N
+DEF VIbrador-rescue_Arduino_Nano_v3.x-MCU_Module-VIbrador-rescue A 0 40 Y Y 1 F N
 F0 "A" -200 1025 50 H V R CNN
-F1 "VIbrador-rescue_Arduino_Nano_v3.x-MCU_Module" -200 950 50 H V R CNN
+F1 "VIbrador-rescue_Arduino_Nano_v3.x-MCU_Module-VIbrador-rescue" -200 950 50 H V R CNN
 F2 "Module:Arduino_Nano" 150 -950 50 H I L CNN
 F3 "" 0 -1000 50 H I C CNN
 $FPLIST
@@ -130,33 +130,60 @@ X GND 9 -300 -450 200 L 50 50 1 1 I
 ENDDRAW
 ENDDEF
 #
-# VIbrador-rescue_Pila3,7V-Modulos-VIbrador-rescue
+# VIbrador-rescue_R-Resistors
 #
-DEF VIbrador-rescue_Pila3,7V-Modulos-VIbrador-rescue U 0 40 Y Y 1 F N
-F0 "U" 200 0 50 H V C CNN
-F1 "VIbrador-rescue_Pila3,7V-Modulos-VIbrador-rescue" 0 0 50 H V C CNN
-F2 "" 0 0 50 H I C CNN
+DEF VIbrador-rescue_R-Resistors R 0 0 N Y 1 F N
+F0 "R" 80 0 50 V V C CNN
+F1 "VIbrador-rescue_R-Resistors" 0 0 50 V V C CNN
+F2 "" -70 0 50 V I C CNN
 F3 "" 0 0 50 H I C CNN
+$FPLIST
+ R_*
+$ENDFPLIST
 DRAW
-S -200 50 300 -100 0 1 0 N
-X + 1 -200 -50 100 L 50 50 1 1 I
-X - 2 300 -50 100 R 50 50 1 1 O
+S -40 -100 40 100 0 1 10 N
+X ~ 1 0 150 50 D 50 50 1 1 P
+X ~ 2 0 -150 50 U 50 50 1 1 P
 ENDDRAW
 ENDDEF
 #
-# VIbrador-rescue_StepDown
+# VIbrador-rescue_Switch-4-posiciones-VIbrador-rescue
 #
-DEF VIbrador-rescue_StepDown U 0 40 Y Y 1 F N
-F0 "U" 0 0 50 H V C CNN
-F1 "VIbrador-rescue_StepDown" 0 -200 50 H V C CNN
+DEF VIbrador-rescue_Switch-4-posiciones-VIbrador-rescue U 0 40 Y Y 1 F N
+F0 "U" 50 -300 50 H V C CNN
+F1 "VIbrador-rescue_Switch-4-posiciones-VIbrador-rescue" -50 100 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 DRAW
-S -250 100 250 -400 0 1 0 N
-X IN+ 1 -200 50 200 L 50 50 1 1 I
-X OUT+ 2 200 50 200 R 50 50 1 1 I
-X IN- 3 -200 -350 200 L 50 50 1 1 I
-X OUT- 4 200 -350 200 R 50 50 1 1 I
+S -500 200 400 -700 0 1 0 N
+X ~ 1 -500 0 100 L 50 50 1 1 I
+X ~ 10 400 -400 100 R 50 50 1 1 I
+X ~ 11 -500 -500 100 L 50 50 1 1 I
+X ~ 12 400 -500 100 R 50 50 1 1 I
+X ~ 2 400 0 100 R 50 50 1 1 I
+X ~ 3 -500 -100 100 L 50 50 1 1 I
+X ~ 4 400 -100 100 R 50 50 1 1 I
+X ~ 5 -500 -200 100 L 50 50 1 1 I
+X ~ 6 400 -200 100 R 50 50 1 1 I
+X ~ 7 -500 -300 100 L 50 50 1 1 I
+X ~ 8 400 -300 100 R 50 50 1 1 I
+X ~ 9 -500 -400 100 L 50 50 1 1 I
+ENDDRAW
+ENDDEF
+#
+# VIbrador-rescue_Ultrasonico-VIbrador-rescue
+#
+DEF VIbrador-rescue_Ultrasonico-VIbrador-rescue U 0 40 Y Y 1 F N
+F0 "U" 250 100 50 H V C CNN
+F1 "VIbrador-rescue_Ultrasonico-VIbrador-rescue" -50 100 50 H V C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+DRAW
+S -300 50 300 -250 0 1 0 N
+X VCC 1 -150 -250 100 D 50 50 1 1 I
+X TRIG 2 -50 -250 100 D 50 50 1 1 I
+X ECHO 3 50 -250 100 D 50 50 1 1 I
+X GND 4 150 -250 100 D 50 50 1 1 I
 ENDDRAW
 ENDDEF
 #
