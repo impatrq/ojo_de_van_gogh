@@ -274,6 +274,11 @@
       (net 63 OUT+))
     (pad 1 thru_hole circle (at 6.37 -2.72 180) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 4 "Net-(U4-Pad1)"))
+    (model C:/Users/matia/Desktop/HC-SERIES.stp
+      (offset (xyz 0 1.5 -5.5))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 90 0 -90))
+    )
   )
 
   (module Module:Raspberry_Pi_Zero_Socketed_THT_FaceDown_MountingHoles (layer F.Cu) (tedit 5C6350CC) (tstamp 5E96256F)
@@ -468,10 +473,10 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-    (model C:/Users/matia/Downloads/ADA3708--3DModel-STEP-56544.STEP
-      (offset (xyz 9.5 -24.5 -2))
-      (scale (xyz 1 1 1))
-      (rotate (xyz -90 180 -90))
+    (model "C:/Users/matia/Desktop/3D_model/Nueva carpeta/rasp.step"
+      (offset (xyz 25.5 8.5 -1.5))
+      (scale (xyz 1 1 1.1001))
+      (rotate (xyz 0 180 -90))
     )
   )
 
@@ -580,6 +585,11 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
+    (model C:/Users/matia/Downloads/arduinoNano.STEP
+      (offset (xyz 15 0 -4))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 90 0 90))
+    )
   )
 
   (module VibradorPCB:Vibrador (layer F.Cu) (tedit 5E913C69) (tstamp 5E962879)
@@ -613,6 +623,11 @@
       (net 1 D9))
     (pad 2 thru_hole circle (at 1.27 17.5 270) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 64 IN-))
+    (model C:/Users/matia/Desktop/3D_model/TMB12A05.step
+      (offset (xyz -3.5 0 -1))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 180 0 -90))
+    )
   )
 
   (module VibradorPCB:Vibrador (layer F.Cu) (tedit 5E913C69) (tstamp 5E962834)
@@ -646,6 +661,11 @@
       (net 64 IN-))
     (pad 1 thru_hole circle (at -1.27 17.5 90) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 1 D9))
+    (model C:/Users/matia/Desktop/3D_model/TMB12A05.step
+      (offset (xyz -3.5 0 -1.5))
+      (scale (xyz 1 1 1))
+      (rotate (xyz -180 0 -90))
+    )
   )
 
   (module VibradorPCB:StepDown (layer F.Cu) (tedit 5E94A8B9) (tstamp 5E962805)
@@ -670,6 +690,11 @@
       (net 64 IN-))
     (pad 4 thru_hole rect (at 7.62 10.16 90) (size 2.524 1.524) (drill 0.762) (layers *.Cu *.Mask)
       (net 64 IN-))
+    (model C:/Users/matia/Desktop/3D_model/mini360.step
+      (offset (xyz 9 -11.5 -0.5))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 90 0 -90))
+    )
   )
 
   (module "VibradorPCB:Pila de Litio" (layer F.Cu) (tedit 5E95E7DF) (tstamp 5E9627E3)
@@ -691,6 +716,11 @@
       (net 67 "Net-(U1-Pad1)"))
     (pad 2 thru_hole circle (at 0 0 270) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 64 IN-))
+    (model C:/Users/matia/Desktop/3D_model/18650_Single_Cell_Holder.STEP
+      (offset (xyz 0 38.5 -0.5))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 90 0 -90))
+    )
   )
 
   (module "VibradorPCB:Pila de Litio" (layer F.Cu) (tedit 5E95E7DF) (tstamp 5E9627C2)
@@ -712,6 +742,11 @@
       (net 67 "Net-(U1-Pad1)"))
     (pad 1 thru_hole circle (at 0 -78 90) (size 1.7 1.7) (drill 1) (layers *.Cu *.Mask)
       (net 62 IN+))
+    (model C:/Users/matia/Desktop/3D_model/18650_Single_Cell_Holder.STEP
+      (offset (xyz 0 38 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 90 0 -90))
+    )
   )
 
   (gr_line (start 105.41 135.9408) (end 106.426 138.5824) (layer F.SilkS) (width 0.15) (tstamp 5E96279A))

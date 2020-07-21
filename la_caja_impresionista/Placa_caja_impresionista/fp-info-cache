@@ -1,4 +1,151 @@
-174861169921181
+208236923018135
+Raspberry
+A20_OLINUXINO_LIME2
+A20 Olinuxino LIME2, 1.2GHz, 512-1024MB RAM, Micro-SD, NAND or eMMC, 1000Mbit Ethernet
+A20 Olimex Olinuxino LIME2 development board
+0
+180
+180
+Raspberry
+Adafruit_HUZZAH_ESP8266_breakout
+32-bit microcontroller module with WiFi, https://www.adafruit.com/product/2471
+ESP8266 WiFi microcontroller
+0
+20
+20
+Raspberry
+Adafruit_HUZZAH_ESP8266_breakout_WithMountingHoles
+32-bit microcontroller module with WiFi, https://www.adafruit.com/product/2471
+ESP8266 WiFi microcontroller
+0
+20
+20
+Raspberry
+Arduino_Nano
+Arduino Nano, http://www.mouser.com/pdfdocs/Gravitech_Arduino_Nano3_0.pdf
+Arduino Nano
+0
+30
+30
+Raspberry
+Arduino_Nano_WithMountingHoles
+Arduino Nano, http://www.mouser.com/pdfdocs/Gravitech_Arduino_Nano3_0.pdf
+Arduino Nano
+0
+30
+30
+Raspberry
+Arduino_UNO_R2
+Arduino UNO R2, http://www.mouser.com/pdfdocs/Gravitech_Arduino_Nano3_0.pdf
+Arduino UNO R2
+0
+30
+30
+Raspberry
+Arduino_UNO_R2_WithMountingHoles
+Arduino UNO R2, http://www.mouser.com/pdfdocs/Gravitech_Arduino_Nano3_0.pdf
+Arduino UNO R2
+0
+30
+30
+Raspberry
+Arduino_UNO_R3
+Arduino UNO R3, http://www.mouser.com/pdfdocs/Gravitech_Arduino_Nano3_0.pdf
+Arduino UNO R3
+0
+32
+32
+Raspberry
+Arduino_UNO_R3_WithMountingHoles
+Arduino UNO R3, http://www.mouser.com/pdfdocs/Gravitech_Arduino_Nano3_0.pdf
+Arduino UNO R3
+0
+32
+32
+Raspberry
+BeagleBoard_PocketBeagle
+PocketBeagle, https://github.com/beagleboard/pocketbeagle/wiki/System-Reference-Manual#71_Expansion_Header_Connectors
+PocketBeagle
+0
+72
+72
+Raspberry
+Maple_Mini
+Maple Mini, http://docs.leaflabs.com/static.leaflabs.com/pub/leaflabs/maple-docs/0.0.12/hardware/maple-mini.html
+Maple Mini
+0
+40
+40
+Raspberry
+Onion_Omega2+
+https://onion.io/omega2/
+Omega Onion module
+0
+32
+32
+Raspberry
+Onion_Omega2S
+https://github.com/OnionIoT/Omega2/raw/master/Documents/Omega2S%20Datasheet.pdf
+onion omega module
+0
+89
+64
+Raspberry
+Pololu_Breakout-16_15.2x20.3mm
+Pololu Breakout 16-pin 15.2x20.3mm 0.6x0.8\
+Pololu Breakout
+0
+16
+16
+Raspberry
+Raspberry_Pi_Zero_Socketed_THT_FaceDown_MountingHoles
+Raspberry Pi Zero using through hole straight pin socket, 2x20, 2.54mm pitch, https://www.raspberrypi.org/documentation/hardware/raspberrypi/mechanical/rpi_MECH_Zero_1p2.pdf
+raspberry pi zero through hole
+0
+40
+40
+Raspberry
+ST_Morpho_Connector_144_STLink
+ST Morpho Connector 144 With STLink
+ST Morpho Connector 144 STLink
+0
+148
+148
+Raspberry
+ST_Morpho_Connector_144_STLink_MountingHoles
+ST Morpho Connector 144 With STLink
+ST Morpho Connector 144 STLink
+0
+148
+148
+Raspberry
+Texas_EUK_R-PDSS-T7_THT
+Texas Instruments EUK 7 Pin Double Sided Module
+module pcb
+0
+7
+7
+Raspberry
+Texas_EUS_R-PDSS-T5_THT
+Texas Instruments EUS 5 Pin Double Sided Module
+module pcb
+0
+5
+5
+Raspberry
+Texas_EUW_R-PDSS-T7_THT
+Texas Instruments EUW 7 Pin Double Sided Module
+module pcb
+0
+7
+7
+Raspberry
+WEMOS_D1_mini_light
+16-pin module, column spacing 22.86 mm (900 mils), https://wiki.wemos.cc/products:d1:d1_mini, https://c1.staticflickr.com/1/734/31400410271_f278b087db_z.jpg
+ESP8266 WiFi microcontroller
+0
+16
+16
 VibradorPCB
 HC-05
 
