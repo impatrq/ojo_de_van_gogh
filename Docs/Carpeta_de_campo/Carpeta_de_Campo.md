@@ -338,6 +338,33 @@ En esta clase se han creados los metodos de
 - Leer texto y reproducirlo
 - Reconocer objetos y su ubicacion
 
-Nos hemos dado cuenta de varias variables y partes de codigo que no se usaban y las hemos borrado.
+Nos hemos dado cuenta de que muchas variables y partes de codigo que no se usaban y las hemos borrado.
 
 Hemos agregado para que cada valor nuevo en la tabla se reoorganice de menor a mayor y se actualicen los id 
+
+Se preparo la encuesta en google forms  para saber que piensan las personas sobre el proyecto.
+
+## Semana del 14/07 al 21/07
+
+Se ha realizado nuevamente el PCB, ya que hemos agregado el switch de 4 posiciones para que la persona elija una funcion del proyecto. Tambien se ha reemplazado las pilas de litio y regulador de tension y pusimos una entrada para un cargador portatil comun.
+
+Se ha investigado para agregar que se corrijan las palabras cuando se las reconoce mal pero con Textblob era muy irregular y decidimos no usarlo.
+
+Se paso el codigo de vibracion, realizado en arduino a python para controlar el buzzer con la Raspberry. Esto se realizo ya que si quisieramos que el arduino realice las vibraciones, se pierde tiempo para captar la señal que proviene del mindwave. Tambien se creo una funcion para que se pase de texto a audio
+
+Se realizo la encuesta y hemos sacado buenas conclusiones sobre los datos obtenidos a traves de las respuestas.
+
+## Semana del 21/07 al 28/07
+
+Semana de descanso por receso escolar de invierno
+
+## Semana del 28/07 al 04/08
+
+Hemos investigado sobre lo que seria nuestro cliente ideal y tareas que quiera realizar, observando los beneficios y miedos o frustraciones de realizar dicha tarea. Una vez realizado esto, hemos planteado sobre las situaciones que le dan alegria y tristeza al cliente y que ofrecemos nosotros como producto y servicio.
+
+Vamos a empezar a realizar entrevistas a personas con ceguera y hemos planteado como tienen que realizarse, lo que no hay que hacer y recomendaciones.
+
+Hemos encontrado una tabla con 865 colores con sus nombres, valores hexadecimales y valores R,G,B y hicimos un codigo con dicha tabla buscando el color en la tabla que tenga menos diferencia con el color buscado.
+
+## Semana del 04/08 al 11/08
+
