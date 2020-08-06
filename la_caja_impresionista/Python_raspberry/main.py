@@ -13,7 +13,9 @@ from google.cloud import vision
 from enum import Enum
 from gtts import gTTS
 from textblob import TextBlob
+from texto_to_audio import texto_to_audio
 
+reproductor_audio = texto_to_audio()
 
 
 class Opciones_usuario(Enum):
@@ -79,12 +81,12 @@ while True:
                 r = (df['r'][cont])
                 g = (df['g'][cont])
                 b = (df['b'][cont])
-                print(r, g, b)
+                reproductor_audio.audio(r, g, b)
         # Si los niveles de confianza son distantes se dice solo el mas confianble
         else:
-            print(df['r'][0])
-            print(df['g'][0])
-            print(df['b'][0])
+            reproductor_audio.audio(df['r'][0])
+            reproductor_audio.audio(df['g'][0])
+            reproductor_audio.audio(df['b'][0])
 
     elif(orden == b'@Opciones_usuario.detectar_color_y_matices'):
 
@@ -130,13 +132,13 @@ while True:
                 r = (df['r'][cont])
                 g = (df['g'][cont])
                 b = (df['b'][cont])
-                print(r, g, b)
+                reproductor_audio.audio(r, g, b)
 
         # Si los niveles de confianza son distantes se dice solo el mas confianble
         else:
-            print(df['r'][0])
-            print(df['g'][0])
-            print(df['b'][0])
+            reproductor_audio.audio(df['r'][0])
+            reproductor_audio.audio(df['g'][0])
+            reproductor_audio.audio(df['b'][0])
 
     elif(orden == b'@Opciones_usuario.leer_texto'):
 
@@ -171,7 +173,7 @@ while True:
                 ignore_index=True
             )
 
-        print(df['description'][0])
+        reproductor_audio.audio(df['description'][0])
 
         texto = (df['description'][0])
 
@@ -218,4 +220,4 @@ while True:
         detector_de_objeto.object_recognition(localized_object_annotations, df)
 
     else:
-        print("no se elegio ninguna opcion")
+        reproductor_audio.audio("no se elegio ninguna opcion")
