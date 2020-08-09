@@ -180,6 +180,7 @@ class GoogleVisionEngine:
                 # Se guarda el nombre del color con menor distancia al buscado
                 nombre_color = dataframe_colores.loc[i, "Principal_color"]
 
+        # Se reproduce el color por audio
         reproductor_audio.audio(nombre_color)
 
     def leer_texto(self,):
@@ -194,13 +195,12 @@ class GoogleVisionEngine:
             texts = response.text_annotations
 
         # Creamos el dataframe con el texto y el idioma
-        df_leer_texto = pd.DataFrame(columns=['locale', 'description'])
+        df_leer_texto = pd.DataFrame(columns=['description'])
 
-        # Por cada texto detectaco lo unimos al dataframe
+        # Por cada texto detectado lo unimos al dataframe
         for text in texts:
             df_leer_texto = df_leer_texto.append(
                 dict(
-                    locale=text.locale,
                     description=text.description
                 ),
                 ignore_index=True
@@ -208,24 +208,6 @@ class GoogleVisionEngine:
 
         # a la variable texto le metemos el contenido del texto
         texto = (df_leer_texto['description'][0])
-        texto_binario = TextBlob(texto)  # Pasamos el texto a binario
-        idioma = str(texto_binario.detect_language())  # Detectamos el idioma
-        if idioma != 'es':
-            # Si el idioma no es español lo traducimos
-            traducido = str(texto_binario.translate(to='es'))
 
-        with open('bread.txt', 'w') as f:
-            f.write(traducido)  # Creamos un txt con el texto
-
-        with open('bread.txt') as f:
-            lines = f.read()  # Leemos el contenido del texto que escribimos antes
-
-            # Configuramos el Asisnte de Voz de Google
-            # le decimos el texto el idioma y que vaya a velocidad normal
-            output = gTTS(text=lines, lang='es', slow=False)
-
-            # Guardamos el audio que creo el asistente de voz de google
-            output.save('texto.mp3')
-
-        # Llamamos a la funcion del sistema de reproducir el audio
-        os.system('mpg321 texto.mp3 &')
+        # Se reproduce el texto por audio
+        reproductor_audio.audio(texto)
