@@ -148,7 +148,7 @@ class GoogleVisionEngine:
                 b = (df_pixel_fraction['b'][cont])
 
                 # Llamamos a la funcion que hace el query para el nombre de color
-                self.rgb_to_name_query(dataframe_colores, r, g, b)
+                self.rgb_to_name(dataframe_colores, r, g, b)
         # Si solo hay uno confiable usamos ese y ya esta
         else:
             r = (df_pixel_fraction['r'][0])
