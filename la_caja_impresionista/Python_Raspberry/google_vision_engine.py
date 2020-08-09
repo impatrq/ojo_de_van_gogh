@@ -6,10 +6,6 @@ from gtts import gTTS
 from textblob import TextBlob
 from texto_to_audio import texto_to_audio
 
-#########################################
-#agregar que si el query no anda use hsv#
-#TO DO Agregar audio a reconocer objetos#
-#########################################
 
 reproductor_audio = texto_to_audio()
 
@@ -160,9 +156,9 @@ class GoogleVisionEngine:
             b = (df_pixel_fraction['b'][0])
 
             # Llamamos a la funcion que hace el query para el nombre de color
-            self.rgb_to_name_query(dataframe_colores, r, g, b)
+            self.rgb_to_name(dataframe_colores, r, g, b)
 
-    def rgb_to_name_query(self, dataframe_colores, R, G, B):
+    def rgb_to_name(self, dataframe_colores, R, G, B):
 
         # Guardamos la tabla de colores con nombres
         dataframe_colores = dataframe_colores
@@ -172,78 +168,19 @@ class GoogleVisionEngine:
         G = G
         B = B
 
-        # Como no se puede dividir por 0 le agregamos 0.1 si es
-        # 0 el valor que entra
+        # Se busca el color en la tabla con menos distancia del color que nos da la API
+        minimo = 1000
+        for i in range(len(dataframe_colores)):
+            # Se calcula la distancia minima con valores absolutos
+            distancia_color = abs(R - int(dataframe_colores.loc[i, "R"])) + abs(
+                G - int(dataframe_colores.loc[i, "G"])) + abs(B - int(dataframe_colores.loc[i, "B"]))
+            # Si la distancia del color es menor o igual se guarda como minimo
+            if(distancia_color <= minimo):
+                minimo = distancia_color
+                # Se guarda el nombre del color con menor distancia al buscado
+                nombre_color = dataframe_colores.loc[i, "Principal_color"]
 
-        if R == 0:
-            R += 0.1
-        if G == 0:
-            G += 0.1
-        if B == 0:
-            B += 0.1
-
-        # Nos fijamos los valores que entran su minimo y maximo
-        mx = max(R, G, B)
-        mn = min(R, G, B)
-
-        diferencia_min_max = mx - mn
-        # Si los tres valores son muy parecidos y son menores a 50
-        # Siempre da negro la combinacion
-        if mx <= 50 and diferencia_min_max <= 5:
-            reproductor_audio.audio("color: black")
-
-        # Si los tres valores son muy parecidos y son mayores a 230
-        # Siempre da blanco la combinacion
-        elif mn >= 230:
-            reproductor_audio.audio("color: blanco")
-
-        # Si no procedemos a el query
-        else:
-            dataframe_colores = dataframe_colores[[
-                'Principal_color', 'CSS_name', 'R', 'G', 'B']]  # Sacamos el valor de Hexagesimal
-
-            # Llamamos al metodo de busqueda binaria para buscar si un color en
-            # la tabla de R asi pedir ese valor
-            Resultado_busqueda_binaria = self.busqueda_binaria(
-                dataframe_colores, 0, len(dataframe_colores[['R']]), R)
-
-            dataframe_colores.query(
-                'R == @Resultado_busqueda_binaria', inplace=True)  # Query para ver Los colores con R parecido
-            dataframe_colores.query(
-                'G/@G <=1.5 and G/@G >=0.65 ', inplace=True)  # Query para ver Los colores con G parecido
-            dataframe_colores.query(
-                'B/@B <=1.5 and B/@B >=0.65 ', inplace=True)  # Query para ver Los colores con B parecido
-
-            # Si los query dan vacio porque no se encontro el color
-            if(dataframe_colores.empty == True):
-                reproductor_audio.audio(
-                    "no se encontro una opcion en la base de datos")
-
-                # Creamos una fila para el nuevo color que no sabemos el nombre
-                df_new_color = pd.DataFrame(
-                    columns=['Principal_color', 'CSS_name', 'R', 'G', 'B'])
-
-                # A la nueva fila le guardamos los valores del color nuevo
-                # Dejamos un mensaje que hay que clasificar el nombre
-                df_new_color = df_new_color.append(
-                    dict(
-                        Principal_color="Clasificar",
-                        CSS_name="Clasificar",
-                        R=int(R),
-                        G=int(G),
-                        B=int(B),
-                    ), ignore_index=True
-                )
-
-                # Al nuevo dataframe le agregamos el nuevo color
-                dataframe_actualizado = dataframe_actualizado.append(
-                    df_new_color, ignore_index=True)
-                # Ordenamos el nuevo color segun su valor en R porque
-                # lo requiere la busqeuda binaria
-                dataframe_actualizado = dataframe_actualizado.sort_values(
-                    ['R'], ascending=True)
-                # Exportamos la nueva tabla para qe reeemplace la vieja
-                dataframe_actualizado.to_csv('Tabla_colores.csv', index=False)
+        reproductor_audio.audio(nombre_color)
 
     def leer_texto(self,):
         client = vision.ImageAnnotatorClient()  # Creamos el cliente
@@ -292,28 +229,3 @@ class GoogleVisionEngine:
 
         # Llamamos a la funcion del sistema de reproducir el audio
         os.system('mpg321 texto.mp3 &')
-
-    # Metodo para reconocer el color por hsv
-    # cuando falla el query
-    def rgb_to_name_hsv(self, R, G, B):
-        pass
-
-    # Busqueda binaria para el query
-    def busqueda_binaria(self, dataframe, comienzo, final, objetivo):
-
-        # Este if permite que la recursividad no se vaya al infinito
-        if comienzo > final:
-            return False
-
-        medio = (comienzo + final) // 2  # Nos fijamos el medio de la tabla
-
-        if dataframe['R'][medio] <= objetivo * 1.5 and dataframe['R'][medio] >= objetivo * 0.65:
-            reproductor_audio.audio("objetivo")  # El valor fue encontrado
-            return objetivo
-
-        elif dataframe['R'][medio] < objetivo:
-            # Llammos a recursividad para seguir revisando la tabla mas abajo
-            return self.busqueda_binaria(dataframe, medio + 1, final, objetivo)
-        else:
-            # Llammos a recursividad para seguir revisando la tabla mas arriba
-            return self.busqueda_binaria(dataframe, comienzo, medio - 1, objetivo)
