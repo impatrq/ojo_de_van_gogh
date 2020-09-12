@@ -28,7 +28,7 @@ class Colors(GoogleVisionEngine):
                 {'type': vision.enums.Feature.Type.IMAGE_PROPERTIES}], }).image_properties_annotation
             dominant_colors = response.dominant_colors.colors  # Respuesta de colores
 
-            self.obtener_color(dominant_colors)
+            return(dominant_colors)
 
     def obtener_color(self, dominant_colors):
 
