@@ -2,11 +2,14 @@ import os
 import io
 import pandas as pd
 from google.cloud import vision
+
 from google_vision_engine import GoogleVisionEngine
 from texto_to_audio import texto_to_audio
+from morse_colores import morse_colores
 
 
 reproductor = texto_to_audio()
+vibracion = morse_colores(22)
 
 
 class Colors(GoogleVisionEngine):
@@ -106,3 +109,5 @@ class Colors(GoogleVisionEngine):
 
             # Se reproduce el color por audio
             reproductor.audio(nombre_color)
+            # Vibra de acuerdo al color
+            vibracion.color_to_sonido(nombre_color)
