@@ -4,15 +4,9 @@ import pandas as pd
 from google.cloud import vision
 
 from google_vision_engine import GoogleVisionEngine
-from texto_to_audio import texto_to_audio
-from morse_colores import morse_colores
 
 
-reproductor = texto_to_audio()
-vibracion = morse_colores(22)
-
-
-class Colors(GoogleVisionEngine):
+class ColorsManager(GoogleVisionEngine):
 
     def __init__(self, image_path, client, dataframe_colores):
 
@@ -29,17 +23,21 @@ class Colors(GoogleVisionEngine):
             # especifico optimizar la velocidad de respuesta
             response = self.client.annotate_image({'image': {'content': content}, 'features': [
                 {'type': vision.enums.Feature.Type.IMAGE_PROPERTIES}], }).image_properties_annotation
-            dominant_colors = response.dominant_colors.colors  # Respuesta de colores
+            respuesta_rgb_api = response.dominant_colors.colors  # Respuesta de colores
 
-            return(dominant_colors)
+            return(respuesta_rgb_api)
 
-    def obtener_color(self, dominant_colors):
+    def obtener_color(self, respuesta_rgb_api):
 
         # guardamos los valores de la api
-        dominant_colors = dominant_colors
+        respuesta_rgb_api = respuesta_rgb_api
+
+        # Creo dataframe para guardar los valores de la api
+        df_pixel_fraction = pd.DataFrame(
+            columns=['r', 'g', 'b', 'score', 'pixel_fraction'])
 
         # Ciclo for para analizar cada color que nos dio la respuesta
-        for color in dominant_colors:
+        for color in respuesta_rgb_api:
             df_pixel_fraction = df_pixel_fraction.append(
                 dict(
                     r=int(color.color.red),
@@ -69,45 +67,41 @@ class Colors(GoogleVisionEngine):
         if (dif < 0.10):
             cont = 0
             for cont in [0, 1]:
-                r = (df_pixel_fraction['r'][cont])
-                g = (df_pixel_fraction['g'][cont])
-                b = (df_pixel_fraction['b'][cont])
+                self.r = (df_pixel_fraction['r'][cont])
+                self.g = (df_pixel_fraction['g'][cont])
+                self.b = (df_pixel_fraction['b'][cont])
 
                 # Llamamos a la funcion que hace el query para el nombre de color
-                self.obtener_nombre_color(r, g, b)
+                self.obtener_nombre_color(self.r, self.g, self.b)
 
         # Si solo hay uno confiable usamos ese y ya esta
         else:
-            r = (df_pixel_fraction['r'][0])
-            g = (df_pixel_fraction['g'][0])
-            b = (df_pixel_fraction['b'][0])
+            self.r = (df_pixel_fraction['r'][0])
+            self.g = (df_pixel_fraction['g'][0])
+            self.b = (df_pixel_fraction['b'][0])
 
             # Llamamos a la funcion que hace el query para el nombre de color
-            self.obtener_nombre_color(r, g, b)
+            self.obtener_nombre_color(self.r, self.g, self.b)
 
-        def obtener_nombre_color(R, G, B):
+        def obtener_nombre_color(self, R, G, B):
 
             # Guardamos la tabla de colores con nombres
             dataframe_colores = self.dataframe_colores
 
             # Guardamos los valores de R,G,B
-            R = R
-            G = G
-            B = B
+            self.r = R
+            self.g = G
+            self.b = B
 
             # Se busca el color en la tabla con menos distancia del color que nos da la API
             minimo = 1000
             for i in range(len(dataframe_colores)):
                 # Se calcula la distancia minima con valores absolutos
-                distancia_color = abs(R - int(dataframe_colores.loc[i, "R"])) + abs(
-                    G - int(dataframe_colores.loc[i, "G"])) + abs(B - int(dataframe_colores.loc[i, "B"]))
+                distancia_color = abs(self.r - int(dataframe_colores.loc[i, "R"])) + abs(
+                    self.g - int(dataframe_colores.loc[i, "G"])) + abs(self.b - int(dataframe_colores.loc[i, "B"]))
                 # Si la distancia del color es menor o igual se guarda como minimo
                 if(distancia_color <= minimo):
                     minimo = distancia_color
                     # Se guarda el nombre del color con menor distancia al buscado
                     nombre_color = dataframe_colores.loc[i, "Principal_color"]
-
-            # Se reproduce el color por audio
-            reproductor.audio(nombre_color)
-            # Vibra de acuerdo al color
-            vibracion.color_to_sonido(nombre_color)
+                    return (nombre_color)
