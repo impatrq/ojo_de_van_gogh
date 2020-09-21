@@ -1,5 +1,3 @@
-import os
-import io
 import pandas as pd
 from google.cloud import vision
 
@@ -48,7 +46,7 @@ class ColorsManager(GoogleVisionEngine):
                 ),
                 ignore_index=True)
 
-        self.obtener_predominantes(df_pixel_fraction)
+        return(self.obtener_predominantes(df_pixel_fraction))
 
     def obtener_predominantes(self, df_pixel_fraction):
 
@@ -72,7 +70,7 @@ class ColorsManager(GoogleVisionEngine):
                 self.b = (df_pixel_fraction['b'][cont])
 
                 # Llamamos a la funcion que hace el query para el nombre de color
-                self.obtener_nombre_color(self.r, self.g, self.b)
+                return(self.obtener_nombre_color(self.r, self.g, self.b))
 
         # Si solo hay uno confiable usamos ese y ya esta
         else:
@@ -81,27 +79,27 @@ class ColorsManager(GoogleVisionEngine):
             self.b = (df_pixel_fraction['b'][0])
 
             # Llamamos a la funcion que hace el query para el nombre de color
-            self.obtener_nombre_color(self.r, self.g, self.b)
+            return(self.obtener_nombre_color(self.r, self.g, self.b))
 
-        def obtener_nombre_color(self, R, G, B):
+    def obtener_nombre_color(self, R, G, B):
 
-            # Guardamos la tabla de colores con nombres
-            dataframe_colores = self.dataframe_colores
+        # Guardamos la tabla de colores con nombres
+        dataframe_colores = self.dataframe_colores
 
-            # Guardamos los valores de R,G,B
-            self.r = R
-            self.g = G
-            self.b = B
+        # Guardamos los valores de R,G,B
+        self.r = R
+        self.g = G
+        self.b = B
 
-            # Se busca el color en la tabla con menos distancia del color que nos da la API
-            minimo = 1000
-            for i in range(len(dataframe_colores)):
-                # Se calcula la distancia minima con valores absolutos
-                distancia_color = abs(self.r - int(dataframe_colores.loc[i, "R"])) + abs(
-                    self.g - int(dataframe_colores.loc[i, "G"])) + abs(self.b - int(dataframe_colores.loc[i, "B"]))
-                # Si la distancia del color es menor o igual se guarda como minimo
-                if(distancia_color <= minimo):
-                    minimo = distancia_color
-                    # Se guarda el nombre del color con menor distancia al buscado
-                    nombre_color = dataframe_colores.loc[i, "Principal_color"]
-                    return (nombre_color)
+        # Se busca el color en la tabla con menos distancia del color que nos da la API
+        minimo = 1000
+        for i in range(len(dataframe_colores)):
+            # Se calcula la distancia minima con valores absolutos
+            distancia_color = abs(self.r - int(dataframe_colores.loc[i, "R"])) + abs(
+                self.g - int(dataframe_colores.loc[i, "G"])) + abs(self.b - int(dataframe_colores.loc[i, "B"]))
+            # Si la distancia del color es menor o igual se guarda como minimo
+            if(distancia_color <= minimo):
+                minimo = distancia_color
+                # Se guarda el nombre del color con menor distancia al buscado
+                nombre_color = dataframe_colores.loc[i, "Principal_color"]
+        return (nombre_color)
