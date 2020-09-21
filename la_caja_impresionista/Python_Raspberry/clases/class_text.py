@@ -1,4 +1,6 @@
 import pandas as pd
+from google.cloud import vision
+
 from google_vision_engine import GoogleVisionEngine
 
 
@@ -19,6 +21,9 @@ class TextManager(GoogleVisionEngine):
             return (respuesta_texto_api)
 
     def obtener_texto(self, respuesta_texto_api):
+
+        # Guardamos los valores de la api
+        respuesta_texto_api = respuesta_texto_api
 
         # Creamos el dataframe con el texto y el idioma
         df_leer_texto = pd.DataFrame(columns=['description'])
