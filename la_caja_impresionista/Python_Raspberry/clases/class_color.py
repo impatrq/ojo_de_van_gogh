@@ -58,19 +58,21 @@ class ColorsManager(GoogleVisionEngine):
         df_pixel_fraction = df_pixel_fraction.sort_values(
             ['score'], ascending=False).head(2)  # Agarramos valores de confiabilidad altos
 
+        # Reiniciamos el indice del dataframe
+        df_pixel_fraction = df_pixel_fraction.reset_index(drop=True)
+
         # Nos fijamos si el primer color y el segundo son ambos confiables
         dif = df_pixel_fraction['score'][0] - df_pixel_fraction['score'][1]
 
         # Si los dos colores son confaibles usamos los dos
         if (dif < 0.10):
-            cont = 0
             for cont in [0, 1]:
                 self.r = (df_pixel_fraction['r'][cont])
                 self.g = (df_pixel_fraction['g'][cont])
                 self.b = (df_pixel_fraction['b'][cont])
 
                 # Llamamos a la funcion que hace el query para el nombre de color
-                return(self.obtener_nombre_color(self.r, self.g, self.b))
+                yield(self.obtener_nombre_color(self.r, self.g, self.b))
 
         # Si solo hay uno confiable usamos ese y ya esta
         else:
@@ -79,7 +81,7 @@ class ColorsManager(GoogleVisionEngine):
             self.b = (df_pixel_fraction['b'][0])
 
             # Llamamos a la funcion que hace el query para el nombre de color
-            return(self.obtener_nombre_color(self.r, self.g, self.b))
+            yield(self.obtener_nombre_color(self.r, self.g, self.b))
 
     def obtener_nombre_color(self, R, G, B):
 
