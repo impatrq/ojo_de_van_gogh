@@ -6,7 +6,7 @@ from google_vision_engine import GoogleVisionEngine
 
 class TextManager(GoogleVisionEngine):
 
-    def llamar_respuesta_texto(self,):
+    def get_response_api(self, ):
 
         # Se lee la imagen
         with open(self.image_path, 'rb') as image:
@@ -20,7 +20,7 @@ class TextManager(GoogleVisionEngine):
             respuesta_texto_api = response.text_annotations
             return (respuesta_texto_api)
 
-    def obtener_texto(self, respuesta_texto_api):
+    def get_text(self, respuesta_texto_api):
 
         # Guardamos los valores de la api
         respuesta_texto_api = respuesta_texto_api
