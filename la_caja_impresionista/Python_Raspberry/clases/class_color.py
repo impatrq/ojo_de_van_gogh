@@ -12,7 +12,7 @@ class ColorsManager(GoogleVisionEngine):
         super().__init__(image_path, client)
         self.dataframe_colores = dataframe_colores
 
-    def llamar_api(self, ):
+    def get_response_api(self, ):
 
         # Leo la imagen
         with open(self.image_path, 'rb') as image:
@@ -25,7 +25,7 @@ class ColorsManager(GoogleVisionEngine):
 
             return(respuesta_rgb_api)
 
-    def obtener_color(self, respuesta_rgb_api):
+    def get_color(self, respuesta_rgb_api):
 
         # guardamos los valores de la api
         respuesta_rgb_api = respuesta_rgb_api
@@ -46,9 +46,9 @@ class ColorsManager(GoogleVisionEngine):
                 ),
                 ignore_index=True)
 
-        return(self.obtener_predominantes(df_pixel_fraction))
+        return(self.get_predominant_colors(df_pixel_fraction))
 
-    def obtener_predominantes(self, df_pixel_fraction):
+    def get_predominant_colors(self, df_pixel_fraction):
 
         # leo el dataframe con todos los valores
         df_pixel_fraction = df_pixel_fraction
@@ -72,7 +72,7 @@ class ColorsManager(GoogleVisionEngine):
                 self.b = (df_pixel_fraction['b'][cont])
 
                 # Llamamos a la funcion que hace el query para el nombre de color
-                yield(self.obtener_nombre_color(self.r, self.g, self.b))
+                yield(self.get_color_name(self.r, self.g, self.b))
 
         # Si solo hay uno confiable usamos ese y ya esta
         else:
@@ -81,9 +81,9 @@ class ColorsManager(GoogleVisionEngine):
             self.b = (df_pixel_fraction['b'][0])
 
             # Llamamos a la funcion que hace el query para el nombre de color
-            yield(self.obtener_nombre_color(self.r, self.g, self.b))
+            yield(self.get_color_name(self.r, self.g, self.b))
 
-    def obtener_nombre_color(self, R, G, B):
+    def get_color_name(self, R, G, B):
 
         # Guardamos la tabla de colores con nombres
         dataframe_colores = self.dataframe_colores
@@ -104,4 +104,6 @@ class ColorsManager(GoogleVisionEngine):
                 minimo = distancia_color
                 # Se guarda el nombre del color con menor distancia al buscado
                 nombre_color = dataframe_colores.loc[i, "Principal_color"]
+
+        # Se devuelve el nombre del color
         return (nombre_color)
