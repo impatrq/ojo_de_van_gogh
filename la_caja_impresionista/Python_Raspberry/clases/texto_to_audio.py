@@ -3,7 +3,7 @@ from gtts import gTTS
 from textblob import TextBlob
 
 
-class texto_to_audio:
+class TextoToAudio:
 
     def __init__(self, content):
         # Se guarda el contenido

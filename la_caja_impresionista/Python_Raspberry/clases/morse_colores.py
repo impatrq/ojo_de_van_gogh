@@ -2,7 +2,7 @@ import RPi.GPIO as GPIO
 import time
 
 
-class morse_colores:
+class MorseColores:
 
     # Se crea el metodo que pide el pin en el que saldra la vibracion
     def __init__(self, pin_buzzer):
