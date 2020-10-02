@@ -12,10 +12,11 @@ import RPi.GPIO as GPIO
 from google.cloud import vision
 
 # Clases
-from Python_Raspberry.clases.colors_manager import ColorsManager
 from Python_Raspberry.clases.text_manager import TextManager
-from Python_Raspberry.clases.object_manager import ObjectManager
+from Python_Raspberry.clases.morse_colores import MorseColores
 from Python_Raspberry.clases.texto_to_audio import TextoToAudio
+from Python_Raspberry.clases.colors_manager import ColorsManager
+from Python_Raspberry.clases.object_manager import ObjectManager
 from Python_Raspberry.clases.opciones_usuario import OpcionesUsuario
 
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r'./OjoDeVangogh-04b247a7603b.json'
@@ -28,6 +29,7 @@ DATAFRAME_COLOR = pd.read_csv('C:/Users/pc1/Desktop/colores.csv')
 IDIOMA = 'es'
 
 reproductor_audio = TextoToAudio()
+morse_colores = MorseColores(22)  # Se indica el pin de los vibradores
 
 arduino = serial.Serial('/dev/ttyACM0', 9600)
 GPIO.setmode(GPIO.BOARD)
@@ -50,6 +52,7 @@ while True:
 
             for value_color in colors_manager.get_color(datos_rgb_api):
 
+                morse_colores.color_to_vibrate(value_color)
                 traducido = reproductor_audio.translate(value_color, IDIOMA)
                 reproductor_audio.speak_audio(str(traducido))
                 time.sleep(2)
