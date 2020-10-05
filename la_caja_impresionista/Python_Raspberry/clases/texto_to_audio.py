@@ -3,18 +3,17 @@ from gtts import gTTS
 from textblob import TextBlob
 
 
-class texto_to_audio:
+class TextoToAudio:
 
-    def __init__(self, content):
-        # Se guarda el contenido
-        self.content = content
+    def __init__(self,):
+        self.content = ""
 
-    def translate(self, requested_language):
+    def translate(self, content, requested_language):
 
         # Se guarda el idioma pedido como global
         self.requested_language = requested_language
 
-        self.content = TextBlob(self.content)
+        self.content = TextBlob(content)
 
         # Se guarda el idioma del contenido
         content_language = str(self.content.detect_language())
@@ -32,7 +31,7 @@ class texto_to_audio:
             return (self.content)
 
     # Se crea la funcion que pasa de texto a audio
-    def reproduce_audio(self, contenido_traducido):
+    def speak_audio(self, contenido_traducido):
 
         # Se guarda el contenido traducido
         contenido_traducido = contenido_traducido
