@@ -2,13 +2,13 @@
 
 # Ojo de van gogh
 
-Este proyecto esta hecho con el fin de crear un sistema de ayuda a la gente con discapacidad visual para, atraves de inteligencia artificial, reconocer objectos que no pueden ver. 
+Este proyecto esta hecho con el fin de crear un **sistema de ayuda a la gente con discapacidad visual** para, a través de inteligencia artificial, **reconocer objectos que no pueden ver**. 
 
-Se compone de un sistema electronico que va colocado en el antebrazo y lleva una camera que se coloca en la mano. Cuando el ciego, por ejemplo, parpadea dos veces el sensor cerebral entiende su intencionalidad de querer sacar una foto y se lo comunica a la raspberry, esta actua sacando una foto y la procesa con **google vision API** para luego dar una respuesta del texto que se lee en la foto, el objeto que aparece o los colores predominantes
+Se compone de un sistema electrónico que va colocado en el antebrazo y lleva una camera que se coloca en la mano. Cuando el ciego, por ejemplo, parpadea dos veces el sensor cerebral entiende su intencionalidad de querer sacar una foto y se lo comunica a la raspberry, esta actua sacando una foto y la procesa con **google vision API** para luego dar una respuesta del texto que se lee en la foto, el objeto que aparece o los colores predominantes
 
 ## Requisitos
 
-Para ejecutar este proyecto se necesitan los siguientes materiales.
+Para ejecutar este proyecto se debe contar con estos requisitos:
 
 - Hardware: elementos electronicos fisicos para crear el sistema.
   - Mindwave
@@ -21,7 +21,7 @@ Para ejecutar este proyecto se necesitan los siguientes materiales.
   - Python 3.7
   - Arduino IDE
 
-## Instalacion
+## Instalación
 
 #### Raspberry:
 
