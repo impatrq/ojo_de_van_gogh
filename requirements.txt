@@ -1,0 +1,7 @@
+pandas
+google-cloud-vision
+textblob
+gTTS
+picamera
+serial
+RPi.GPIO
