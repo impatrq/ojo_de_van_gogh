@@ -1,3 +1,8 @@
+## Lista de colores para vibración
+
+- El número 0 representa 0.25 segundos de duración de vibración
+- El número 1 representa 1 segundo de duración de vibración 
+- Entre cada numero hay 0.25 segundos de pausa
 | Codigo | Colores  |
 | :----: | :------: |
 |  0000  |  blanco  |
