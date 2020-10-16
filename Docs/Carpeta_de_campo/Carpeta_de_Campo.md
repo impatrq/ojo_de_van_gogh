@@ -102,7 +102,7 @@ python3 camera_vision_face.py
 
 Nos devuelve este análisis donde la Raspberry se encargo de detectar las personas que aparecen en la foto en este caso Theo. Lo borroso de la foto se debe a que Theo tiene el celu que no enfoca, la definición en si de la Pi Camera es bastante buena
 
-<img src="/home/matias/Downloads/WhatsApp Image 2020-03-18 at 22.57.52.jpeg" alt="Un tipo que maneja inteligencia artificial" style="zoom: 33%;" />
+![theo](C:\Users\pc1\Desktop\Imagenes\theo.jpg)
 
 
 Ahora tenemos que ver como usar la Raspberry para conectarla al BT y además que todos estos programas que describimos antes estén funcionando en Loop y de forma automática cuando se prende la Raspberry.
@@ -114,7 +114,7 @@ Ahora tenemos que ver como usar la Raspberry para conectarla al BT y además que
 Estuvimos viendo documentaciones y aparentemente para poder leer el valor de Blink Strength tenemos que escribir en el registro **0x16** 
 
 
-![Registros tabla](/home/matias/Downloads/RegistrosNeurosky.jpeg)
+![registros_mindwave](C:\Users\pc1\Desktop\Imagenes\registros_mindwave.jpg)
 
 
 Se hicieron ejemplos con Arduino para empezar a leer los datos Json que se recibirán de la Raspberry. Se han hecho pruebas de como formar un Json y como obtener el valor de Json.
@@ -139,7 +139,7 @@ Se ha tenido problemas con esta función ya que dependiendo del orden en el que 
 
 Hemos realizado el logo para el proyecto:
 
-![LOGO](C:\Users\pc1\Desktop\Imagenes\LOGO.jpg)
+![logo](C:\Users\pc1\Desktop\Imagenes\logo.jpg)
 
 ## Semana 29/03 al 05/04
 Se crearon las piezas en 3D del cargador de pilas. Las piezas están diseñadas teniendo en cuenta las plaquetas que van a ir colocadas y están los agujeros para los respectivos cables.
