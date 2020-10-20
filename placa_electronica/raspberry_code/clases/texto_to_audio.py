@@ -13,7 +13,7 @@ class TextoToAudio:
         # Se guarda el idioma pedido como global
         self.requested_language = requested_language
 
-        self.content = TextBlob(content)
+        self.content = TextBlob(str(content))
 
         # Se guarda el idioma del contenido
         content_language = str(self.content.detect_language())

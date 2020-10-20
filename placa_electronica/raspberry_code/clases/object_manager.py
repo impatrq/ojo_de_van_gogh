@@ -2,7 +2,7 @@ import pandas as pd
 from textblob import TextBlob
 from google.cloud import vision
 
-from google_vision_engine import GoogleVisionEngine
+from clases.google_vision_engine import GoogleVisionEngine
 
 
 class ObjectManager(GoogleVisionEngine):
