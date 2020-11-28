@@ -12,12 +12,12 @@ import RPi.GPIO as GPIO
 from google.cloud import vision
 
 # Clases
-from Python_Raspberry.clases.text_manager import TextManager
-from Python_Raspberry.clases.morse_colores import MorseColores
-from Python_Raspberry.clases.texto_to_audio import TextoToAudio
-from Python_Raspberry.clases.colors_manager import ColorsManager
-from Python_Raspberry.clases.object_manager import ObjectManager
-from Python_Raspberry.clases.opciones_usuario import OpcionesUsuario
+from clases.text_manager import TextManager
+from clases.morse_colores import MorseColores
+from clases.texto_to_audio import TextoToAudio
+from clases.colors_manager import ColorsManager
+from clases.object_manager import ObjectManager
+from clases.opciones_usuario import OpcionesUsuario
 
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r'./OjoDeVangogh-04b247a7603b.json'
 CLIENT = vision.ImageAnnotatorClient()
@@ -25,7 +25,7 @@ CLIENT = vision.ImageAnnotatorClient()
 FILE_NAME = 'photo.jpg'
 IMAGE_PATH = f'./{FILE_NAME}'
 
-DATAFRAME_COLOR = pd.read_csv('C:/Users/pc1/Desktop/colores.csv')
+DATAFRAME_COLOR = pd.read_csv('./colores.csv', encoding='utf-8')
 IDIOMA = 'es'
 
 reproductor_audio = TextoToAudio()
@@ -44,7 +44,7 @@ while True:
         time.sleep(2)  # Tiempo de espera para disparar la foto
         camera.capture('photo.jpg')
 
-        if(orden == b'@OpcionesUsuario.detectar_color'):
+        if(orden == b'OpcionesUsuario.detectar_color.value'):
 
             colors_manager = ColorsManager(IMAGE_PATH, CLIENT, DATAFRAME_COLOR)
             datos_rgb_api = colors_manager.get_response_api()
@@ -57,29 +57,29 @@ while True:
                 reproductor_audio.speak_audio(str(traducido))
                 time.sleep(2)
 
-        elif(orden == b'@OpcionesUsuario.leer_texto'):
+        elif(orden == b'OpcionesUsuario.leer_texto.value'):
 
             text_manager = TextManager(IMAGE_PATH, CLIENT)
 
-            respuesta_texto_api = text_manager.llamar_respuesta_texto()
+            respuesta_texto_api = text_manager.get_response_api()
 
-            texto = text_manager.obtener_texto(respuesta_texto_api)
+            texto = text_manager.get_text(respuesta_texto_api)
 
             traducido = reproductor_audio.translate(texto, IDIOMA)
             reproductor_audio.speak_audio(str(traducido))
-            time.sleep(2)
+            time.sleep(1)
 
-        elif(orden == b'@OpcionesUsuario.detectar_objetos'):
+        elif(orden == b'OpcionesUsuario.detectar_objetos.value'):
 
             object_manager = ObjectManager(IMAGE_PATH, CLIENT)
 
-            respuestas_objetos = object_manager.pedir_objetos_api()
+            respuestas_objetos = object_manager.get_response_api()
 
-            for objetos in object_manager.obtener_objetos(respuestas_objetos):
+            for objetos in object_manager.get_object(respuestas_objetos):
 
                 traducido = reproductor_audio.translate(objetos, IDIOMA)
                 reproductor_audio.speak_audio(str(traducido))
-                time.sleep(2)
+                time.sleep(3)
 
         else:
             print("No llego ninguna orden")
