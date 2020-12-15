@@ -44,7 +44,7 @@ while True:
         time.sleep(2)  # Tiempo de espera para disparar la foto
         camera.capture('photo.jpg')
 
-        if(orden == b'OpcionesUsuario.detectar_color.value'):
+        if(GPIO.input(40) == False):
 
             colors_manager = ColorsManager(IMAGE_PATH, CLIENT, DATAFRAME_COLOR)
             datos_rgb_api = colors_manager.get_response_api()
@@ -57,7 +57,7 @@ while True:
                 reproductor_audio.speak_audio(str(traducido))
                 time.sleep(2)
 
-        elif(orden == b'OpcionesUsuario.leer_texto.value'):
+        elif(GPIO.input(38)== False):
 
             text_manager = TextManager(IMAGE_PATH, CLIENT)
 
@@ -69,7 +69,7 @@ while True:
             reproductor_audio.speak_audio(str(traducido))
             time.sleep(1)
 
-        elif(orden == b'OpcionesUsuario.detectar_objetos.value'):
+        elif(GPIO.input(8)== False):
 
             object_manager = ObjectManager(IMAGE_PATH, CLIENT)
 
