@@ -4,12 +4,18 @@
 //    Output        : Eye Blink Control LED                //
 #include "mindwave.h"
 
+//incluyo libreria para cambiar pines de serial   //
+#include <softwareserial.h>
+
 #define BAUDRATE 57600
 #define LED 5
 #define Theshold_Eyeblink 110
 #define EEG_AVG 70
 
+softwareserial BTMaster (1, 2); //pin RX=1, pin TX=2 //
+
 int Plength;
+char informacion;
 
 Mindwave mindwave(
     BAUDRATE,
@@ -20,6 +26,8 @@ Mindwave mindwave(
 void setup()
 {
   Serial.begin(BAUDRATE); // USB
+  BTMaster.begin(9600);
+
   pinMode(LED, OUTPUT);
   for (int h = 0; h < 10; h++)
   {
@@ -42,7 +50,8 @@ void loop() // Main Function
       Plength = mindwave.ReadOneByte();
       if (Plength == 4) // Small Packet
       {
-        mindwave.Small_Packet();
+        informacion_parpadeo=mindwave.Small_Packet();
+        BTMaster.write(informacion_parpadeo); //mando la deteccion de parpadeo  //
       }
       else if (Plength == 32) // Big Packet
       {
