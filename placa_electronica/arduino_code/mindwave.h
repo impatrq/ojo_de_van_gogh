@@ -1,4 +1,4 @@
-#ifndef mindwave_h
+void#ifndef mindwave_h
 #define mindwave_h
 
 #include "Arduino.h"
@@ -8,10 +8,10 @@ class Mindwave
     public:
         Mindwave(int _BAUDRATE, char _LED, char _Thesold_Eyeblink, char _EEG_AVG);
         byte ReadOneByte();
-        char Small_Packet();
+        void Small_Packet();
         void Big_Packet();
-        char Onesec_Rawval_Fun();
-        char Eye_Blink();
+        void Onesec_Rawval_Fun();
+        void Eye_Blink();
         void Calibrar_Sensor();
         void Esperar_al_mindwave();
 
