@@ -37,7 +37,8 @@ GPIO.setup(7, GPIO.OUT)  # creo el pin del led
 
 while True:
     orden = arduino.read()
-    if orden == b'sacar foto':
+    # Se detecta si se envio informacion del mindwave
+    if orden == b'1': 
         with picamera.PiCamera() as camera:
         camera.resolution = (1024, 768)
         camera.start_preview()
