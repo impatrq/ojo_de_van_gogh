@@ -8,10 +8,10 @@ class Mindwave
     public:
         Mindwave(int _BAUDRATE, char _LED, char _Thesold_Eyeblink, char _EEG_AVG);
         byte ReadOneByte();
-        void Small_Packet();
+        char Small_Packet();
         void Big_Packet();
-        void Onesec_Rawval_Fun();
-        void Eye_Blink();
+        char Onesec_Rawval_Fun();
+        char Eye_Blink();
         void Calibrar_Sensor();
         void Esperar_al_mindwave();
 

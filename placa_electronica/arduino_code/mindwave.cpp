@@ -19,8 +19,10 @@ byte Mindwave::ReadOneByte() // One Byte Read Function
    return ByteRead;
 }
 
-void Mindwave::Eye_Blink()
+char Mindwave::Eye_Blink()
 {
+   char parpadeo = "1"
+   
    if (Eye_Enable)
    {
       if (On_Flag == 1 && Off_Flag == 0)
@@ -29,6 +31,7 @@ void Mindwave::Eye_Blink()
          {
             digitalWrite(LED, HIGH);
             Serial.println("1");
+            return parpadeo; 
          }
          else
          {
@@ -52,7 +55,7 @@ void Mindwave::Eye_Blink()
    }
 }
 
-void Mindwave::Onesec_Rawval_Fun()
+char Mindwave::Onesec_Rawval_Fun()
 {
 
    Avg_Raw = Temp / 512;
@@ -77,12 +80,12 @@ void Mindwave::Onesec_Rawval_Fun()
          Temp_Avg = 0;
       }
    }
-   Eye_Blink();
    j = 0;
    Temp = 0;
+   return Eye_Blink();
 }
 
-void Mindwave::Small_Packet()
+char Mindwave::Small_Packet()
 {
    generatedchecksum = 0;
    for (int i = 0; i < Plength; i++)
@@ -110,7 +113,7 @@ void Mindwave::Small_Packet()
       }
       else
       {
-         Onesec_Rawval_Fun();
+         return Onesec_Rawval_Fun();
       }
    }
 }
