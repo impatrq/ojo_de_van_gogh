@@ -21,6 +21,7 @@ byte Mindwave::ReadOneByte() // One Byte Read Function
 
 void Mindwave::Eye_Blink()
 {
+   
    if (Eye_Enable)
    {
       if (On_Flag == 1 && Off_Flag == 0)
@@ -28,7 +29,7 @@ void Mindwave::Eye_Blink()
          if ((Avg_Raw > Thesold_Eyeblink) && (Avg_Raw < 350))
          {
             digitalWrite(LED, HIGH);
-            Serial.println("1");
+            Serial.Write("1");
          }
          else
          {
@@ -77,9 +78,9 @@ void Mindwave::Onesec_Rawval_Fun()
          Temp_Avg = 0;
       }
    }
-   Eye_Blink();
    j = 0;
    Temp = 0;
+   Eye_Blink();
 }
 
 void Mindwave::Small_Packet()
@@ -110,7 +111,7 @@ void Mindwave::Small_Packet()
       }
       else
       {
-         Onesec_Rawval_Fun();
+       Onesec_Rawval_Fun();
       }
    }
 }

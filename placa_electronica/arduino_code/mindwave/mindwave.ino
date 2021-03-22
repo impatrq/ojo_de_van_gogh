@@ -4,10 +4,12 @@
 //    Output        : Eye Blink Control LED                //
 #include "mindwave.h"
 
+
 #define BAUDRATE 57600
 #define LED 5
 #define Theshold_Eyeblink 110
 #define EEG_AVG 70
+
 
 int Plength;
 
@@ -20,6 +22,7 @@ Mindwave mindwave(
 void setup()
 {
   Serial.begin(BAUDRATE); // USB
+
   pinMode(LED, OUTPUT);
   for (int h = 0; h < 10; h++)
   {

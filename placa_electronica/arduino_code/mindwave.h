@@ -1,4 +1,4 @@
-#ifndef mindwave_h
+void#ifndef mindwave_h
 #define mindwave_h
 
 #include "Arduino.h"
